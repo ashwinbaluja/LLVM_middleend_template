@@ -1,0 +1,6 @@
+CAT_execution   %1 = call i8* @CAT_new(i64 noundef 5) #4   %1 = call i8* @CAT_new(i64 noundef 5) #4
+CAT_execution   %4 = call i8* @CAT_new(i64 noundef 8) #4   %4 = call i8* @CAT_new(i64 noundef 8) #4
+CAT_execution   %7 = call i8* @CAT_new(i64 noundef 0) #4   call void @CAT_add(i8* noundef %7, i8* noundef %4, i8* noundef %7) #4
+CAT_execution   %7 = call i8* @CAT_new(i64 noundef 0) #4   call void @CAT_sub(i8* noundef %7, i8* noundef %4, i8* noundef %1) #4
+CAT_execution   %7 = call i8* @CAT_new(i64 noundef 0) #4   %7 = call i8* @CAT_new(i64 noundef 0) #4
+CAT_execution   %7 = call i8* @CAT_new(i64 noundef 0) #4   call void @CAT_set(i8* noundef %7, i64 noundef 42) #4
