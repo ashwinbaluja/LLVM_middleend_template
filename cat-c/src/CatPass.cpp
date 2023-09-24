@@ -10,7 +10,7 @@ namespace {
   struct CAT : public FunctionPass {
     static char ID; 
 
-    CAT() : FunctionPass(ID) {}
+    CAT() : FunctionPass(ID) {} 
 
     // This function is invoked once at the initialization phase of the compiler
     // The LLVM IR of functions isn't ready at this point
@@ -22,7 +22,7 @@ namespace {
     // This function is invoked once per function compiled
     // The LLVM IR of the input functions is ready and it can be analyzed and/or transformed
     bool runOnFunction (Function &F) override {
-      errs() << "Hello LLVM World at \"runOnFunction\"\n" ;
+      errs() << F;
       return false;
     }
 

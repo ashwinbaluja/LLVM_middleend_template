@@ -1,0 +1,22 @@
+1,16c1,4
+< '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+mmx'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+mmx'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+sse'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+sse'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+sse2'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+sse2'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+x87'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+x87'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
+< 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
+< 1warninggenerated.
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx13.0.0[-Woverride-module]
+---
+> main%7=calli8@CAT_new(i64noundef5)#6%7=calli8@CAT_new(i64noundef5)#6
+> main%7=calli8@CAT_new(i64noundef5)#6callvoid@CAT_add(i8noundef%7,i8noundef%7,i8noundef%7)#6
+> main%7=calli8@CAT_new(i64noundef5)#6callvoid@CAT_set(i8noundef%7,i64noundef42)#6
+> main%7=calli8@CAT_new(i64noundef5)#6callvoid@CAT_sub(i8noundef%7,i8noundef%7,i8noundef%7)#6

@@ -69,6 +69,6 @@ fi
 
 
 lib_cmd=""
-cmd="${clangToUse} -Xclang -load -Xclang $pass_cmd -fPIC $lib_cmd $options"
+cmd="${clangToUse} -Xclang -load -Xclang $pass_cmd -flegacy-pass-manager -fPIC $lib_cmd $options"
 
 $cmd

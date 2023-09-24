@@ -1,0 +1,4 @@
+main%3=calli8@CAT_new(i64noundef5)#3%3=calli8@CAT_new(i64noundef5)#3
+main%3=calli8@CAT_new(i64noundef5)#3callvoid@CAT_add(i8noundef%3,i8noundef%3,i8noundef%3)#3
+main%3=calli8@CAT_new(i64noundef5)#3callvoid@CAT_set(i8noundef%3,i64noundef42)#3
+main%3=calli8@CAT_new(i64noundef5)#3callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%3)#3
