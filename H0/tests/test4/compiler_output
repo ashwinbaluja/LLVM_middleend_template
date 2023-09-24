@@ -1,6 +1,4 @@
-warning: overriding the module target triple with arm64-apple-macosx13.0.0 [-Woverride-module]
-Hello LLVM World at "getAnalysisUsage"
-Hello LLVM World at "doInitialization"
+warning: overriding the module target triple with arm64-apple-macosx12.0.0 [-Woverride-module]
 CAT_execution1  %1 = call i8* @CAT_new(i64 noundef 5) #3  %1 = call i8* @CAT_new(i64 noundef 5) #3
 CAT_execution1  %2 = call i8* @CAT_new(i64 noundef 8) #3  %2 = call i8* @CAT_new(i64 noundef 8) #3
 CAT_execution1  %3 = call i8* @CAT_new(i64 noundef 0) #3  %3 = call i8* @CAT_new(i64 noundef 0) #3
@@ -30,3 +28,4 @@ main  %7 = call i8* @CAT_new(i64 noundef 5) #3  %7 = call i8* @CAT_new(i64 nound
 '+sse2' is not a recognized feature for this target (ignoring feature)
 '+x87' is not a recognized feature for this target (ignoring feature)
 1 warning generated.
+ld: warning: object file (../misc/CAT.o) was built for newer macOS version (13.0) than being linked (12.0)

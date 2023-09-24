@@ -49,7 +49,7 @@ namespace {
     // This function is invoked once at the initialization phase of the compiler
     // The LLVM IR of functions isn't ready at this point
     bool doInitialization (Module &M) override {
-      errs() << "Hello LLVM World at \"doInitialization\"\n" ;
+      // errs() << "Hello LLVM World at \"doInitialization\"\n" ;
       return false;
     }
 
@@ -67,7 +67,7 @@ namespace {
     // We don't modify the program, so we preserve all analyses.
     // The LLVM IR of functions isn't ready at this point
     void getAnalysisUsage(AnalysisUsage &AU) const override {
-      errs() << "Hello LLVM World at \"getAnalysisUsage\"\n" ;
+      // errs() << "Hello LLVM World at \"getAnalysisUsage\"\n" ;
       AU.setPreservesAll();
     }
   };

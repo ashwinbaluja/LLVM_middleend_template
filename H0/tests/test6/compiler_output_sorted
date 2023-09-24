@@ -13,10 +13,9 @@
 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 1warninggenerated.
-HelloLLVMWorldat"doInitialization"
-HelloLLVMWorldat"getAnalysisUsage"
+ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(13.0)thanbeinglinked(12.0)
 main%7=calli8@CAT_new(i64noundef5)#6%7=calli8@CAT_new(i64noundef5)#6
 main%7=calli8@CAT_new(i64noundef5)#6callvoid@CAT_add(i8noundef%7,i8noundef%7,i8noundef%7)#6
 main%7=calli8@CAT_new(i64noundef5)#6callvoid@CAT_set(i8noundef%7,i64noundef42)#6
 main%7=calli8@CAT_new(i64noundef5)#6callvoid@CAT_sub(i8noundef%7,i8noundef%7,i8noundef%7)#6
-warning:overridingthemoduletargettriplewitharm64-apple-macosx13.0.0[-Woverride-module]
+warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]

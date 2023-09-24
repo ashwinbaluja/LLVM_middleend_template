@@ -1,4 +1,4 @@
-1,17d0
+1,16d0
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -14,7 +14,6 @@
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 1warninggenerated.
-< HelloLLVMWorldat"doInitialization"
-< HelloLLVMWorldat"getAnalysisUsage"
-22d4
-< warning:overridingthemoduletargettriplewitharm64-apple-macosx13.0.0[-Woverride-module]
+< ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(13.0)thanbeinglinked(12.0)
+21d4
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]

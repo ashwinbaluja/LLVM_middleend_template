@@ -14,7 +14,6 @@
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 1warninggenerated.
-22,24d6
-< HelloLLVMWorldat"doInitialization"
-< HelloLLVMWorldat"getAnalysisUsage"
-< warning:overridingthemoduletargettriplewitharm64-apple-macosx13.0.0[-Woverride-module]
+22,23d6
+< ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(13.0)thanbeinglinked(12.0)
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]
