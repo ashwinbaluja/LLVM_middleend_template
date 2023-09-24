@@ -24,10 +24,12 @@ namespace {
           // errs() << "calledFunc: " << inst.getCalledFunction()->getName() << "\n";
           
           string functionName = inst.getCalledFunction()->getName().str();
-        
+
           if (functionName == "CAT_new" || functionName == "CAT_add" || functionName == "CAT_sub" || functionName == "CAT_set") {
-            errs() << this->myFunction->getName() << inst.getName() << inst << "\n";
-            errs() << inst.getArgOperand(0).uses() << "\n";
+            errs() << this->myFunction->getName() << "|||";
+            inst.getArgOperand(0)->print(errs());
+
+            errs() << "|||" << inst << "\n";
           }
       
         }

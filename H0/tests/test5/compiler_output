@@ -1,10 +1,10 @@
-warning: overriding the module target triple with arm64-apple-macosx12.0.0 [-Woverride-module]
+warning: overriding the module target triple with arm64-apple-macosx13.0.0 [-Woverride-module]
 Hello LLVM World at "getAnalysisUsage"
 Hello LLVM World at "doInitialization"
-main  %3 = call i8* @CAT_new(i64 noundef 5) #3
-main  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3
-main  call void @CAT_sub(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3
-main  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+main|||i64 5|||  %3 = call i8* @CAT_new(i64 noundef 5) #3
+main|||  %3 = call i8* @CAT_new(i64 noundef 5) #3|||  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3
+main|||  %3 = call i8* @CAT_new(i64 noundef 5) #3|||  call void @CAT_sub(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3
+main|||  %3 = call i8* @CAT_new(i64 noundef 5) #3|||  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
 'x86-64' is not a recognized processor for this target (ignoring processor)
 '+cx8' is not a recognized feature for this target (ignoring feature)
 '+fxsr' is not a recognized feature for this target (ignoring feature)
@@ -20,4 +20,3 @@ main  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
 '+sse2' is not a recognized feature for this target (ignoring feature)
 '+x87' is not a recognized feature for this target (ignoring feature)
 1 warning generated.
-ld: warning: object file (../misc/CAT.o) was built for newer macOS version (13.0) than being linked (12.0)

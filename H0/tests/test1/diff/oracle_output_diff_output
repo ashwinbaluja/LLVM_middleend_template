@@ -1,4 +1,4 @@
-1,25c1,6
+1,24c1,6
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -16,14 +16,13 @@
 < 1warninggenerated.
 < HelloLLVMWorldat"doInitialization"
 < HelloLLVMWorldat"getAnalysisUsage"
-< ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(13.0)thanbeinglinked(12.0)
-< main%3=calli8@CAT_new(i64noundef5)#3
-< main%4=calli8@CAT_new(i64noundef8)#3
-< main%5=calli8@CAT_new(i64noundef0)#3
-< maincallvoid@CAT_add(i8noundef%5,i8noundef%3,i8noundef%4)#3
-< maincallvoid@CAT_set(i8noundef%3,i64noundef3)#3
-< maincallvoid@CAT_sub(i8noundef%5,i8noundef%3,i8noundef%4)#3
-< warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]
+< main|||%3=calli8@CAT_new(i64noundef5)#3|||callvoid@CAT_set(i8noundef%3,i64noundef3)#3
+< main|||%5=calli8@CAT_new(i64noundef0)#3|||callvoid@CAT_add(i8noundef%5,i8noundef%3,i8noundef%4)#3
+< main|||%5=calli8@CAT_new(i64noundef0)#3|||callvoid@CAT_sub(i8noundef%5,i8noundef%3,i8noundef%4)#3
+< main|||i640|||%5=calli8@CAT_new(i64noundef0)#3
+< main|||i645|||%3=calli8@CAT_new(i64noundef5)#3
+< main|||i648|||%4=calli8@CAT_new(i64noundef8)#3
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx13.0.0[-Woverride-module]
 ---
 > main%3=calli8@CAT_new(i64noundef5)#3%3=calli8@CAT_new(i64noundef5)#3
 > main%3=calli8@CAT_new(i64noundef5)#3callvoid@CAT_set(i8noundef%3,i64noundef3)#3
