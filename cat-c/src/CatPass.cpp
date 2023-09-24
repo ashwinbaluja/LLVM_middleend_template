@@ -4,18 +4,34 @@
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
 #include "llvm/IR/InstVisitor.h"
-
+#include <string>
 
 using namespace llvm;
-
+using namespace std;
 namespace {
 
     class MyInstVisitor: public InstVisitor<MyInstVisitor>
     {
+      
       public:
-        void visitCallInst (CallInst &inst) {
-          errs() << "CallInst: " << inst << "\n";
+        Function* myFunction;
+        void setFunction(Function *f) {
+          this->myFunction = f;
         }
+        
+        void visitCallInst (CallInst &inst) {
+          // errs() << "CallInst: " << inst << "\n";
+          // errs() << "calledFunc: " << inst.getCalledFunction()->getName() << "\n";
+          
+          string functionName = inst.getCalledFunction()->getName().str();
+        
+          if (functionName == "CAT_new" || functionName == "CAT_add" || functionName == "CAT_sub" || functionName == "CAT_set") {
+            errs() << this->myFunction->getName() << inst.getName() << inst << "\n";
+            errs() << inst.getArgOperand(0).uses() << "\n";
+          }
+      
+        }
+        
     };
 
   struct CAT : public FunctionPass {
@@ -33,8 +49,9 @@ namespace {
     // This function is invoked once per function compiled
     // The LLVM IR of the input functions is ready and it can be analyzed and/or transformed
     bool runOnFunction (Function &F) override {
-      errs() << F;
+      // errs() << F;
       MyInstVisitor visitor;
+      visitor.setFunction(&F);
       visitor.visit(F);
       return false;
 
