@@ -3,10 +3,21 @@
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
+#include "llvm/IR/InstVisitor.h"
+
 
 using namespace llvm;
 
 namespace {
+
+    class MyInstVisitor: public InstVisitor<MyInstVisitor>
+    {
+      public:
+        void visitCallInst (CallInst &inst) {
+          errs() << "CallInst: " << inst << "\n";
+        }
+    };
+
   struct CAT : public FunctionPass {
     static char ID; 
 
@@ -23,7 +34,10 @@ namespace {
     // The LLVM IR of the input functions is ready and it can be analyzed and/or transformed
     bool runOnFunction (Function &F) override {
       errs() << F;
+      MyInstVisitor visitor;
+      visitor.visit(F);
       return false;
+
     }
 
     // We don't modify the program, so we preserve all analyses.

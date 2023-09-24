@@ -1,4 +1,66 @@
-warning: overriding the module target triple with arm64-apple-macosx13.0.0 [-Woverride-module]
+warning: overriding the module target triple with arm64-apple-macosx12.0.0 [-Woverride-module]
+Hello LLVM World at "getAnalysisUsage"
+Hello LLVM World at "doInitialization"
+; Function Attrs: nounwind uwtable
+define dso_local void @my_execution() local_unnamed_addr #0 {
+  %1 = call i8* @CAT_new(i64 noundef 5) #4
+  %2 = call i64 @CAT_get(i8* noundef %1) #4
+  %3 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %2)
+  %4 = call i8* @CAT_new(i64 noundef 8) #4
+  %5 = call i64 @CAT_get(i8* noundef %4) #4
+  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %5)
+  %7 = call i8* @CAT_new(i64 noundef 0) #4
+  call void @CAT_add(i8* noundef %7, i8* noundef %1, i8* noundef %4) #4
+  %8 = call i64 @CAT_get(i8* noundef %7) #4
+  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %8)
+  call void @CAT_sub(i8* noundef %7, i8* noundef %1, i8* noundef %4) #4
+  %10 = call i64 @CAT_get(i8* noundef %7) #4
+  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)
+  call void @CAT_set(i8* noundef %7, i64 noundef 42) #4
+  %12 = call i64 @CAT_get(i8* noundef %7) #4
+  %13 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %12)
+  call void @CAT_destroy(i8* noundef %1) #4
+  call void @CAT_destroy(i8* noundef %4) #4
+  call void @CAT_destroy(i8* noundef %7) #4
+  ret void
+}
+CallInst:   %1 = call i8* @CAT_new(i64 noundef 5) #4
+CallInst:   %2 = call i64 @CAT_get(i8* noundef %1) #4
+CallInst:   %3 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %2)
+CallInst:   %4 = call i8* @CAT_new(i64 noundef 8) #4
+CallInst:   %5 = call i64 @CAT_get(i8* noundef %4) #4
+CallInst:   %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %5)
+CallInst:   %7 = call i8* @CAT_new(i64 noundef 0) #4
+CallInst:   call void @CAT_add(i8* noundef %7, i8* noundef %1, i8* noundef %4) #4
+CallInst:   %8 = call i64 @CAT_get(i8* noundef %7) #4
+CallInst:   %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %8)
+CallInst:   call void @CAT_sub(i8* noundef %7, i8* noundef %1, i8* noundef %4) #4
+CallInst:   %10 = call i64 @CAT_get(i8* noundef %7) #4
+CallInst:   %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)
+CallInst:   call void @CAT_set(i8* noundef %7, i64 noundef 42) #4
+CallInst:   %12 = call i64 @CAT_get(i8* noundef %7) #4
+CallInst:   %13 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %12)
+CallInst:   call void @CAT_destroy(i8* noundef %1) #4
+CallInst:   call void @CAT_destroy(i8* noundef %4) #4
+CallInst:   call void @CAT_destroy(i8* noundef %7) #4
+; Function Attrs: nounwind uwtable
+define dso_local i32 @main(i32 noundef %0, i8** nocapture noundef readnone %1) local_unnamed_addr #0 {
+  %3 = call i32 @puts(i8* nonnull dereferenceable(1) getelementptr inbounds ([10 x i8], [10 x i8]* @str, i64 0, i64 0))
+  call void @my_execution()
+  %4 = call i32 @puts(i8* nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @str.7, i64 0, i64 0))
+  %5 = call i64 @CAT_variables() #4
+  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.5, i64 0, i64 0), i64 noundef %5)
+  %7 = call i64 @CAT_cost() #4
+  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.6, i64 0, i64 0), i64 noundef %7)
+  ret i32 0
+}
+CallInst:   %3 = call i32 @puts(i8* nonnull dereferenceable(1) getelementptr inbounds ([10 x i8], [10 x i8]* @str, i64 0, i64 0))
+CallInst:   call void @my_execution()
+CallInst:   %4 = call i32 @puts(i8* nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @str.7, i64 0, i64 0))
+CallInst:   %5 = call i64 @CAT_variables() #4
+CallInst:   %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.5, i64 0, i64 0), i64 noundef %5)
+CallInst:   %7 = call i64 @CAT_cost() #4
+CallInst:   %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.6, i64 0, i64 0), i64 noundef %7)
 'x86-64' is not a recognized processor for this target (ignoring processor)
 '+cx8' is not a recognized feature for this target (ignoring feature)
 '+fxsr' is not a recognized feature for this target (ignoring feature)
@@ -14,3 +76,4 @@ warning: overriding the module target triple with arm64-apple-macosx13.0.0 [-Wov
 '+sse2' is not a recognized feature for this target (ignoring feature)
 '+x87' is not a recognized feature for this target (ignoring feature)
 1 warning generated.
+ld: warning: object file (../misc/CAT.o) was built for newer macOS version (13.0) than being linked (12.0)
