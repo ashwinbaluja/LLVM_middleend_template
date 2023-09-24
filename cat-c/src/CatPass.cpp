@@ -26,10 +26,15 @@ namespace {
           string functionName = inst.getCalledFunction()->getName().str();
 
           if (functionName == "CAT_new" || functionName == "CAT_add" || functionName == "CAT_sub" || functionName == "CAT_set") {
-            errs() << this->myFunction->getName() << "|||";
-            inst.getArgOperand(0)->print(errs());
 
-            errs() << "|||" << inst << "\n";
+            errs() << this->myFunction->getName();
+            if (inst.arg_size() == 1) {
+              errs() << inst;
+            }
+            else {
+               inst.getOperand(0)->print(errs());
+            }
+            errs() << inst << "\n";
           }
       
         }

@@ -1,4 +1,4 @@
-1,32c1,14
+1,15d0
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -14,35 +14,8 @@
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 1warninggenerated.
-< CAT_execution1|||%1=calli8@CAT_new(i64noundef5)#3|||callvoid@CAT_set(i8noundef%1,i64noundef3)#3
-< CAT_execution1|||%3=calli8@CAT_new(i64noundef0)#3|||callvoid@CAT_add(i8noundef%3,i8noundef%1,i8noundef%2)#3
-< CAT_execution1|||%3=calli8@CAT_new(i64noundef0)#3|||callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%1)#3
-< CAT_execution1|||i640|||%3=calli8@CAT_new(i64noundef0)#3
-< CAT_execution1|||i645|||%1=calli8@CAT_new(i64noundef5)#3
-< CAT_execution1|||i648|||%2=calli8@CAT_new(i64noundef8)#3
-< CAT_execution2|||i645|||%1=calli8@CAT_new(i64noundef5)#3
+23,24d7
 < HelloLLVMWorldat"doInitialization"
 < HelloLLVMWorldat"getAnalysisUsage"
-< main|||%3=calli8@CAT_new(i64noundef5)#3|||callvoid@CAT_set(i8noundef%3,i64noundef3)#3
-< main|||%5=calli8@CAT_new(i64noundef0)#3|||callvoid@CAT_add(i8noundef%5,i8noundef%3,i8noundef%4)#3
-< main|||%5=calli8@CAT_new(i64noundef0)#3|||callvoid@CAT_sub(i8noundef%5,i8noundef%5,i8noundef%3)#3
-< main|||i640|||%5=calli8@CAT_new(i64noundef0)#3
-< main|||i645|||%3=calli8@CAT_new(i64noundef5)#3
-< main|||i645|||%7=calli8@CAT_new(i64noundef5)#3
-< main|||i648|||%4=calli8@CAT_new(i64noundef8)#3
+32d14
 < warning:overridingthemoduletargettriplewitharm64-apple-macosx13.0.0[-Woverride-module]
----
-> CAT_execution1%1=calli8@CAT_new(i64noundef5)#3%1=calli8@CAT_new(i64noundef5)#3
-> CAT_execution1%1=calli8@CAT_new(i64noundef5)#3callvoid@CAT_set(i8noundef%1,i64noundef3)#3
-> CAT_execution1%2=calli8@CAT_new(i64noundef8)#3%2=calli8@CAT_new(i64noundef8)#3
-> CAT_execution1%3=calli8@CAT_new(i64noundef0)#3%3=calli8@CAT_new(i64noundef0)#3
-> CAT_execution1%3=calli8@CAT_new(i64noundef0)#3callvoid@CAT_add(i8noundef%3,i8noundef%1,i8noundef%2)#3
-> CAT_execution1%3=calli8@CAT_new(i64noundef0)#3callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%1)#3
-> CAT_execution2%1=calli8@CAT_new(i64noundef5)#3%1=calli8@CAT_new(i64noundef5)#3
-> main%3=calli8@CAT_new(i64noundef5)#3%3=calli8@CAT_new(i64noundef5)#3
-> main%3=calli8@CAT_new(i64noundef5)#3callvoid@CAT_set(i8noundef%3,i64noundef3)#3
-> main%4=calli8@CAT_new(i64noundef8)#3%4=calli8@CAT_new(i64noundef8)#3
-> main%5=calli8@CAT_new(i64noundef0)#3%5=calli8@CAT_new(i64noundef0)#3
-> main%5=calli8@CAT_new(i64noundef0)#3callvoid@CAT_add(i8noundef%5,i8noundef%3,i8noundef%4)#3
-> main%5=calli8@CAT_new(i64noundef0)#3callvoid@CAT_sub(i8noundef%5,i8noundef%5,i8noundef%3)#3
-> main%7=calli8@CAT_new(i64noundef5)#3%7=calli8@CAT_new(i64noundef5)#3

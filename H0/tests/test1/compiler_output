@@ -1,12 +1,12 @@
 warning: overriding the module target triple with arm64-apple-macosx13.0.0 [-Woverride-module]
 Hello LLVM World at "getAnalysisUsage"
 Hello LLVM World at "doInitialization"
-main|||i64 5|||  %3 = call i8* @CAT_new(i64 noundef 5) #3
-main|||i64 8|||  %4 = call i8* @CAT_new(i64 noundef 8) #3
-main|||i64 0|||  %5 = call i8* @CAT_new(i64 noundef 0) #3
-main|||  %5 = call i8* @CAT_new(i64 noundef 0) #3|||  call void @CAT_add(i8* noundef %5, i8* noundef %3, i8* noundef %4) #3
-main|||  %3 = call i8* @CAT_new(i64 noundef 5) #3|||  call void @CAT_set(i8* noundef %3, i64 noundef 3) #3
-main|||  %5 = call i8* @CAT_new(i64 noundef 0) #3|||  call void @CAT_sub(i8* noundef %5, i8* noundef %3, i8* noundef %4) #3
+main  %3 = call i8* @CAT_new(i64 noundef 5) #3  %3 = call i8* @CAT_new(i64 noundef 5) #3
+main  %4 = call i8* @CAT_new(i64 noundef 8) #3  %4 = call i8* @CAT_new(i64 noundef 8) #3
+main  %5 = call i8* @CAT_new(i64 noundef 0) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3
+main  %5 = call i8* @CAT_new(i64 noundef 0) #3  call void @CAT_add(i8* noundef %5, i8* noundef %3, i8* noundef %4) #3
+main  %3 = call i8* @CAT_new(i64 noundef 5) #3  call void @CAT_set(i8* noundef %3, i64 noundef 3) #3
+main  %5 = call i8* @CAT_new(i64 noundef 0) #3  call void @CAT_sub(i8* noundef %5, i8* noundef %3, i8* noundef %4) #3
 'x86-64' is not a recognized processor for this target (ignoring processor)
 '+cx8' is not a recognized feature for this target (ignoring feature)
 '+fxsr' is not a recognized feature for this target (ignoring feature)
