@@ -4,21 +4,33 @@
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
 #include "llvm/IR/InstVisitor.h"
+#include "llvm/IR/Instruction.h"
+#include "llvm/Support/Casting.h"
+
 #include <string>
+#include <set>
+#include <map>
 
 using namespace llvm;
 using namespace std;
 namespace {
 
 
+
   struct CAT : public FunctionPass {
-    static char ID; 
+    static char ID;
+    map<CallInst, set<CallInst>> gen;
+    map<CallInst, set<CallInst>> kill;
 
     CAT() : FunctionPass(ID) {} 
 
     // This function is invoked once at the initialization phase of the compiler
     // The LLVM IR of functions isn't ready at this point
     bool doInitialization (Module &M) override {
+      
+      gen = {};
+      kill = {};
+
       // errs() << "Hello LLVM World at \"doInitialization\"\n" ;
       return false;
     }
@@ -29,12 +41,33 @@ namespace {
       // errs() << F;
       
       for (auto& b : F) {
-        for (auto& i : b) {
-          i.print(errs());
-          errs << "\n";
+        errs() << "-----------------\n";
+        for (auto& inst : b) {
+          if (!isa<CallInst>(&inst)) {
+            continue;
+          }
+          CallInst *i = cast<CallInst>(&inst);
+
+          string name = i->getCalledFunction()->getName().str();
+
+          if (name == "CAT_new" || name == "CAT_set") {
+            set<CallInst> newgen = {*i};
+            gen.insert({*i, newgen});
+          }
+          errs() << "\n";
         }
+        errs() << "-----------------\n";
       }
 
+      for (map<CallInst*, set<CallInst*>>::iterator it = gen.begin(); it != gen.end(); ++it) {
+        it->first->print(errs());
+        errs() << "!";
+        it->second->print(errs());
+        errs() << "\n";
+
+
+      }
+      return false;
     }
 
     // We don't modify the program, so we preserve all analyses.

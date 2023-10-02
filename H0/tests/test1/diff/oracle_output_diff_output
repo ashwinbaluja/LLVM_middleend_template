@@ -1,4 +1,14 @@
-1,16d0
+1,31c1,6
+< %10=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([16xi8],[16xi8]@.str.1,i640,i640),i64noundef%9)
+< %11=icmpeqi64%6,3
+< %12=zexti1%11toi32
+< %3=calli8@CAT_new(i64noundef5)#3
+< %4=calli8@CAT_new(i64noundef8)#3
+< %5=calli8@CAT_new(i64noundef0)#3
+< %6=calli64@CAT_get(i8noundef%5)#3
+< %7=calli64@CAT_variables()#3
+< %8=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([21xi8],[21xi8]@.str,i640,i640),i64noundef%7)
+< %9=calli64@CAT_cost()#3
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -14,6 +24,16 @@
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 1warninggenerated.
-< ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(13.0)thanbeinglinked(12.0)
-23d6
-< warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]
+< callvoid@CAT_add(i8noundef%5,i8noundef%3,i8noundef%4)#3
+< callvoid@CAT_destroy(i8noundef%3)#3
+< callvoid@CAT_set(i8noundef%3,i64noundef3)#3
+< callvoid@CAT_sub(i8noundef%5,i8noundef%3,i8noundef%4)#3
+< reti32%12
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
+---
+> main%3=calli8@CAT_new(i64noundef5)#3%3=calli8@CAT_new(i64noundef5)#3
+> main%3=calli8@CAT_new(i64noundef5)#3callvoid@CAT_set(i8noundef%3,i64noundef3)#3
+> main%4=calli8@CAT_new(i64noundef8)#3%4=calli8@CAT_new(i64noundef8)#3
+> main%5=calli8@CAT_new(i64noundef0)#3%5=calli8@CAT_new(i64noundef0)#3
+> main%5=calli8@CAT_new(i64noundef0)#3callvoid@CAT_add(i8noundef%5,i8noundef%3,i8noundef%4)#3
+> main%5=calli8@CAT_new(i64noundef0)#3callvoid@CAT_sub(i8noundef%5,i8noundef%3,i8noundef%4)#3

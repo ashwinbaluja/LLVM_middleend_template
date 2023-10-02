@@ -1,0 +1,4 @@
+timeout 10m cat-c program.bc ../misc/CAT.o 2> compiler_output
+../misc/check.sh
+Test failed
+Output differences can be found in "diff"

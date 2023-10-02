@@ -1,0 +1,77 @@
+warning: overriding the module target triple with arm64-apple-macosx14.0.0 [-Woverride-module]
+-----------------
+  %2 = call i8* @CAT_new(i64 noundef 5) #4
+  %3 = call i64 @CAT_get(i8* noundef %2) #4
+  %4 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %3)
+  %5 = icmp sgt i32 %0, 0
+  call void @llvm.assume(i1 %5)
+  %6 = icmp ugt i32 %0, 10
+  %7 = icmp ugt i32 %0, 20
+  br label %17
+-----------------
+-----------------
+  %9 = call i64 @CAT_get(i8* noundef %25) #4
+  %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([15 x i8], [15 x i8]* @.str.3, i64 0, i64 0), i64 noundef %9)
+  %11 = call i64 @CAT_get(i8* noundef %24) #4
+  %12 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %11)
+  call void @CAT_sub(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+  %13 = call i64 @CAT_get(i8* noundef %24) #4
+  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %13)
+  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4
+  %15 = call i64 @CAT_get(i8* noundef %24) #4
+  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %15)
+  ret void
+-----------------
+-----------------
+  %18 = phi i32 [ 0, %1 ], [ %30, %27 ]
+  %19 = call i8* @CAT_new(i64 noundef 8) #4
+  br i1 %6, label %20, label %21
+-----------------
+-----------------
+  call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+  br label %21
+-----------------
+-----------------
+  %22 = call i64 @CAT_get(i8* noundef %19) #4
+  %23 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %22)
+  %24 = call i8* @CAT_new(i64 noundef 0) #4
+  %25 = call i8* @CAT_new(i64 noundef 42) #4
+  call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %19) #4
+  call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %24) #4
+  call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+  br i1 %7, label %26, label %27
+-----------------
+-----------------
+  call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+  br label %27
+-----------------
+-----------------
+  %28 = call i64 @CAT_get(i8* noundef %24) #4
+  %29 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %28)
+  %30 = add nuw i32 %18, 1
+  %31 = icmp eq i32 %30, %0
+  br i1 %31, label %8, label %17, !llvm.loop !3
+-----------------
+-----------------
+  call void @CAT_execution(i32 noundef %0)
+  %3 = call i64 @CAT_variables() #4
+  %4 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.4, i64 0, i64 0), i64 noundef %3)
+  %5 = call i64 @CAT_cost() #4
+  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.5, i64 0, i64 0), i64 noundef %5)
+  ret i32 0
+-----------------
+'x86-64' is not a recognized processor for this target (ignoring processor)
+'+cx8' is not a recognized feature for this target (ignoring feature)
+'+fxsr' is not a recognized feature for this target (ignoring feature)
+'+mmx' is not a recognized feature for this target (ignoring feature)
+'+sse' is not a recognized feature for this target (ignoring feature)
+'+sse2' is not a recognized feature for this target (ignoring feature)
+'+x87' is not a recognized feature for this target (ignoring feature)
+'x86-64' is not a recognized processor for this target (ignoring processor)
+'+cx8' is not a recognized feature for this target (ignoring feature)
+'+fxsr' is not a recognized feature for this target (ignoring feature)
+'+mmx' is not a recognized feature for this target (ignoring feature)
+'+sse' is not a recognized feature for this target (ignoring feature)
+'+sse2' is not a recognized feature for this target (ignoring feature)
+'+x87' is not a recognized feature for this target (ignoring feature)
+1 warning generated.
