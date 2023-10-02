@@ -1,0 +1,894 @@
+Function "CAT_execution" 
+INSTRUCTION:   %2 = call i8* @CAT_new(i64 noundef 5) #4
+***************** IN
+{
+}
+**************************************
+***************** OUT
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %3 = call i64 @CAT_get(i8* noundef %2) #4
+***************** IN
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+***************** OUT
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %4 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %3)
+***************** IN
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+***************** OUT
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %5 = icmp sgt i32 %0, 0
+***************** IN
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+***************** OUT
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   call void @llvm.assume(i1 %5)
+***************** IN
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+***************** OUT
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %6 = icmp ugt i32 %0, 10
+***************** IN
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+***************** OUT
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %7 = icmp ugt i32 %0, 20
+***************** IN
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+***************** OUT
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   br label %17
+***************** IN
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+***************** OUT
+{
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %9 = call i64 @CAT_get(i8* noundef %25) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([15 x i8], [15 x i8]* @.str.3, i64 0, i64 0), i64 noundef %9)
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %11 = call i64 @CAT_get(i8* noundef %24) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %12 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %11)
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   call void @CAT_sub(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   call void @CAT_sub(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %13 = call i64 @CAT_get(i8* noundef %24) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   call void @CAT_sub(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   call void @CAT_sub(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %13)
+***************** IN
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   call void @CAT_sub(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   call void @CAT_sub(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   call void @CAT_set(i8* noundef %24, i64 noundef 42) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   call void @CAT_sub(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   call void @CAT_set(i8* noundef %24, i64 noundef 42) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %15 = call i64 @CAT_get(i8* noundef %24) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   call void @CAT_set(i8* noundef %24, i64 noundef 42) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   call void @CAT_set(i8* noundef %24, i64 noundef 42) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %15)
+***************** IN
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   call void @CAT_set(i8* noundef %24, i64 noundef 42) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   call void @CAT_set(i8* noundef %24, i64 noundef 42) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   ret void
+***************** IN
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   call void @CAT_set(i8* noundef %24, i64 noundef 42) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   call void @CAT_set(i8* noundef %24, i64 noundef 42) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %18 = phi i32 [ 0, %1 ], [ %30, %27 ]
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %19 = call i8* @CAT_new(i64 noundef 8) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   br i1 %6, label %20, label %21
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   br label %21
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %22 = call i64 @CAT_get(i8* noundef %19) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %23 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %22)
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %24 = call i8* @CAT_new(i64 noundef 0) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %24 = call i8* @CAT_new(i64 noundef 0) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %25 = call i8* @CAT_new(i64 noundef 42) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %24 = call i8* @CAT_new(i64 noundef 0) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %24 = call i8* @CAT_new(i64 noundef 0) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %19) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %24 = call i8* @CAT_new(i64 noundef 0) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %19) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %24) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %19) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   br i1 %7, label %26, label %27
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   br label %27
+***************** IN
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %28 = call i64 @CAT_get(i8* noundef %24) #4
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %29 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %28)
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %30 = add nuw i32 %18, 1
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   %31 = icmp eq i32 %30, %0
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+INSTRUCTION:   br i1 %31, label %8, label %17, !llvm.loop !3
+***************** IN
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+***************** OUT
+{
+   call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
+   call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
+   %2 = call i8* @CAT_new(i64 noundef 5) #4
+   %19 = call i8* @CAT_new(i64 noundef 8) #4
+   %25 = call i8* @CAT_new(i64 noundef 42) #4
+   call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
+}
+**************************************
+
+
+
+Function "main" 
+INSTRUCTION:   call void @CAT_execution(i32 noundef %0)
+***************** IN
+{
+}
+**************************************
+***************** OUT
+{
+}
+**************************************
+
+
+
+INSTRUCTION:   %3 = call i64 @CAT_variables() #4
+***************** IN
+{
+}
+**************************************
+***************** OUT
+{
+}
+**************************************
+
+
+
+INSTRUCTION:   %4 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.4, i64 0, i64 0), i64 noundef %3)
+***************** IN
+{
+}
+**************************************
+***************** OUT
+{
+}
+**************************************
+
+
+
+INSTRUCTION:   %5 = call i64 @CAT_cost() #4
+***************** IN
+{
+}
+**************************************
+***************** OUT
+{
+}
+**************************************
+
+
+
+INSTRUCTION:   %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.5, i64 0, i64 0), i64 noundef %5)
+***************** IN
+{
+}
+**************************************
+***************** OUT
+{
+}
+**************************************
+
+
+
+INSTRUCTION:   ret i32 0
+***************** IN
+{
+}
+**************************************
+***************** OUT
+{
+}
+**************************************
+
+
+
