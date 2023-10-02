@@ -1,52 +1,31 @@
 warning: overriding the module target triple with arm64-apple-macosx14.0.0 [-Woverride-module]
 -----------------
-
-
-
-
 -----------------
 -----------------
-
-
-
-
-
-
-
-
-
-
 -----------------
 -----------------
-
 -----------------
 -----------------
-
 -----------------
 -----------------
-
-
-
-
-
-
-
 -----------------
 -----------------
-
 -----------------
 -----------------
-
-
 -----------------
-PN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstE-----------------
-
-
-
-
-
+!!!  %2 = call i8* @CAT_new(i64 noundef 5) #4!  %2 = call i8* @CAT_new(i64 noundef 5) #4!!!
+!!!  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4!  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4!!!
+!!!  %19 = call i8* @CAT_new(i64 noundef 8) #4!  %19 = call i8* @CAT_new(i64 noundef 8) #4!!!
+!!!  %24 = call i8* @CAT_new(i64 noundef 0) #4!  %24 = call i8* @CAT_new(i64 noundef 0) #4!!!
+!!!  %25 = call i8* @CAT_new(i64 noundef 42) #4!  %25 = call i8* @CAT_new(i64 noundef 42) #4!!!
 -----------------
-PN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstE'x86-64' is not a recognized processor for this target (ignoring processor)
+-----------------
+!!!  %2 = call i8* @CAT_new(i64 noundef 5) #4!  %2 = call i8* @CAT_new(i64 noundef 5) #4!!!
+!!!  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4!  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4!!!
+!!!  %19 = call i8* @CAT_new(i64 noundef 8) #4!  %19 = call i8* @CAT_new(i64 noundef 8) #4!!!
+!!!  %24 = call i8* @CAT_new(i64 noundef 0) #4!  %24 = call i8* @CAT_new(i64 noundef 0) #4!!!
+!!!  %25 = call i8* @CAT_new(i64 noundef 42) #4!  %25 = call i8* @CAT_new(i64 noundef 42) #4!!!
+'x86-64' is not a recognized processor for this target (ignoring processor)
 '+cx8' is not a recognized feature for this target (ignoring feature)
 '+fxsr' is not a recognized feature for this target (ignoring feature)
 '+mmx' is not a recognized feature for this target (ignoring feature)

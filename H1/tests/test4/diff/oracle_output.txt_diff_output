@@ -1,4 +1,23 @@
-1,22c1,358
+1,41c1,358
+< !!!%1=calli8@CAT_new(i64noundef5)#3!%1=calli8@CAT_new(i64noundef5)#3!!!
+< !!!%1=calli8@CAT_new(i64noundef5)#3!%1=calli8@CAT_new(i64noundef5)#3!!!
+< !!!%1=calli8@CAT_new(i64noundef5)#3!%1=calli8@CAT_new(i64noundef5)#3!!!
+< !!!%1=calli8@CAT_new(i64noundef5)#3!%1=calli8@CAT_new(i64noundef5)#3!!!
+< !!!%1=calli8@CAT_new(i64noundef5)#3!%1=calli8@CAT_new(i64noundef5)#3!!!
+< !!!%2=calli8@CAT_new(i64noundef8)#3!%2=calli8@CAT_new(i64noundef8)#3!!!
+< !!!%2=calli8@CAT_new(i64noundef8)#3!%2=calli8@CAT_new(i64noundef8)#3!!!
+< !!!%2=calli8@CAT_new(i64noundef8)#3!%2=calli8@CAT_new(i64noundef8)#3!!!
+< !!!%3=calli8@CAT_new(i64noundef0)#3!%3=calli8@CAT_new(i64noundef0)#3!!!
+< !!!%3=calli8@CAT_new(i64noundef0)#3!%3=calli8@CAT_new(i64noundef0)#3!!!
+< !!!%3=calli8@CAT_new(i64noundef0)#3!%3=calli8@CAT_new(i64noundef0)#3!!!
+< !!!%3=calli8@CAT_new(i64noundef5)#3!%3=calli8@CAT_new(i64noundef5)#3!!!
+< !!!%4=calli8@CAT_new(i64noundef8)#3!%4=calli8@CAT_new(i64noundef8)#3!!!
+< !!!%5=calli8@CAT_new(i64noundef0)#3!%5=calli8@CAT_new(i64noundef0)#3!!!
+< !!!%7=calli8@CAT_new(i64noundef5)#3!%7=calli8@CAT_new(i64noundef5)#3!!!
+< !!!callvoid@CAT_set(i8noundef%1,i64noundef3)#3!callvoid@CAT_set(i8noundef%1,i64noundef3)#3!!!
+< !!!callvoid@CAT_set(i8noundef%1,i64noundef3)#3!callvoid@CAT_set(i8noundef%1,i64noundef3)#3!!!
+< !!!callvoid@CAT_set(i8noundef%1,i64noundef3)#3!callvoid@CAT_set(i8noundef%1,i64noundef3)#3!!!
+< !!!callvoid@CAT_set(i8noundef%3,i64noundef3)#3!callvoid@CAT_set(i8noundef%3,i64noundef3)#3!!!
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -12,14 +31,14 @@
 < '+x87'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+x87'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
+< 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
+< -----------------
+< -----------------
 < -----------------
 < -----------------
 < -----------------
 < -----------------
 < 1warninggenerated.
-< PN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstE-----------------
-< PN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstE-----------------
-< PN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstE'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
 ---
 > %1=calli8@CAT_new(i64noundef5)#3

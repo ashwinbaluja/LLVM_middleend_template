@@ -1,3 +1,13 @@
+!!!%19=calli8@CAT_new(i64noundef8)#4!%19=calli8@CAT_new(i64noundef8)#4!!!
+!!!%19=calli8@CAT_new(i64noundef8)#4!%19=calli8@CAT_new(i64noundef8)#4!!!
+!!!%24=calli8@CAT_new(i64noundef0)#4!%24=calli8@CAT_new(i64noundef0)#4!!!
+!!!%24=calli8@CAT_new(i64noundef0)#4!%24=calli8@CAT_new(i64noundef0)#4!!!
+!!!%25=calli8@CAT_new(i64noundef42)#4!%25=calli8@CAT_new(i64noundef42)#4!!!
+!!!%25=calli8@CAT_new(i64noundef42)#4!%25=calli8@CAT_new(i64noundef42)#4!!!
+!!!%2=calli8@CAT_new(i64noundef5)#4!%2=calli8@CAT_new(i64noundef5)#4!!!
+!!!%2=calli8@CAT_new(i64noundef5)#4!%2=calli8@CAT_new(i64noundef5)#4!!!
+!!!callvoid@CAT_set(i8noundef%24,i64noundef42)#4!callvoid@CAT_set(i8noundef%24,i64noundef42)#4!!!
+!!!callvoid@CAT_set(i8noundef%24,i64noundef42)#4!callvoid@CAT_set(i8noundef%24,i64noundef42)#4!!!
 '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -10,6 +20,7 @@
 '+sse2'isnotarecognizedfeatureforthistarget(ignoringfeature)
 '+x87'isnotarecognizedfeatureforthistarget(ignoringfeature)
 '+x87'isnotarecognizedfeatureforthistarget(ignoringfeature)
+'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 -----------------
 -----------------
@@ -26,7 +37,6 @@
 -----------------
 -----------------
 -----------------
+-----------------
 1warninggenerated.
-PN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstE'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
-PN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstE-----------------
 warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]

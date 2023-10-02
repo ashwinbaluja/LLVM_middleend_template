@@ -54,17 +54,19 @@ namespace {
             set<CallInst*> newgen = {i};
             gen.insert({i, newgen});
           }
-          errs() << "\n";
         }
         errs() << "-----------------\n";
       }
 
       for (map<CallInst*, set<CallInst*>>::iterator it = gen.begin(); it != gen.end(); ++it) {
+        errs() << "!!!";
         it->first->print(errs());
         errs() << "!";
-        it->second->print(errs());
-        errs() << "\n";
 
+        for (auto& inst : it->second)
+        inst->print(errs());
+        errs() << "!!!";
+        errs() << "\n";
 
       }
       return false;

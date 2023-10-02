@@ -1,41 +1,31 @@
 warning: overriding the module target triple with arm64-apple-macosx14.0.0 [-Woverride-module]
 -----------------
-
-
-
-
 -----------------
 -----------------
-
 -----------------
 -----------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -----------------
-PN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstE-----------------
-
-
-
-
-
+!!!  %2 = call i8* @CAT_new(i64 noundef 5) #3!  %2 = call i8* @CAT_new(i64 noundef 5) #3!!!
+!!!  %5 = call i8* @CAT_new(i64 noundef 8) #3!  %5 = call i8* @CAT_new(i64 noundef 8) #3!!!
+!!!  %11 = call i8* @CAT_new(i64 noundef 0) #3!  %11 = call i8* @CAT_new(i64 noundef 0) #3!!!
+!!!  %12 = call i8* @CAT_new(i64 noundef 0) #3!  %12 = call i8* @CAT_new(i64 noundef 0) #3!!!
+!!!  %13 = call i8* @CAT_new(i64 noundef 0) #3!  %13 = call i8* @CAT_new(i64 noundef 0) #3!!!
+!!!  %14 = call i8* @CAT_new(i64 noundef 3) #3!  %14 = call i8* @CAT_new(i64 noundef 3) #3!!!
+!!!  %15 = call i8* @CAT_new(i64 noundef 4) #3!  %15 = call i8* @CAT_new(i64 noundef 4) #3!!!
+!!!  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!!!
+!!!  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!!!
 -----------------
-PN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstE'x86-64' is not a recognized processor for this target (ignoring processor)
+-----------------
+!!!  %2 = call i8* @CAT_new(i64 noundef 5) #3!  %2 = call i8* @CAT_new(i64 noundef 5) #3!!!
+!!!  %5 = call i8* @CAT_new(i64 noundef 8) #3!  %5 = call i8* @CAT_new(i64 noundef 8) #3!!!
+!!!  %11 = call i8* @CAT_new(i64 noundef 0) #3!  %11 = call i8* @CAT_new(i64 noundef 0) #3!!!
+!!!  %12 = call i8* @CAT_new(i64 noundef 0) #3!  %12 = call i8* @CAT_new(i64 noundef 0) #3!!!
+!!!  %13 = call i8* @CAT_new(i64 noundef 0) #3!  %13 = call i8* @CAT_new(i64 noundef 0) #3!!!
+!!!  %14 = call i8* @CAT_new(i64 noundef 3) #3!  %14 = call i8* @CAT_new(i64 noundef 3) #3!!!
+!!!  %15 = call i8* @CAT_new(i64 noundef 4) #3!  %15 = call i8* @CAT_new(i64 noundef 4) #3!!!
+!!!  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!!!
+!!!  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!!!
+'x86-64' is not a recognized processor for this target (ignoring processor)
 '+cx8' is not a recognized feature for this target (ignoring feature)
 '+fxsr' is not a recognized feature for this target (ignoring feature)
 '+mmx' is not a recognized feature for this target (ignoring feature)
