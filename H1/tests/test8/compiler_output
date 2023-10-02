@@ -1,67 +1,48 @@
 warning: overriding the module target triple with arm64-apple-macosx14.0.0 [-Woverride-module]
 -----------------
-  %2 = icmp slt i32 %0, 101
-  br i1 %2, label %24, label %3
 -----------------
 -----------------
-  %4 = phi i8* [ %25, %24 ], [ undef, %1 ]
-  %5 = icmp sgt i32 %0, 0
-  br i1 %5, label %6, label %9
 -----------------
 -----------------
-  %7 = icmp sgt i32 %0, 10
-  %8 = icmp sgt i32 %0, 20
-  br label %10
 -----------------
 -----------------
-  ret void
 -----------------
 -----------------
-  %11 = phi i32 [ 0, %6 ], [ %22, %19 ]
-  %12 = call i8* @CAT_new(i64 noundef 8) #3
-  br i1 %7, label %13, label %14
+
 -----------------
 -----------------
-  call void @CAT_add(i8* noundef %12, i8* noundef %12, i8* noundef %12) #3
-  br label %14
+
 -----------------
 -----------------
-  %15 = call i64 @CAT_get(i8* noundef %12) #3
-  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %15)
-  %17 = call i8* @CAT_new(i64 noundef 0) #3
-  call void @CAT_add(i8* noundef %17, i8* noundef %4, i8* noundef %12) #3
-  call void @CAT_add(i8* noundef %17, i8* noundef %4, i8* noundef %17) #3
-  call void @CAT_add(i8* noundef %17, i8* noundef %17, i8* noundef %17) #3
-  call void @CAT_sub(i8* noundef %17, i8* noundef %17, i8* noundef %4) #3
-  br i1 %8, label %18, label %19
+
+
+
+
+
+
+
 -----------------
 -----------------
-  call void @CAT_add(i8* noundef %17, i8* noundef %4, i8* noundef %4) #3
-  call void @CAT_set(i8* noundef %4, i64 noundef 42) #3
-  br label %19
+
+
 -----------------
 -----------------
-  %20 = call i64 @CAT_get(i8* noundef %17) #3
-  %21 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.1, i64 0, i64 0), i64 noundef %20)
-  %22 = add nuw nsw i32 %11, 1
-  %23 = icmp eq i32 %22, %0
-  br i1 %23, label %9, label %10, !llvm.loop !3
+
+
 -----------------
 -----------------
-  %25 = call i8* @CAT_new(i64 noundef 5) #3
-  %26 = call i64 @CAT_get(i8* noundef %25) #3
-  %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %26)
-  br label %3
+
+
+
 -----------------
+PN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstE-----------------
+
+
+
+
+
 -----------------
-  call void @CAT_execution(i32 noundef %0)
-  %3 = call i64 @CAT_variables() #3
-  %4 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.3, i64 0, i64 0), i64 noundef %3)
-  %5 = call i64 @CAT_cost() #3
-  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.4, i64 0, i64 0), i64 noundef %5)
-  ret i32 0
------------------
-'x86-64' is not a recognized processor for this target (ignoring processor)
+PN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstEPN4llvm8CallInstE'x86-64' is not a recognized processor for this target (ignoring processor)
 '+cx8' is not a recognized feature for this target (ignoring feature)
 '+fxsr' is not a recognized feature for this target (ignoring feature)
 '+mmx' is not a recognized feature for this target (ignoring feature)

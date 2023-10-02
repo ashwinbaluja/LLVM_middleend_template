@@ -19,8 +19,8 @@ namespace {
 
   struct CAT : public FunctionPass {
     static char ID;
-    map<CallInst, set<CallInst>> gen;
-    map<CallInst, set<CallInst>> kill;
+    map<CallInst*, set<CallInst*>> gen;
+    map<CallInst*, set<CallInst*>> kill;
 
     CAT() : FunctionPass(ID) {} 
 
@@ -51,8 +51,8 @@ namespace {
           string name = i->getCalledFunction()->getName().str();
 
           if (name == "CAT_new" || name == "CAT_set") {
-            set<CallInst> newgen = {*i};
-            gen.insert({*i, newgen});
+            set<CallInst*> newgen = {i};
+            gen.insert({i, newgen});
           }
           errs() << "\n";
         }

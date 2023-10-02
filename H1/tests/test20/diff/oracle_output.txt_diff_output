@@ -1,12 +1,4 @@
-1,2d0
-< %10=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([16xi8],[16xi8]@.str.2,i640,i640),i64noundef%9)
-< %3=sexti32%0toi64
-4,25c2,39
-< %5=calli64@CAT_get(i8noundef%4)#3
-< %6=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([5xi8],[5xi8]@.str,i640,i640),i64noundef%5)
-< %7=calli64@CAT_variables()#3
-< %8=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([21xi8],[21xi8]@.str.1,i640,i640),i64noundef%7)
-< %9=calli64@CAT_cost()#3
+1,18c1,106
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -19,12 +11,14 @@
 < '+sse2'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+x87'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+x87'isnotarecognizedfeatureforthistarget(ignoringfeature)
-< 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < -----------------
 < -----------------
 < 1warninggenerated.
+< PN4llvm8CallInstEPN4llvm8CallInstE'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
 ---
+> %4=calli8@CAT_new(i64noundef%3)#3
 > %4=calli8@CAT_new(i64noundef%3)#3
 > Function"main"
 > IN
@@ -63,9 +57,8 @@
 > OUT
 > OUT
 > OUT
-26a41
 > callvoid@CAT_add(i8noundef%4,i8noundef%4,i8noundef%4)#3
-27a43,56
+> callvoid@CAT_add(i8noundef%4,i8noundef%4,i8noundef%4)#3
 > callvoid@CAT_set(i8noundef%4,i64noundef42)#3
 > callvoid@CAT_set(i8noundef%4,i64noundef42)#3
 > callvoid@CAT_set(i8noundef%4,i64noundef42)#3
@@ -80,10 +73,8 @@
 > callvoid@CAT_set(i8noundef%4,i64noundef42)#3
 > callvoid@CAT_set(i8noundef%4,i64noundef42)#3
 > callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-29,30c58,106
-< reti320
-< warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
----
+> callvoid@CAT_set(i8noundef%4,i64noundef42)#3
+> callvoid@CAT_sub(i8noundef%4,i8noundef%4,i8noundef%4)#3
 > callvoid@CAT_sub(i8noundef%4,i8noundef%4,i8noundef%4)#3
 > {
 > {
