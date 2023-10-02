@@ -1,14 +1,12 @@
-1,42c1,669
-< !!!%19=calli8@CAT_new(i64noundef8)#4!%19=calli8@CAT_new(i64noundef8)#4!!!
-< !!!%19=calli8@CAT_new(i64noundef8)#4!%19=calli8@CAT_new(i64noundef8)#4!!!
-< !!!%24=calli8@CAT_new(i64noundef0)#4!%24=calli8@CAT_new(i64noundef0)#4!!!
-< !!!%24=calli8@CAT_new(i64noundef0)#4!%24=calli8@CAT_new(i64noundef0)#4!!!
-< !!!%25=calli8@CAT_new(i64noundef42)#4!%25=calli8@CAT_new(i64noundef42)#4!!!
-< !!!%25=calli8@CAT_new(i64noundef42)#4!%25=calli8@CAT_new(i64noundef42)#4!!!
-< !!!%2=calli8@CAT_new(i64noundef5)#4!%2=calli8@CAT_new(i64noundef5)#4!!!
-< !!!%2=calli8@CAT_new(i64noundef5)#4!%2=calli8@CAT_new(i64noundef5)#4!!!
-< !!!callvoid@CAT_set(i8noundef%24,i64noundef42)#4!callvoid@CAT_set(i8noundef%24,i64noundef42)#4!!!
-< !!!callvoid@CAT_set(i8noundef%24,i64noundef42)#4!callvoid@CAT_set(i8noundef%24,i64noundef42)#4!!!
+1,45c1,669
+< %19=calli8@CAT_new(i64noundef8)#4!%19=calli8@CAT_new(i64noundef8)#4,
+< %19=calli8@CAT_new(i64noundef8)#4!%19=calli8@CAT_new(i64noundef8)#4,
+< %24=calli8@CAT_new(i64noundef0)#4!%24=calli8@CAT_new(i64noundef0)#4,
+< %24=calli8@CAT_new(i64noundef0)#4!%24=calli8@CAT_new(i64noundef0)#4,
+< %25=calli8@CAT_new(i64noundef42)#4!%25=calli8@CAT_new(i64noundef42)#4,
+< %25=calli8@CAT_new(i64noundef42)#4!%25=calli8@CAT_new(i64noundef42)#4,
+< %2=calli8@CAT_new(i64noundef5)#4!%2=calli8@CAT_new(i64noundef5)#4,
+< %2=calli8@CAT_new(i64noundef5)#4!%2=calli8@CAT_new(i64noundef5)#4,
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -40,7 +38,12 @@
 < -----------------
 < -----------------
 < 1warninggenerated.
-< warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
+< callvoid@CAT_set(i8noundef%24,i64noundef42)#4!callvoid@CAT_set(i8noundef%24,i64noundef42)#4,
+< callvoid@CAT_set(i8noundef%24,i64noundef42)#4!callvoid@CAT_set(i8noundef%24,i64noundef42)#4,
+< kill:
+< kill:
+< ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(14.0)thanbeinglinked(12.0)
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]
 ---
 > %19=calli8@CAT_new(i64noundef8)#4
 > %19=calli8@CAT_new(i64noundef8)#4

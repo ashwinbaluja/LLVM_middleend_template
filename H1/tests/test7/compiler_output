@@ -1,30 +1,65 @@
-warning: overriding the module target triple with arm64-apple-macosx14.0.0 [-Woverride-module]
+warning: overriding the module target triple with arm64-apple-macosx12.0.0 [-Woverride-module]
+-----------------
+
+
+
+
 -----------------
 -----------------
+
+
+
+
+
+
+
+
+
+
 -----------------
 -----------------
+
 -----------------
 -----------------
+
 -----------------
 -----------------
+
+
+
+
+
+
+
 -----------------
 -----------------
+
 -----------------
 -----------------
+
+
 -----------------
+  %2 = call i8* @CAT_new(i64 noundef 5) #4!  %2 = call i8* @CAT_new(i64 noundef 5) #4, 
+  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4!  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4, 
+  %19 = call i8* @CAT_new(i64 noundef 8) #4!  %19 = call i8* @CAT_new(i64 noundef 8) #4, 
+  %24 = call i8* @CAT_new(i64 noundef 0) #4!  %24 = call i8* @CAT_new(i64 noundef 0) #4, 
+  %25 = call i8* @CAT_new(i64 noundef 42) #4!  %25 = call i8* @CAT_new(i64 noundef 42) #4, 
+kill:
+
 -----------------
-!!!  %2 = call i8* @CAT_new(i64 noundef 5) #4!  %2 = call i8* @CAT_new(i64 noundef 5) #4!!!
-!!!  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4!  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4!!!
-!!!  %19 = call i8* @CAT_new(i64 noundef 8) #4!  %19 = call i8* @CAT_new(i64 noundef 8) #4!!!
-!!!  %24 = call i8* @CAT_new(i64 noundef 0) #4!  %24 = call i8* @CAT_new(i64 noundef 0) #4!!!
-!!!  %25 = call i8* @CAT_new(i64 noundef 42) #4!  %25 = call i8* @CAT_new(i64 noundef 42) #4!!!
+
+
+
+
+
 -----------------
------------------
-!!!  %2 = call i8* @CAT_new(i64 noundef 5) #4!  %2 = call i8* @CAT_new(i64 noundef 5) #4!!!
-!!!  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4!  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4!!!
-!!!  %19 = call i8* @CAT_new(i64 noundef 8) #4!  %19 = call i8* @CAT_new(i64 noundef 8) #4!!!
-!!!  %24 = call i8* @CAT_new(i64 noundef 0) #4!  %24 = call i8* @CAT_new(i64 noundef 0) #4!!!
-!!!  %25 = call i8* @CAT_new(i64 noundef 42) #4!  %25 = call i8* @CAT_new(i64 noundef 42) #4!!!
+  %2 = call i8* @CAT_new(i64 noundef 5) #4!  %2 = call i8* @CAT_new(i64 noundef 5) #4, 
+  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4!  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4, 
+  %19 = call i8* @CAT_new(i64 noundef 8) #4!  %19 = call i8* @CAT_new(i64 noundef 8) #4, 
+  %24 = call i8* @CAT_new(i64 noundef 0) #4!  %24 = call i8* @CAT_new(i64 noundef 0) #4, 
+  %25 = call i8* @CAT_new(i64 noundef 42) #4!  %25 = call i8* @CAT_new(i64 noundef 42) #4, 
+kill:
+
 'x86-64' is not a recognized processor for this target (ignoring processor)
 '+cx8' is not a recognized feature for this target (ignoring feature)
 '+fxsr' is not a recognized feature for this target (ignoring feature)
@@ -40,3 +75,4 @@ warning: overriding the module target triple with arm64-apple-macosx14.0.0 [-Wov
 '+sse2' is not a recognized feature for this target (ignoring feature)
 '+x87' is not a recognized feature for this target (ignoring feature)
 1 warning generated.
+ld: warning: object file (../misc/CAT.o) was built for newer macOS version (14.0) than being linked (12.0)
