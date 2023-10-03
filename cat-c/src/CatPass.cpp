@@ -13,23 +13,32 @@
 
 using namespace llvm;
 using namespace std;
-namespace {
+namespace
+{
 
-
-
-  struct CAT : public FunctionPass {
+  struct CAT : public FunctionPass
+  {
     static char ID;
-    map<CallInst*, set<CallInst*>> gen;
-    map<CallInst*, set<CallInst*>> kill;
+    map<CallInst *, set<CallInst *>> gen;
+    map<CallInst *, set<CallInst *>> kill;
 
-    CAT() : FunctionPass(ID) {} 
+    map<Value*, set<CallInst *>> var_to_inst;
+
+    map<CallInst *, set<CallInst *>> in;
+    map<CallInst *, set<CallInst *>> out;
+
+    CAT() : FunctionPass(ID) {}
 
     // This function is invoked once at the initialization phase of the compiler
     // The LLVM IR of functions isn't ready at this point
-    bool doInitialization (Module &M) override {
-      
+    bool doInitialization(Module &M) override
+    {
+
       gen = {};
       kill = {};
+      var_to_inst = {};
+      in = {};
+      out = {};
 
       // errs() << "Hello LLVM World at \"doInitialization\"\n" ;
       return false;
@@ -37,44 +46,113 @@ namespace {
 
     // This function is invoked once per function compiled
     // The LLVM IR of the input functions is ready and it can be analyzed and/or transformed
-    bool runOnFunction (Function &F) override {
+    bool runOnFunction(Function &F) override
+    {
       // errs() << F;
-      
-      for (auto& b : F) {
+
+      for (auto &b : F)
+      {
         errs() << "-----------------\n";
-        for (auto& inst : b) {
-          if (!isa<CallInst>(&inst)) {
+        for (auto &inst : b)
+        {
+          if (!isa<CallInst>(&inst))
+          {
             continue;
           }
           CallInst *i = cast<CallInst>(&inst);
 
           string name = i->getCalledFunction()->getName().str();
 
-          if (name == "CAT_new" || name == "CAT_set") {
-            set<CallInst*> newgen = {i};
+          if (name == "CAT_new" || name == "CAT_set")
+          {
+
+            set<CallInst *> newgen = {i};
             gen.insert({i, newgen});
+
+            Value* argValue = i->getArgOperand(0);
+
+            if (var_to_inst.find(argValue) == var_to_inst.end())
+            {
+              set<CallInst *> newset = {i};
+              var_to_inst.insert({argValue, newset});
+            }
+            else
+            {
+              var_to_inst[argValue].insert(i);
+            }
+
           }
+
+          errs() << "\n";
         }
         errs() << "-----------------\n";
       }
 
-      for (map<CallInst*, set<CallInst*>>::iterator it = gen.begin(); it != gen.end(); ++it) {
-        errs() << "!!!";
+
+      for (map<CallInst *, set<CallInst *>>::iterator it = gen.begin(); it != gen.end(); ++it)
+      {
         it->first->print(errs());
         errs() << "!";
 
-        for (auto& inst : it->second)
-        inst->print(errs());
-        errs() << "!!!";
-        errs() << "\n";
+        for (CallInst *inst : it->second)
+        {
+          inst->print(errs());
+          errs() << ", "; // Optional: to separate the items in the set
+        }
 
+        errs() << "\n";
       }
+
+      for (map<Value*, set<CallInst *>>::iterator it = var_to_inst.begin(); it != var_to_inst.end(); ++it)
+      {
+        // errs() << it->first << " : ";
+        // for (CallInst *inst : it->second)
+        // {
+        //   inst->print(errs());
+        //   errs() << ", ";
+        // }
+
+        // errs() << "\n";
+        
+        // populate kill
+        if (it->second.size() > 1)
+        {
+          for (CallInst *inst : it->second)
+          {
+            for (CallInst *inst2 : it->second)
+            {
+              if (inst != inst2)
+              {
+                kill[inst].insert(inst2);
+              }
+            }
+          }
+        }
+      }
+
+      // print kill
+      errs() << "kill:\n\n";
+      for (map<CallInst *, set<CallInst *>>::iterator it = kill.begin(); it != kill.end(); ++it)
+      {
+        it->first->print(errs());
+        errs() << "!";
+
+        for (CallInst *inst : it->second)
+        {
+          inst->print(errs());
+          errs() << ", "; // Optional: to separate the items in the set
+        }
+
+        errs() << "\n";
+      }
+
       return false;
     }
 
     // We don't modify the program, so we preserve all analyses.
     // The LLVM IR of functions isn't ready at this point
-    void getAnalysisUsage(AnalysisUsage &AU) const override {
+    void getAnalysisUsage(AnalysisUsage &AU) const override
+    {
       // errs() << "Hello LLVM World at \"getAnalysisUsage\"\n" ;
       AU.setPreservesAll();
     }
@@ -86,10 +164,12 @@ char CAT::ID = 0;
 static RegisterPass<CAT> X("CAT", "Homework for the CAT class");
 
 // Next there is code to register your pass to "clang"
-static CAT * _PassMaker = NULL;
+static CAT *_PassMaker = NULL;
 static RegisterStandardPasses _RegPass1(PassManagerBuilder::EP_OptimizerLast,
-    [](const PassManagerBuilder&, legacy::PassManagerBase& PM) {
-        if(!_PassMaker){ PM.add(_PassMaker = new CAT());}}); // ** for -Ox
+                                        [](const PassManagerBuilder &, legacy::PassManagerBase &PM)
+                                        {
+        if(!_PassMaker){ PM.add(_PassMaker = new CAT());} }); // ** for -Ox
 static RegisterStandardPasses _RegPass2(PassManagerBuilder::EP_EnabledOnOptLevel0,
-    [](const PassManagerBuilder&, legacy::PassManagerBase& PM) {
-        if(!_PassMaker){ PM.add(_PassMaker = new CAT()); }}); // ** for -O0
+                                        [](const PassManagerBuilder &, legacy::PassManagerBase &PM)
+                                        {
+        if(!_PassMaker){ PM.add(_PassMaker = new CAT()); } }); // ** for -O0
