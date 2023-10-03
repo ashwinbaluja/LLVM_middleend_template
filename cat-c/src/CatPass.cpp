@@ -35,11 +35,7 @@ namespace
     bool doInitialization(Module &M) override
     {
 
-      gen = {};
-      kill = {};
-      var_to_inst = {};
-      in = {};
-      out = {};
+      
 
       // errs() << "Hello LLVM World at \"doInitialization\"\n" ;
       return false;
@@ -50,7 +46,12 @@ namespace
     bool runOnFunction(Function &F) override
     {
       // errs() << F;
-
+      gen = {};
+      kill = {};
+      var_to_inst = {};
+      in = {};
+      out = {};
+      
       errs() << "Function \"" << F.getName() << "\"\n";
       for (auto &b : F)
       {
@@ -139,6 +140,7 @@ namespace
           }
         }
       }
+
 
       // print kill
 

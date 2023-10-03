@@ -1,4 +1,3 @@
-%1=calli32@puts(i8nonnulldereferenceable(1)getelementptrinbounds([52xi8],[52xi8]@str,i640,i640))!
 %7=calli8@CAT_new(i64noundef5)#6
 %7=calli8@CAT_new(i64noundef5)#6
 %7=calli8@CAT_new(i64noundef5)#6!callvoid@CAT_add(i8noundef%7,i8noundef%7,i8noundef%7)#6,callvoid@CAT_sub(i8noundef%7,i8noundef%7,i8noundef%7)#6,callvoid@CAT_set(i8noundef%7,i64noundef42)#6,
@@ -35,11 +34,9 @@ IN
 IN
 IN
 IN
-IN
 INSTRUCTION:%10=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([21xi8],[21xi8]@.str.4,i640,i640),i64noundef%9)
 INSTRUCTION:%11=calli64@CAT_cost()#6
 INSTRUCTION:%12=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([16xi8],[16xi8]@.str.5,i640,i640),i64noundef%11)
-INSTRUCTION:%1=calli32@puts(i8nonnulldereferenceable(1)getelementptrinbounds([52xi8],[52xi8]@str,i640,i640))
 INSTRUCTION:%1=calli32@puts(i8nonnulldereferenceable(1)getelementptrinbounds([52xi8],[52xi8]@str,i640,i640))
 INSTRUCTION:%3=calli32@puts(i8nonnulldereferenceable(1)getelementptrinbounds([10xi8],[10xi8]@str.6,i640,i640))
 INSTRUCTION:%4=calli32@puts(i8nonnulldereferenceable(1)getelementptrinbounds([52xi8],[52xi8]@str,i640,i640))#5
@@ -52,7 +49,6 @@ INSTRUCTION:callvoid@CAT_add(i8noundef%7,i8noundef%7,i8noundef%7)#6
 INSTRUCTION:callvoid@CAT_destroy(i8noundef%7)#6
 INSTRUCTION:callvoid@CAT_set(i8noundef%7,i64noundef42)#6
 INSTRUCTION:callvoid@CAT_sub(i8noundef%7,i8noundef%7,i8noundef%7)#6
-OUT
 OUT
 OUT
 OUT
@@ -122,10 +118,6 @@ warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-m
 {
 {
 {
-{
-{
-}
-}
 }
 }
 }

@@ -1,6 +1,4 @@
-1d0
-< %1=calli32@puts(i8nonnulldereferenceable(1)getelementptrinbounds([52xi8],[52xi8]@str,i640,i640))!
-4,20d2
+3,19d2
 < %7=calli8@CAT_new(i64noundef5)#6!callvoid@CAT_add(i8noundef%7,i8noundef%7,i8noundef%7)#6,callvoid@CAT_sub(i8noundef%7,i8noundef%7,i8noundef%7)#6,callvoid@CAT_set(i8noundef%7,i64noundef42)#6,
 < %7=calli8@CAT_new(i64noundef5)#6%7=calli8@CAT_new(i64noundef5)#6||||||||||callvoid@CAT_add(i8noundef%7,i8noundef%7,i8noundef%7)#6||||||||||callvoid@CAT_sub(i8noundef%7,i8noundef%7,i8noundef%7)#6||||||||||callvoid@CAT_set(i8noundef%7,i64noundef42)#6||||||||||
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -18,29 +16,33 @@
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 1warninggenerated.
-38a21
+36a20,21
 > IN
-43d25
-< INSTRUCTION:%1=calli32@puts(i8nonnulldereferenceable(1)getelementptrinbounds([52xi8],[52xi8]@str,i640,i640))
-54a37,39
+> IN
+51a37,40
 > INSTRUCTION:reti320
 > INSTRUCTION:reti3210000
 > OUT
-73d57
+> OUT
+69d57
 < callvoid@CAT_add(i8noundef%7,i8noundef%7,i8noundef%7)#6!%7=calli8@CAT_new(i64noundef5)#6,callvoid@CAT_sub(i8noundef%7,i8noundef%7,i8noundef%7)#6,callvoid@CAT_set(i8noundef%7,i64noundef42)#6,
-87c71,72
+83c71,72
 < callvoid@CAT_set(i8noundef%7,i64noundef42)#6!%7=calli8@CAT_new(i64noundef5)#6,callvoid@CAT_add(i8noundef%7,i8noundef%7,i8noundef%7)#6,callvoid@CAT_sub(i8noundef%7,i8noundef%7,i8noundef%7)#6,
 ---
 > callvoid@CAT_set(i8noundef%7,i64noundef42)#6
 > callvoid@CAT_set(i8noundef%7,i64noundef42)#6
-90,94d74
+86,90d74
 < callvoid@CAT_sub(i8noundef%7,i8noundef%7,i8noundef%7)#6!%7=calli8@CAT_new(i64noundef5)#6,callvoid@CAT_add(i8noundef%7,i8noundef%7,i8noundef%7)#6,callvoid@CAT_set(i8noundef%7,i64noundef42)#6,
 < kill:
 < kill:
 < ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(14.0)thanbeinglinked(12.0)
 < warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]
-126a107,110
+120a105,112
 > {
 > {
+> {
+> {
+> }
+> }
 > }
 > }
