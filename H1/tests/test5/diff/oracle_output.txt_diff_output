@@ -1,21 +1,6 @@
-3,34d2
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
-< %3=calli8@CAT_new(i64noundef5)#3
+3,19d2
+< %3=calli8@CAT_new(i64noundef5)#3!callvoid@CAT_add(i8noundef%3,i8noundef%3,i8noundef%3)#3,callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%3)#3,callvoid@CAT_set(i8noundef%3,i64noundef42)#3,
+< %3=calli8@CAT_new(i64noundef5)#3%3=calli8@CAT_new(i64noundef5)#3||||||||||callvoid@CAT_add(i8noundef%3,i8noundef%3,i8noundef%3)#3||||||||||callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%3)#3||||||||||callvoid@CAT_set(i8noundef%3,i64noundef42)#3||||||||||
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -31,26 +16,25 @@
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 1warninggenerated.
-45a14
+30a14
 > IN
-55a25
+40a25,26
 > INSTRUCTION:reti320
-65a36
 > OUT
-68d38
-< callvoid@CAT_add(i8noundef%3,i8noundef%3,i8noundef%3)#3!callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%3)#3,callvoid@CAT_set(i8noundef%3,i64noundef42)#3,
-82c52,53
-< callvoid@CAT_set(i8noundef%3,i64noundef42)#3!callvoid@CAT_add(i8noundef%3,i8noundef%3,i8noundef%3)#3,callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%3)#3,
+53d38
+< callvoid@CAT_add(i8noundef%3,i8noundef%3,i8noundef%3)#3!%3=calli8@CAT_new(i64noundef5)#3,callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%3)#3,callvoid@CAT_set(i8noundef%3,i64noundef42)#3,
+67c52,53
+< callvoid@CAT_set(i8noundef%3,i64noundef42)#3!%3=calli8@CAT_new(i64noundef5)#3,callvoid@CAT_add(i8noundef%3,i8noundef%3,i8noundef%3)#3,callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%3)#3,
 ---
 > callvoid@CAT_set(i8noundef%3,i64noundef42)#3
 > callvoid@CAT_set(i8noundef%3,i64noundef42)#3
-85,87d55
-< callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%3)#3!callvoid@CAT_add(i8noundef%3,i8noundef%3,i8noundef%3)#3,callvoid@CAT_set(i8noundef%3,i64noundef42)#3,
+70,73d55
+< callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%3)#3!%3=calli8@CAT_new(i64noundef5)#3,callvoid@CAT_add(i8noundef%3,i8noundef%3,i8noundef%3)#3,callvoid@CAT_set(i8noundef%3,i64noundef42)#3,
 < kill:
-< warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
-107a76,77
+< ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(14.0)thanbeinglinked(12.0)
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]
+93a76,79
 > {
 > {
-127a98,99
 > }
 > }

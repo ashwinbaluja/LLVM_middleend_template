@@ -68,8 +68,14 @@ namespace
           {
             set<CallInst *> newgen = {i};
             gen.insert({i, newgen});
-
-            Value* argValue = i->getArgOperand(0);
+            Value* argValue;
+            if (i->arg_size() == 1){
+              argValue = dyn_cast<Value>(i);
+            }
+            else {
+               argValue = i->getArgOperand(0);
+            }
+          
 
             if (var_to_inst.find(argValue) == var_to_inst.end())
             {
@@ -80,6 +86,7 @@ namespace
             {
               var_to_inst[argValue].insert(i);
             }
+            
 
           }
           else {
@@ -108,14 +115,14 @@ namespace
 
       for (map<Value*, set<CallInst *>>::iterator it = var_to_inst.begin(); it != var_to_inst.end(); ++it)
       {
-        // errs() << it->first << " : ";
-        // for (CallInst *inst : it->second)
-        // {
-        //   inst->print(errs());
-        //   errs() << ", ";
-        // }
+        it->first->print(errs());
+        for (CallInst *inst : it->second)
+        {
+          inst->print(errs());
+          errs() << "|||||||||| ";
+        }
 
-        // errs() << "\n";
+        errs() << "\n";
         
         // populate kill
         if (it->second.size() > 1)

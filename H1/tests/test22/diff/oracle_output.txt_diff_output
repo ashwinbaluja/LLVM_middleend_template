@@ -4,7 +4,7 @@
 < %12=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([20xi8],[20xi8]@.str.2,i640,i640),i64noundef%11)!
 < %13=calli64@CAT_get(i8noundef%8)#3!
 < %14=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([20xi8],[20xi8]@.str.2,i640,i640),i64noundef%13)!
-39,70d33
+39,86d33
 < %2=calli8@CAT_new(i64noundef5)#3
 < %2=calli8@CAT_new(i64noundef5)#3
 < %2=calli8@CAT_new(i64noundef5)#3
@@ -35,9 +35,10 @@
 < %2=calli8@CAT_new(i64noundef5)#3
 < %2=calli8@CAT_new(i64noundef5)#3
 < %2=calli8@CAT_new(i64noundef5)#3!
+< %2=calli8@CAT_new(i64noundef5)#3%2=calli8@CAT_new(i64noundef5)#3||||||||||
+< %2=calli8@CAT_new(i64noundef5)#3%2=calli8@CAT_new(i64noundef5)#3||||||||||
 < %3=calli64@CAT_get(i8noundef%2)#3!
 < %4=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([20xi8],[20xi8]@.str,i640,i640),i64noundef%3)!
-98,123d60
 < %5=calli8@CAT_new(i64noundef8)#3
 < %5=calli8@CAT_new(i64noundef8)#3
 < %5=calli8@CAT_new(i64noundef8)#3
@@ -52,6 +53,7 @@
 < %5=calli8@CAT_new(i64noundef8)#3
 < %5=calli8@CAT_new(i64noundef8)#3
 < %5=calli8@CAT_new(i64noundef8)#3
+114,129d60
 < %5=calli8@CAT_new(i64noundef8)#3
 < %5=calli8@CAT_new(i64noundef8)#3
 < %5=calli8@CAT_new(i64noundef8)#3
@@ -62,42 +64,21 @@
 < %5=calli8@CAT_new(i64noundef8)#3
 < %5=calli8@CAT_new(i64noundef8)#3
 < %5=calli8@CAT_new(i64noundef8)#3!
+< %5=calli8@CAT_new(i64noundef8)#3%5=calli8@CAT_new(i64noundef8)#3||||||||||
+< %5=calli8@CAT_new(i64noundef8)#3%5=calli8@CAT_new(i64noundef8)#3||||||||||
 < %6=calli64@CAT_get(i8noundef%5)#3!
 < %7=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([20xi8],[20xi8]@.str.1,i640,i640),i64noundef%6)!
-130,178d66
+< %8=calli8@CAT_new(i64noundef42)#3
+< %8=calli8@CAT_new(i64noundef42)#3
+136,159d66
 < %8=calli8@CAT_new(i64noundef42)#3
 < %8=calli8@CAT_new(i64noundef42)#3
 < %8=calli8@CAT_new(i64noundef42)#3
 < %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3
-< %8=calli8@CAT_new(i64noundef42)#3!
+< %8=calli8@CAT_new(i64noundef42)#3!callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_set(i8noundef%8,i64noundef5)#3,
+< %8=calli8@CAT_new(i64noundef42)#3!callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_set(i8noundef%8,i64noundef5)#3,
+< %8=calli8@CAT_new(i64noundef42)#3%8=calli8@CAT_new(i64noundef42)#3||||||||||callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3||||||||||callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3||||||||||callvoid@CAT_set(i8noundef%8,i64noundef5)#3||||||||||
+< %8=calli8@CAT_new(i64noundef42)#3%8=calli8@CAT_new(i64noundef42)#3||||||||||callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3||||||||||callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3||||||||||callvoid@CAT_set(i8noundef%8,i64noundef5)#3||||||||||
 < %9=calli64@CAT_get(i8noundef%8)#3!
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -114,7 +95,7 @@
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 1warninggenerated.
-181,187d68
+185,199d91
 < IN
 < IN
 < IN
@@ -122,7 +103,6 @@
 < IN
 < IN
 < IN
-211,217d91
 < IN
 < IN
 < IN
@@ -130,42 +110,36 @@
 < IN
 < IN
 < IN
-219d92
 < INSTRUCTION:%10=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([20xi8],[20xi8]@.str.2,i640,i640),i64noundef%9)
-221d93
+202d93
 < INSTRUCTION:%11=calli64@CAT_get(i8noundef%8)#3
-223d94
+204,205d94
 < INSTRUCTION:%12=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([20xi8],[20xi8]@.str.2,i640,i640),i64noundef%11)
-225d95
 < INSTRUCTION:%13=calli64@CAT_get(i8noundef%8)#3
-227d96
+208,209d96
 < INSTRUCTION:%14=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([20xi8],[20xi8]@.str.2,i640,i640),i64noundef%13)
-229d97
 < INSTRUCTION:%2=calli8@CAT_new(i64noundef5)#3
-231d98
+212d98
 < INSTRUCTION:%3=calli64@CAT_get(i8noundef%2)#3
-234d100
+215d100
 < INSTRUCTION:%4=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([20xi8],[20xi8]@.str,i640,i640),i64noundef%3)
-238d103
+219d103
 < INSTRUCTION:%5=calli8@CAT_new(i64noundef8)#3
-241d105
+222,223d105
 < INSTRUCTION:%6=calli64@CAT_get(i8noundef%5)#3
-243d106
 < INSTRUCTION:%7=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([20xi8],[20xi8]@.str.1,i640,i640),i64noundef%6)
-245d107
+226d107
 < INSTRUCTION:%8=calli8@CAT_new(i64noundef42)#3
-247d108
+228,229d108
 < INSTRUCTION:%9=calli64@CAT_get(i8noundef%8)#3
-249d109
 < INSTRUCTION:callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3
-252d111
+233,234d111
 < INSTRUCTION:callvoid@CAT_set(i8noundef%8,i64noundef5)#3
-254c113,114
 < INSTRUCTION:callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
----
+235a113,114
 > INSTRUCTION:reti320
 > INSTRUCTION:retvoid
-278,291d137
+259,278d137
 < OUT
 < OUT
 < OUT
@@ -180,33 +154,33 @@
 < OUT
 < OUT
 < OUT
-298,305d143
 < callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3
 < callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3
 < callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3
 < callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3
 < callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3
 < callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3
-< callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3!callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_set(i8noundef%8,i64noundef5)#3,
-< callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3!callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_set(i8noundef%8,i64noundef5)#3,
-308,309c146
-< callvoid@CAT_set(i8noundef%8,i64noundef5)#3!callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3,
-< callvoid@CAT_set(i8noundef%8,i64noundef5)#3!callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3,
+285,286d143
+< callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3!%8=calli8@CAT_new(i64noundef42)#3,callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_set(i8noundef%8,i64noundef5)#3,
+< callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3!%8=calli8@CAT_new(i64noundef42)#3,callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_set(i8noundef%8,i64noundef5)#3,
+289,296c146
+< callvoid@CAT_set(i8noundef%8,i64noundef5)#3!%8=calli8@CAT_new(i64noundef42)#3,callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3,
+< callvoid@CAT_set(i8noundef%8,i64noundef5)#3!%8=calli8@CAT_new(i64noundef42)#3,callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3,
+< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
+< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
+< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
+< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
+< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
+< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
 ---
 > callvoid@CAT_set(i8noundef%8,i64noundef5)#3
-316,326d152
-< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
-< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
-< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
-< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
-< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
-< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3
-< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3!callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_set(i8noundef%8,i64noundef5)#3,
-< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3!callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_set(i8noundef%8,i64noundef5)#3,
+303,322d152
+< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3!%8=calli8@CAT_new(i64noundef42)#3,callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_set(i8noundef%8,i64noundef5)#3,
+< callvoid@CAT_sub(i8noundef%8,i8noundef%2,i8noundef%5)#3!%8=calli8@CAT_new(i64noundef42)#3,callvoid@CAT_add(i8noundef%8,i8noundef%2,i8noundef%5)#3,callvoid@CAT_set(i8noundef%8,i64noundef5)#3,
 < kill:
 < kill:
-< warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
-373,400d198
+< ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(14.0)thanbeinglinked(12.0)
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]
 < {
 < {
 < {
@@ -221,6 +195,7 @@
 < {
 < {
 < {
+369,410d198
 < {
 < {
 < {
@@ -235,7 +210,6 @@
 < {
 < {
 < {
-447,474d244
 < }
 < }
 < }
