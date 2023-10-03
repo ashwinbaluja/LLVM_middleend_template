@@ -1,1 +1,2 @@
 timeout 10m cat-c program.bc ../misc/CAT.o 2> compiler_output
+make[1]: *** [compiler_output] Error 254

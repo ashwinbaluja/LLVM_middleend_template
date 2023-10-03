@@ -6,6 +6,7 @@
 #include "llvm/IR/InstVisitor.h"
 #include "llvm/IR/Instruction.h"
 #include "llvm/Support/Casting.h"
+#include "llvm/IR/BasicBlock.h"
 
 #include <string>
 #include <set>
@@ -20,13 +21,13 @@ namespace
   struct CAT : public FunctionPass
   {
     static char ID;
-    map<CallInst *, set<CallInst *>> gen;
-    map<CallInst *, set<CallInst *>> kill;
+    map<Instruction *, set<Instruction *>> gen;
+    map<Instruction *, set<Instruction *>> kill;
 
-    map<Value*, set<CallInst *>> var_to_inst;
+    map<Value*, set<Instruction *>> var_to_inst;
 
-    map<CallInst *, set<CallInst *>> in;
-    map<CallInst *, set<CallInst *>> out;
+    map<Instruction *, set<Instruction *>> in;
+    map<Instruction *, set<Instruction *>> out;
 
     CAT() : FunctionPass(ID) {}
 
@@ -61,37 +62,41 @@ namespace
           {
             continue;
           }
-          CallInst *i = cast<CallInst>(&inst);
 
-          string name = i->getCalledFunction()->getName().str();
 
-          if (name == "CAT_new" || name == "CAT_set" || name == "CAT_add" || name == "CAT_sub")
+          Instruction *i = cast<Instruction>(&inst);
+
+          string name;
+          CallInst* callinst;
+          if (isa<CallInst>(&i)) {
+            callinst = cast<CallInst>(&i);
+            name = callinst->getCalledFunction()->getName().str();
+          }
+          if (isa<ReturnInst>(i) || name == "CAT_new" || name == "CAT_set" || name == "CAT_add" || name == "CAT_sub")
           {
-            set<CallInst *> newgen = {i};
+            set<Instruction *> newgen = {i};
             gen.insert({i, newgen});
             Value* argValue;
-            if (i->arg_size() == 1){
-              argValue = dyn_cast<Value>(i);
+            if (!isa<ReturnInst>(i) && callinst->arg_size() == 1){
+              argValue = dyn_cast<Value>(callinst);
             }
             else {
-               argValue = i->getArgOperand(0);
+               argValue = i->getOperand(0);
             }
           
 
             if (var_to_inst.find(argValue) == var_to_inst.end())
             {
-              set<CallInst *> newset = {i};
+              set<Instruction *> newset = {i};
               var_to_inst.insert({argValue, newset});
             }
             else
             {
               var_to_inst[argValue].insert(i);
             }
-            
-
           }
           else {
-            set<CallInst *> newgen = {};
+            set<Instruction *> newgen = {};
             gen.insert({i, newgen});
           }
         }
@@ -114,9 +119,10 @@ namespace
       }
       */
 
-      for (map<Value*, set<CallInst *>>::iterator it = var_to_inst.begin(); it != var_to_inst.end(); ++it)
+      for (map<Value*, set<Instruction *>>::iterator it = var_to_inst.begin(); it != var_to_inst.end(); ++it)
       {
         it->first->print(errs());
+        /*
         for (CallInst *inst : it->second)
         {
           inst->print(errs());
@@ -124,13 +130,13 @@ namespace
         }
 
         errs() << "\n";
-        
+        */
         // populate kill
         if (it->second.size() > 1)
         {
-          for (CallInst *inst : it->second)
+          for (Instruction *inst : it->second)
           {
-            for (CallInst *inst2 : it->second)
+            for (Instruction *inst2 : it->second)
             {
               if (inst != inst2)
               {
@@ -144,6 +150,7 @@ namespace
 
       // print kill
 
+      /*
       errs() << "kill:\n\n";
       for (map<CallInst *, set<CallInst *>>::iterator it = kill.begin(); it != kill.end(); ++it)
       {
@@ -158,19 +165,19 @@ namespace
 
         errs() << "\n";
       }
-
+      */
       for (auto &b : F) {
-        CallInst *last;
+        Instruction *last;
           for (auto &inst : b) {
 
-            if (!isa<CallInst>(&inst))
+            if (!isa<Instruction>(&inst))
             {
               continue;
             }
 
-            CallInst *i = cast<CallInst>(&inst);
+            Instruction *i = cast<Instruction>(&inst);
 
-            string name = i->getCalledFunction()->getName().str();
+            //string name = i->getCalledFunction()->getName().str();
 
             /*
             if (name != "CAT_add" && name != "CAT_sub" && name != "CAT_get" && name != "CAT_destroy" && name != "CAT_set" && name != "CAT_new") {
@@ -180,13 +187,13 @@ namespace
 
             if (in.find(i) == in.end())
             {
-              set<CallInst *> newgen = {};
+              set<Instruction *> newgen = {};
               in.insert({i, newgen});
             }
 
             if (out.find(i) == out.end())
             {
-              set<CallInst *> newgen = {};
+              set<Instruction *> newgen = {};
               out.insert({i, newgen});
             }
 
@@ -212,13 +219,13 @@ namespace
           }
         }
 
-      for (map<CallInst *, set<CallInst *>>::iterator it = in.begin(); it != in.end(); ++it)
+      for (map<Instruction *, set<Instruction *>>::iterator it = in.begin(); it != in.end(); ++it)
       {
         errs () << "INSTRUCTION:   ";
         it->first->print(errs());
         errs() << "\n***************** IN\n{\n";
 
-        for (CallInst *inst : it->second)
+        for (Instruction *inst : it->second)
         {
           inst->print(errs());
           errs() << "\n"; // Optional: to separate the items in the set
@@ -228,7 +235,7 @@ namespace
         errs() << "**************************************\n";
         errs() << "***************** OUT\n{\n";
 
-        for (CallInst *inst : out[it->first])
+        for (Instruction *inst : out[it->first])
         {
           inst->print(errs());
           errs() << "\n"; // Optional: to separate the items in the set
