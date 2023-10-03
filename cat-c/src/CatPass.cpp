@@ -64,7 +64,7 @@ namespace
 
           string name = i->getCalledFunction()->getName().str();
 
-          if (name == "CAT_new" || name == "CAT_set")
+          if (name == "CAT_new" || name == "CAT_set" || name == "CAT_add" || name == "CAT_sub")
           {
             set<CallInst *> newgen = {i};
             gen.insert({i, newgen});
@@ -134,7 +134,7 @@ namespace
       }
 
       // print kill
-      /*
+
       errs() << "kill:\n\n";
       for (map<CallInst *, set<CallInst *>>::iterator it = kill.begin(); it != kill.end(); ++it)
       {
@@ -149,7 +149,6 @@ namespace
 
         errs() << "\n";
       }
-      */
 
       for (auto &b : F) {
         CallInst *last;
@@ -164,9 +163,11 @@ namespace
 
             string name = i->getCalledFunction()->getName().str();
 
+            /*
             if (name != "CAT_add" && name != "CAT_sub" && name != "CAT_get" && name != "CAT_destroy" && name != "CAT_set" && name != "CAT_new") {
               continue;
             }
+            */
 
             if (in.find(i) == in.end())
             {

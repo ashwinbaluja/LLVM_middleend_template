@@ -1,4 +1,14 @@
-3,24d2
+3,34d2
+< %4=calli8@CAT_new(i64noundef%3)#3
+< %4=calli8@CAT_new(i64noundef%3)#3
+< %4=calli8@CAT_new(i64noundef%3)#3
+< %4=calli8@CAT_new(i64noundef%3)#3
+< %4=calli8@CAT_new(i64noundef%3)#3
+< %4=calli8@CAT_new(i64noundef%3)#3
+< %4=calli8@CAT_new(i64noundef%3)#3
+< %4=calli8@CAT_new(i64noundef%3)#3
+< %4=calli8@CAT_new(i64noundef%3)#3
+< %4=calli8@CAT_new(i64noundef%3)#3
 < %4=calli8@CAT_new(i64noundef%3)#3
 < %4=calli8@CAT_new(i64noundef%3)#3
 < %4=calli8@CAT_new(i64noundef%3)#3
@@ -21,76 +31,33 @@
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 1warninggenerated.
-30a9,17
+45a14,15
 > IN
 > IN
-> IN
-> IN
-> IN
-> IN
-> IN
-> INSTRUCTION:%10=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([16xi8],[16xi8]@.str.2,i640,i640),i64noundef%9)
+46a17
 > INSTRUCTION:%3=sexti32%0toi64
-32a20,23
-> INSTRUCTION:%6=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([5xi8],[5xi8]@.str,i640,i640),i64noundef%5)
-> INSTRUCTION:%7=calli64@CAT_variables()#3
-> INSTRUCTION:%8=calli32(i8,...)@printf(i8noundefnonnulldereferenceable(1)getelementptrinbounds([21xi8],[21xi8]@.str.1,i640,i640),i64noundef%7)
-> INSTRUCTION:%9=calli64@CAT_cost()#3
-35a27
+55a27
 > INSTRUCTION:reti320
-40a33,41
+65a38,39
 > OUT
 > OUT
-> OUT
-> OUT
-> OUT
-> OUT
-> OUT
-> callvoid@CAT_add(i8noundef%4,i8noundef%4,i8noundef%4)#3
-> callvoid@CAT_add(i8noundef%4,i8noundef%4,i8noundef%4)#3
-44c45,58
-< warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
+68d41
+< callvoid@CAT_add(i8noundef%4,i8noundef%4,i8noundef%4)#3!callvoid@CAT_sub(i8noundef%4,i8noundef%4,i8noundef%4)#3,callvoid@CAT_set(i8noundef%4,i64noundef42)#3,
+82c55,56
+< callvoid@CAT_set(i8noundef%4,i64noundef42)#3!callvoid@CAT_add(i8noundef%4,i8noundef%4,i8noundef%4)#3,callvoid@CAT_sub(i8noundef%4,i8noundef%4,i8noundef%4)#3,
 ---
 > callvoid@CAT_set(i8noundef%4,i64noundef42)#3
 > callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-> callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-> callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-> callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-> callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-> callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-> callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-> callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-> callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-> callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-> callvoid@CAT_set(i8noundef%4,i64noundef42)#3
-> callvoid@CAT_sub(i8noundef%4,i8noundef%4,i8noundef%4)#3
-> callvoid@CAT_sub(i8noundef%4,i8noundef%4,i8noundef%4)#3
-54a69,82
+85,87d58
+< callvoid@CAT_sub(i8noundef%4,i8noundef%4,i8noundef%4)#3!callvoid@CAT_add(i8noundef%4,i8noundef%4,i8noundef%4)#3,callvoid@CAT_set(i8noundef%4,i64noundef42)#3,
+< kill:
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
+107a79,82
 > {
 > {
 > {
 > {
-> {
-> {
-> {
-> {
-> {
-> {
-> {
-> {
-> {
-> {
-64a93,106
-> }
-> }
-> }
-> }
-> }
-> }
-> }
-> }
-> }
-> }
+127a103,106
 > }
 > }
 > }
