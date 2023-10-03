@@ -1,0 +1,18 @@
+67,81d66
+< '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+mmx'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+mmx'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+sse'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+sse'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+sse2'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+sse2'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+x87'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< '+x87'isnotarecognizedfeatureforthistarget(ignoringfeature)
+< 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
+< 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
+< 1warninggenerated.
+168d152
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]

@@ -1,4 +1,4 @@
-clang -O2 -lm -fdeclspec -c ../misc/CAT.c -o ../misc/CAT.o
-clang-14: warning: -lm: 'linker' input unused [-Wunused-command-line-argument]
 timeout 10m cat-c program.bc ../misc/CAT.o 2> compiler_output
-make[1]: *** [compiler_output] Error 254
+../misc/check.sh
+Test failed
+Output differences can be found in "diff"

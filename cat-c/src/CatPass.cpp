@@ -58,7 +58,7 @@ namespace
       {
         for (auto &inst : b)
         {
-          if (!isa<CallInst>(&inst))
+          if (!isa<Instruction>(&inst))
           {
             continue;
           }
@@ -68,22 +68,21 @@ namespace
 
           string name;
           CallInst* callinst;
-          if (isa<CallInst>(&i)) {
-            callinst = cast<CallInst>(&i);
+          if (isa<CallInst>(*i)) {
+            callinst = cast<CallInst>(i);
             name = callinst->getCalledFunction()->getName().str();
           }
-          if (isa<ReturnInst>(i) || name == "CAT_new" || name == "CAT_set" || name == "CAT_add" || name == "CAT_sub")
+          if (isa<ReturnInst>(*i) || (name == "CAT_new" || name == "CAT_set" || name == "CAT_add" || name == "CAT_sub"))
           {
             set<Instruction *> newgen = {i};
             gen.insert({i, newgen});
             Value* argValue;
-            if (!isa<ReturnInst>(i) && callinst->arg_size() == 1){
+            if (isa<ReturnInst>(i) || (isa<CallInst>(i) && callinst->arg_size() == 1)){
               argValue = dyn_cast<Value>(callinst);
             }
             else {
                argValue = i->getOperand(0);
             }
-          
 
             if (var_to_inst.find(argValue) == var_to_inst.end())
             {
@@ -121,7 +120,7 @@ namespace
 
       for (map<Value*, set<Instruction *>>::iterator it = var_to_inst.begin(); it != var_to_inst.end(); ++it)
       {
-        it->first->print(errs());
+        //it->first->print(errs());
         /*
         for (CallInst *inst : it->second)
         {
@@ -237,6 +236,9 @@ namespace
 
         for (Instruction *inst : out[it->first])
         {
+          if (isa<ReturnInst>(inst)) {
+            continue;
+          }
           inst->print(errs());
           errs() << "\n"; // Optional: to separate the items in the set
         }
