@@ -10,6 +10,7 @@
 #include <string>
 #include <set>
 #include <map>
+#include <algorithm>
 
 using namespace llvm;
 using namespace std;
@@ -50,9 +51,9 @@ namespace
     {
       // errs() << F;
 
+      errs() << "Function \"" << F.getName() << "\"\n";
       for (auto &b : F)
       {
-        errs() << "-----------------\n";
         for (auto &inst : b)
         {
           if (!isa<CallInst>(&inst))
@@ -65,7 +66,6 @@ namespace
 
           if (name == "CAT_new" || name == "CAT_set")
           {
-
             set<CallInst *> newgen = {i};
             gen.insert({i, newgen});
 
@@ -82,13 +82,15 @@ namespace
             }
 
           }
-
-          errs() << "\n";
+          else {
+            set<CallInst *> newgen = {};
+            gen.insert({i, newgen});
+          }
         }
-        errs() << "-----------------\n";
       }
 
 
+      /*
       for (map<CallInst *, set<CallInst *>>::iterator it = gen.begin(); it != gen.end(); ++it)
       {
         it->first->print(errs());
@@ -102,6 +104,7 @@ namespace
 
         errs() << "\n";
       }
+      */
 
       for (map<Value*, set<CallInst *>>::iterator it = var_to_inst.begin(); it != var_to_inst.end(); ++it)
       {
@@ -131,6 +134,7 @@ namespace
       }
 
       // print kill
+      /*
       errs() << "kill:\n\n";
       for (map<CallInst *, set<CallInst *>>::iterator it = kill.begin(); it != kill.end(); ++it)
       {
@@ -145,9 +149,89 @@ namespace
 
         errs() << "\n";
       }
+      */
+
+      for (auto &b : F) {
+        CallInst *last;
+          for (auto &inst : b) {
+
+            if (!isa<CallInst>(&inst))
+            {
+              continue;
+            }
+
+            CallInst *i = cast<CallInst>(&inst);
+
+            string name = i->getCalledFunction()->getName().str();
+
+            if (name != "CAT_add" && name != "CAT_sub" && name != "CAT_get" && name != "CAT_destroy" && name != "CAT_set" && name != "CAT_new") {
+              continue;
+            }
+
+            if (in.find(i) == in.end())
+            {
+              set<CallInst *> newgen = {};
+              in.insert({i, newgen});
+            }
+
+            if (out.find(i) == out.end())
+            {
+              set<CallInst *> newgen = {};
+              out.insert({i, newgen});
+            }
+
+            if (last != NULL) {
+              for (auto &insert : out[last]) {
+                in[i].insert(insert);
+              }
+            }
+
+            for (auto &insert : gen[i]) {
+              out[i].insert(insert);
+            }
+
+            for (auto &insert : in[i]) {
+              out[i].insert(insert);
+            }
+
+            for (auto &remove : kill[i]) {
+              out[i].erase(remove);
+            }
+
+            last = i;
+          }
+        }
+
+      for (map<CallInst *, set<CallInst *>>::iterator it = in.begin(); it != in.end(); ++it)
+      {
+        errs () << "INSTRUCTION:   ";
+        it->first->print(errs());
+        errs() << "\n***************** IN\n{\n";
+
+        for (CallInst *inst : it->second)
+        {
+          inst->print(errs());
+          errs() << "\n"; // Optional: to separate the items in the set
+        }
+        errs() << "}\n";
+
+        errs() << "**************************************\n";
+        errs() << "***************** OUT\n{\n";
+
+        for (CallInst *inst : out[it->first])
+        {
+          inst->print(errs());
+          errs() << "\n"; // Optional: to separate the items in the set
+        }
+        errs() << "}\n";
+        errs() << "**************************************\n";
+        errs() << "\n\n\n";
+      }
+
+
 
       return false;
-    }
+    };
 
     // We don't modify the program, so we preserve all analyses.
     // The LLVM IR of functions isn't ready at this point
