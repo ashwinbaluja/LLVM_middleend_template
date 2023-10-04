@@ -169,8 +169,11 @@ namespace
       }
       */
 
-     for (auto &b : F) {
-            Instruction *last = NULL;
+     prev_out = {};
+     do {
+
+      for (auto &b : F) {
+          Instruction *last = NULL;
 
           for (auto &inst : b) {
             if (!isa<Instruction>(&inst))
@@ -216,13 +219,10 @@ namespace
 
 
 
-     prev_out = {};
-     do {
       for (auto &b : F) {
         Instruction *last = NULL;
 
         for (auto p: predecessors(&b)){
-
           last = p->getTerminator();
           for (auto &inst : b) {
 
@@ -267,7 +267,8 @@ namespace
           }
         }
         }
-        prev_out = out;
+      
+      prev_out = out;
         
 
      } while (prev_out != out);
