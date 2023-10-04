@@ -170,8 +170,9 @@ namespace
       */
 
      for (auto &b : F) {
+            Instruction *last = NULL;
+
           for (auto &inst : b) {
-            Instruction *last;
             if (!isa<Instruction>(&inst))
             {
               continue;
@@ -218,11 +219,11 @@ namespace
      prev_out = {};
      do {
       for (auto &b : F) {
-        Instruction *last;
+        Instruction *last = NULL;
+
         for (auto p: predecessors(&b)){
 
           last = p->getTerminator();
-          last->print(errs());
           for (auto &inst : b) {
 
             if (!isa<Instruction>(&inst))

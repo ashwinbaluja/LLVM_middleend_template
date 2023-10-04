@@ -1,4 +1,7 @@
+make[1]: Entering directory '/home/azb1671/LLVM_middleend_template/H1/tests/test1'
+clang -O2 -lm -fdeclspec -c ../misc/CAT.c -o ../misc/CAT.o
+clang-14: warning: -lm: 'linker' input unused [-Wunused-command-line-argument]
 timeout 10m cat-c program.bc ../misc/CAT.o 2> compiler_output
 ../misc/check.sh
-Test failed
-Output differences can be found in "diff"
+Test passed!
+make[1]: Leaving directory '/home/azb1671/LLVM_middleend_template/H1/tests/test1'
