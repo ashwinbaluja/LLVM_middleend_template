@@ -174,6 +174,8 @@ namespace
      prev_out = {};
      do {
 
+      prev_out = out;
+
       for (auto &b : F) {
           Instruction *last = NULL;
 
@@ -223,9 +225,13 @@ namespace
 
       for (auto &b : F) {
         Instruction *last = NULL;
+        
 
         for (auto p: predecessors(&b)){
+
+
           last = p->getTerminator();
+
           for (auto &inst : b) {
 
             if (!isa<Instruction>(&inst))
@@ -270,7 +276,6 @@ namespace
         }
         }
       
-      prev_out = out;
         
 
      } while (prev_out != out);

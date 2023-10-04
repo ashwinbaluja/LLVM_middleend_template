@@ -15,6 +15,7 @@
         "vector": "cpp",
         "typeinfo": "cpp",
         "functional": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "chrono": "cpp"
     }
 }

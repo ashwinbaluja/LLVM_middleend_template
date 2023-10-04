@@ -1,29 +1,5 @@
 warning: overriding the module target triple with arm64-apple-macosx12.0.0 [-Woverride-module]
 Function "CAT_execution"
-GEN:
-
-  %1 = call i8* @CAT_new(i64 noundef 5) #4!  %1 = call i8* @CAT_new(i64 noundef 5) #4, 
-  %2 = call i64 @CAT_get(i8* noundef %1) #4!
-  %3 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %2)!
-  %4 = call i8* @CAT_new(i64 noundef 8) #4!  %4 = call i8* @CAT_new(i64 noundef 8) #4, 
-  %5 = call i64 @CAT_get(i8* noundef %4) #4!
-  ret void!
-  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %5)!
-  %7 = call i8* @CAT_new(i64 noundef 0) #4!  %7 = call i8* @CAT_new(i64 noundef 0) #4, 
-  call void @CAT_sub(i8* noundef %7, i8* noundef %4, i8* noundef %1) #4!  call void @CAT_sub(i8* noundef %7, i8* noundef %4, i8* noundef %1) #4, 
-  call void @CAT_add(i8* noundef %7, i8* noundef %4, i8* noundef %7) #4!  call void @CAT_add(i8* noundef %7, i8* noundef %4, i8* noundef %7) #4, 
-  %8 = call i64 @CAT_get(i8* noundef %7) #4!
-  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %8)!
-  call void @CAT_set(i8* noundef %7, i64 noundef 42) #4!  call void @CAT_set(i8* noundef %7, i64 noundef 42) #4, 
-  %10 = call i64 @CAT_get(i8* noundef %7) #4!
-  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)!
-  call void @CAT_destroy(i8* noundef %1) #4!
-kill:
-
-  %7 = call i8* @CAT_new(i64 noundef 0) #4!  call void @CAT_sub(i8* noundef %7, i8* noundef %4, i8* noundef %1) #4,   call void @CAT_add(i8* noundef %7, i8* noundef %4, i8* noundef %7) #4,   call void @CAT_set(i8* noundef %7, i64 noundef 42) #4, 
-  call void @CAT_sub(i8* noundef %7, i8* noundef %4, i8* noundef %1) #4!  %7 = call i8* @CAT_new(i64 noundef 0) #4,   call void @CAT_add(i8* noundef %7, i8* noundef %4, i8* noundef %7) #4,   call void @CAT_set(i8* noundef %7, i64 noundef 42) #4, 
-  call void @CAT_add(i8* noundef %7, i8* noundef %4, i8* noundef %7) #4!  %7 = call i8* @CAT_new(i64 noundef 0) #4,   call void @CAT_sub(i8* noundef %7, i8* noundef %4, i8* noundef %1) #4,   call void @CAT_set(i8* noundef %7, i64 noundef 42) #4, 
-  call void @CAT_set(i8* noundef %7, i64 noundef 42) #4!  %7 = call i8* @CAT_new(i64 noundef 0) #4,   call void @CAT_sub(i8* noundef %7, i8* noundef %4, i8* noundef %1) #4,   call void @CAT_add(i8* noundef %7, i8* noundef %4, i8* noundef %7) #4, 
 INSTRUCTION:     %1 = call i8* @CAT_new(i64 noundef 5) #4
 ***************** IN
 {
@@ -292,18 +268,6 @@ INSTRUCTION:     call void @CAT_destroy(i8* noundef %1) #4
 
 
 Function "main"
-GEN:
-
-  %3 = call i32 @puts(i8* nonnull dereferenceable(1) getelementptr inbounds ([10 x i8], [10 x i8]* @str, i64 0, i64 0))!
-  call void @CAT_execution()!
-  %4 = call i32 @puts(i8* nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @str.7, i64 0, i64 0))!
-  %5 = call i64 @CAT_variables() #4!
-  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.5, i64 0, i64 0), i64 noundef %5)!
-  %7 = call i64 @CAT_cost() #4!
-  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.6, i64 0, i64 0), i64 noundef %7)!
-  ret i32 0!
-kill:
-
 INSTRUCTION:     %3 = call i32 @puts(i8* nonnull dereferenceable(1) getelementptr inbounds ([10 x i8], [10 x i8]* @str, i64 0, i64 0))
 ***************** IN
 {
@@ -418,20 +382,20 @@ INSTRUCTION:     ret i32 0
 ld: warning: ignoring file ../misc/CAT.o, building for macOS-arm64 but attempting to link with file built for unknown-unsupported file format ( 0x7F 0x45 0x4C 0x46 0x02 0x01 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 )
 Undefined symbols for architecture arm64:
   "_CAT_add", referenced from:
-      _CAT_execution in program-c23183.o
+      _CAT_execution in program-3e30d6.o
   "_CAT_cost", referenced from:
-      _main in program-c23183.o
+      _main in program-3e30d6.o
   "_CAT_destroy", referenced from:
-      _CAT_execution in program-c23183.o
+      _CAT_execution in program-3e30d6.o
   "_CAT_get", referenced from:
-      _CAT_execution in program-c23183.o
+      _CAT_execution in program-3e30d6.o
   "_CAT_new", referenced from:
-      _CAT_execution in program-c23183.o
+      _CAT_execution in program-3e30d6.o
   "_CAT_set", referenced from:
-      _CAT_execution in program-c23183.o
+      _CAT_execution in program-3e30d6.o
   "_CAT_sub", referenced from:
-      _CAT_execution in program-c23183.o
+      _CAT_execution in program-3e30d6.o
   "_CAT_variables", referenced from:
-      _main in program-c23183.o
+      _main in program-3e30d6.o
 ld: symbol(s) not found for architecture arm64
 clang-14: error: linker command failed with exit code 1 (use -v to see invocation)
