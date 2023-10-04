@@ -1,5 +1,2 @@
-make[1]: Entering directory '/home/azb1671/LLVM_middleend_template/H1/tests/test16'
 timeout 10m cat-c program.bc ../misc/CAT.o 2> compiler_output
-../misc/check.sh
-Test passed!
-make[1]: Leaving directory '/home/azb1671/LLVM_middleend_template/H1/tests/test16'
+make[1]: *** [compiler_output] Error 1
