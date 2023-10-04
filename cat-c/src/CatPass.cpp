@@ -105,7 +105,7 @@ namespace
           }
         }
       }
-
+      /*
       errs() << "GEN:\n\n";
       for (map<Instruction *, set<Instruction *>>::iterator it = gen.begin(); it != gen.end(); ++it)
       {
@@ -120,7 +120,7 @@ namespace
 
         errs() << "\n";
       }
-
+       */
 
       for (map<Value*, set<Instruction *>>::iterator it = var_to_inst.begin(); it != var_to_inst.end(); ++it)
       {
@@ -153,7 +153,8 @@ namespace
 
       // print kill
 
-      
+      /*
+     
       errs() << "kill:\n\n";
       for (map<Instruction *, set<Instruction *>>::iterator it = kill.begin(); it != kill.end(); ++it)
       {
@@ -169,7 +170,7 @@ namespace
         errs() << "\n";
       }
       
-
+       */
      prev_out = {};
      do {
 
