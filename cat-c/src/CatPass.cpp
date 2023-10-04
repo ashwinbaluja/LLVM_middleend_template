@@ -69,13 +69,15 @@ namespace
 
           Instruction *i = cast<Instruction>(&inst);
 
-          string name;
+          string name = "";
           CallInst* callinst;
+
           if (isa<CallInst>(*i)) {
             callinst = cast<CallInst>(i);
             name = callinst->getCalledFunction()->getName().str();
           }
-          if (isa<ReturnInst>(*i) || (name == "CAT_new" || name == "CAT_set" || name == "CAT_add" || name == "CAT_sub"))
+
+          if (name == "CAT_new" || name == "CAT_set" || name == "CAT_add" || name == "CAT_sub")
           {
             set<Instruction *> newgen = {i};
             gen.insert({i, newgen});
@@ -104,14 +106,13 @@ namespace
         }
       }
 
-
-      /*
-      for (map<CallInst *, set<CallInst *>>::iterator it = gen.begin(); it != gen.end(); ++it)
+      errs() << "GEN:\n\n";
+      for (map<Instruction *, set<Instruction *>>::iterator it = gen.begin(); it != gen.end(); ++it)
       {
         it->first->print(errs());
         errs() << "!";
 
-        for (CallInst *inst : it->second)
+        for (Instruction *inst : it->second)
         {
           inst->print(errs());
           errs() << ", "; // Optional: to separate the items in the set
@@ -119,7 +120,7 @@ namespace
 
         errs() << "\n";
       }
-      */
+
 
       for (map<Value*, set<Instruction *>>::iterator it = var_to_inst.begin(); it != var_to_inst.end(); ++it)
       {
@@ -152,14 +153,14 @@ namespace
 
       // print kill
 
-      /*
+      
       errs() << "kill:\n\n";
-      for (map<CallInst *, set<CallInst *>>::iterator it = kill.begin(); it != kill.end(); ++it)
+      for (map<Instruction *, set<Instruction *>>::iterator it = kill.begin(); it != kill.end(); ++it)
       {
         it->first->print(errs());
         errs() << "!";
 
-        for (CallInst *inst : it->second)
+        for (Instruction *inst : it->second)
         {
           inst->print(errs());
           errs() << ", "; // Optional: to separate the items in the set
@@ -167,7 +168,7 @@ namespace
 
         errs() << "\n";
       }
-      */
+      
 
      prev_out = {};
      do {

@@ -1,5 +1,49 @@
 warning: overriding the module target triple with arm64-apple-macosx12.0.0 [-Woverride-module]
 Function "myF"
+GEN:
+
+  ret void!
+  %2 = call i8* @CAT_new(i64 noundef 5) #3!  %2 = call i8* @CAT_new(i64 noundef 5) #3, 
+  %3 = call i64 @CAT_get(i8* noundef %2) #3!
+  %4 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %3)!
+  %5 = call i8* @CAT_new(i64 noundef 8) #3!  %5 = call i8* @CAT_new(i64 noundef 8) #3, 
+  %6 = icmp sgt i32 %0, 10!
+  br i1 %6, label %7, label %8!
+  call void @CAT_add(i8* noundef %5, i8* noundef %5, i8* noundef %5) #3!  call void @CAT_add(i8* noundef %5, i8* noundef %5, i8* noundef %5) #3, 
+  br label %8!
+  %9 = call i64 @CAT_get(i8* noundef %5) #3!
+  %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %9)!
+  %11 = call i8* @CAT_new(i64 noundef 0) #3!  %11 = call i8* @CAT_new(i64 noundef 0) #3, 
+  call void @CAT_add(i8* noundef %11, i8* noundef %2, i8* noundef %5) #3!  call void @CAT_add(i8* noundef %11, i8* noundef %2, i8* noundef %5) #3, 
+  %12 = call i8* @CAT_new(i64 noundef 0) #3!  %12 = call i8* @CAT_new(i64 noundef 0) #3, 
+  call void @CAT_add(i8* noundef %12, i8* noundef %2, i8* noundef %11) #3!  call void @CAT_add(i8* noundef %12, i8* noundef %2, i8* noundef %11) #3, 
+  %13 = call i8* @CAT_new(i64 noundef 0) #3!  %13 = call i8* @CAT_new(i64 noundef 0) #3, 
+  call void @CAT_add(i8* noundef %13, i8* noundef %11, i8* noundef %12) #3!  call void @CAT_add(i8* noundef %13, i8* noundef %11, i8* noundef %12) #3, 
+  %14 = call i8* @CAT_new(i64 noundef 3) #3!  %14 = call i8* @CAT_new(i64 noundef 3) #3, 
+  %15 = call i8* @CAT_new(i64 noundef 4) #3!  %15 = call i8* @CAT_new(i64 noundef 4) #3, 
+  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3, 
+  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3, 
+  call void @CAT_sub(i8* noundef %14, i8* noundef %2, i8* noundef %13) #3!  call void @CAT_sub(i8* noundef %14, i8* noundef %2, i8* noundef %13) #3, 
+  call void @CAT_add(i8* noundef %14, i8* noundef %14, i8* noundef %11) #3!  call void @CAT_add(i8* noundef %14, i8* noundef %14, i8* noundef %11) #3, 
+  %16 = call i64 @CAT_get(i8* noundef %15) #3!
+  %17 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str, i64 0, i64 0), i64 noundef %16)!
+  %18 = call i64 @CAT_get(i8* noundef %14) #3!
+  %19 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str, i64 0, i64 0), i64 noundef %18)!
+kill:
+
+  %5 = call i8* @CAT_new(i64 noundef 8) #3!  call void @CAT_add(i8* noundef %5, i8* noundef %5, i8* noundef %5) #3, 
+  call void @CAT_add(i8* noundef %5, i8* noundef %5, i8* noundef %5) #3!  %5 = call i8* @CAT_new(i64 noundef 8) #3, 
+  %11 = call i8* @CAT_new(i64 noundef 0) #3!  call void @CAT_add(i8* noundef %11, i8* noundef %2, i8* noundef %5) #3, 
+  call void @CAT_add(i8* noundef %11, i8* noundef %2, i8* noundef %5) #3!  %11 = call i8* @CAT_new(i64 noundef 0) #3, 
+  %12 = call i8* @CAT_new(i64 noundef 0) #3!  call void @CAT_add(i8* noundef %12, i8* noundef %2, i8* noundef %11) #3, 
+  call void @CAT_add(i8* noundef %12, i8* noundef %2, i8* noundef %11) #3!  %12 = call i8* @CAT_new(i64 noundef 0) #3, 
+  %13 = call i8* @CAT_new(i64 noundef 0) #3!  call void @CAT_add(i8* noundef %13, i8* noundef %11, i8* noundef %12) #3, 
+  call void @CAT_add(i8* noundef %13, i8* noundef %11, i8* noundef %12) #3!  %13 = call i8* @CAT_new(i64 noundef 0) #3, 
+  %14 = call i8* @CAT_new(i64 noundef 3) #3!  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3,   call void @CAT_set(i8* noundef %14, i64 noundef 42) #3,   call void @CAT_sub(i8* noundef %14, i8* noundef %2, i8* noundef %13) #3,   call void @CAT_add(i8* noundef %14, i8* noundef %14, i8* noundef %11) #3, 
+  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!  %14 = call i8* @CAT_new(i64 noundef 3) #3,   call void @CAT_set(i8* noundef %14, i64 noundef 42) #3,   call void @CAT_sub(i8* noundef %14, i8* noundef %2, i8* noundef %13) #3,   call void @CAT_add(i8* noundef %14, i8* noundef %14, i8* noundef %11) #3, 
+  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3!  %14 = call i8* @CAT_new(i64 noundef 3) #3,   call void @CAT_set(i8* noundef %14, i64 noundef 42) #3,   call void @CAT_sub(i8* noundef %14, i8* noundef %2, i8* noundef %13) #3,   call void @CAT_add(i8* noundef %14, i8* noundef %14, i8* noundef %11) #3, 
+  call void @CAT_sub(i8* noundef %14, i8* noundef %2, i8* noundef %13) #3!  %14 = call i8* @CAT_new(i64 noundef 3) #3,   call void @CAT_set(i8* noundef %14, i64 noundef 42) #3,   call void @CAT_set(i8* noundef %14, i64 noundef 42) #3,   call void @CAT_add(i8* noundef %14, i8* noundef %14, i8* noundef %11) #3, 
+  call void @CAT_add(i8* noundef %14, i8* noundef %14, i8* noundef %11) #3!  %14 = call i8* @CAT_new(i64 noundef 3) #3,   call void @CAT_set(i8* noundef %14, i64 noundef 42) #3,   call void @CAT_set(i8* noundef %14, i64 noundef 42) #3,   call void @CAT_sub(i8* noundef %14, i8* noundef %2, i8* noundef %13) #3, 
 INSTRUCTION:     ret void
 ***************** IN
 {
@@ -590,6 +634,16 @@ INSTRUCTION:     %19 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferen
 
 
 Function "main"
+GEN:
+
+  call void @myF(i32 noundef %0)!
+  %3 = call i64 @CAT_variables() #3!
+  %4 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.3, i64 0, i64 0), i64 noundef %3)!
+  %5 = call i64 @CAT_cost() #3!
+  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.4, i64 0, i64 0), i64 noundef %5)!
+  ret i32 0!
+kill:
+
 INSTRUCTION:     call void @myF(i32 noundef %0)
 ***************** IN
 {
@@ -680,18 +734,18 @@ INSTRUCTION:     ret i32 0
 ld: warning: ignoring file ../misc/CAT.o, building for macOS-arm64 but attempting to link with file built for unknown-unsupported file format ( 0x7F 0x45 0x4C 0x46 0x02 0x01 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 )
 Undefined symbols for architecture arm64:
   "_CAT_add", referenced from:
-      _myF in program-f8be10.o
+      _myF in program-613e67.o
   "_CAT_cost", referenced from:
-      _main in program-f8be10.o
+      _main in program-613e67.o
   "_CAT_get", referenced from:
-      _myF in program-f8be10.o
+      _myF in program-613e67.o
   "_CAT_new", referenced from:
-      _myF in program-f8be10.o
+      _myF in program-613e67.o
   "_CAT_set", referenced from:
-      _myF in program-f8be10.o
+      _myF in program-613e67.o
   "_CAT_sub", referenced from:
-      _myF in program-f8be10.o
+      _myF in program-613e67.o
   "_CAT_variables", referenced from:
-      _main in program-f8be10.o
+      _main in program-613e67.o
 ld: symbol(s) not found for architecture arm64
 clang-14: error: linker command failed with exit code 1 (use -v to see invocation)
