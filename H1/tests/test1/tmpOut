@@ -1,5 +1,3 @@
-clang -O2 -lm -fdeclspec -c ../misc/CAT.c -o ../misc/CAT.o
-clang-14: warning: -lm: 'linker' input unused [-Wunused-command-line-argument]
 timeout 10m cat-c program.bc ../misc/CAT.o 2> compiler_output
 ../misc/check.sh
 Test failed

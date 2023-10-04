@@ -1,4 +1,4 @@
-78,92c78,119
+120,134d119
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -14,48 +14,10 @@
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 1warninggenerated.
----
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-378d404
-< warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
+205a191
+> INSTRUCTION:retvoid
+241d226
+< bri1%6,label%7,label%8brlabel%8bri1%6,label%7,label%8INSTRUCTION:retvoid
+420,421d404
+< ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(14.0)thanbeinglinked(12.0)
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]

@@ -7,6 +7,8 @@
 #include "llvm/IR/Instruction.h"
 #include "llvm/Support/Casting.h"
 #include "llvm/IR/BasicBlock.h"
+#include "llvm/IR/CFG.h"
+
 
 #include <string>
 #include <set>
@@ -28,6 +30,7 @@ namespace
 
     map<Instruction *, set<Instruction *>> in;
     map<Instruction *, set<Instruction *>> out;
+    map<Instruction *, set<Instruction *>> prev_out;
 
     CAT() : FunctionPass(ID) {}
 
@@ -165,24 +168,16 @@ namespace
         errs() << "\n";
       }
       */
-      for (auto &b : F) {
-        Instruction *last;
-          for (auto &inst : b) {
 
+     for (auto &b : F) {
+          for (auto &inst : b) {
+            Instruction *last;
             if (!isa<Instruction>(&inst))
             {
               continue;
             }
 
             Instruction *i = cast<Instruction>(&inst);
-
-            //string name = i->getCalledFunction()->getName().str();
-
-            /*
-            if (name != "CAT_add" && name != "CAT_sub" && name != "CAT_get" && name != "CAT_destroy" && name != "CAT_set" && name != "CAT_new") {
-              continue;
-            }
-            */
 
             if (in.find(i) == in.end())
             {
@@ -217,6 +212,65 @@ namespace
             last = i;
           }
         }
+
+
+
+     prev_out = {};
+     do {
+      for (auto &b : F) {
+        Instruction *last;
+        for (auto p: predecessors(&b)){
+
+          last = p->getTerminator();
+          last->print(errs());
+          for (auto &inst : b) {
+
+            if (!isa<Instruction>(&inst))
+            {
+              continue;
+            }
+
+            Instruction *i = cast<Instruction>(&inst);
+
+            if (in.find(i) == in.end())
+            {
+              set<Instruction *> newgen = {};
+              in.insert({i, newgen});
+            }
+
+            if (out.find(i) == out.end())
+            {
+              set<Instruction *> newgen = {};
+              out.insert({i, newgen});
+            }
+
+            if (last != NULL) {
+              for (auto &insert : out[last]) {
+                in[i].insert(insert);
+              }
+            }
+
+            for (auto &insert : gen[i]) {
+              out[i].insert(insert);
+            }
+
+            for (auto &insert : in[i]) {
+              out[i].insert(insert);
+            }
+
+            for (auto &remove : kill[i]) {
+              out[i].erase(remove);
+            }
+
+            last = i;
+          }
+        }
+        }
+        prev_out = out;
+        
+
+     } while (prev_out != out);
+      
 
       for (map<Instruction *, set<Instruction *>>::iterator it = in.begin(); it != in.end(); ++it)
       {

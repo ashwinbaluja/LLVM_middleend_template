@@ -152,7 +152,8 @@ callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%1)#3
 callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%1)#3
 callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%3)#3
 callvoid@CAT_sub(i8noundef%3,i8noundef%3,i8noundef%3)#3
-warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
+ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(14.0)thanbeinglinked(12.0)
+warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]
 {
 {
 {

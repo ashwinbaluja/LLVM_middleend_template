@@ -1,4 +1,4 @@
-76,90c76,115
+116,130d115
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+cx8'isnotarecognizedfeatureforthistarget(ignoringfeature)
 < '+fxsr'isnotarecognizedfeatureforthistarget(ignoringfeature)
@@ -14,46 +14,10 @@
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 'x86-64'isnotarecognizedprocessorforthistarget(ignoringprocessor)
 < 1warninggenerated.
----
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-> %5=calli8@CAT_new(i64noundef8)#3
-361d385
-< warning:overridingthemoduletargettriplewitharm64-apple-macosx14.0.0[-Woverride-module]
+178a164
+> INSTRUCTION:%2=calli8@CAT_new(i64noundef5)#3
+234d219
+< bri1%6,label%7,label%8brlabel%8bri1%6,label%7,label%8INSTRUCTION:%2=calli8@CAT_new(i64noundef5)#3
+401,402d385
+< ld:warning:objectfile(../misc/CAT.o)wasbuiltfornewermacOSversion(14.0)thanbeinglinked(12.0)
+< warning:overridingthemoduletargettriplewitharm64-apple-macosx12.0.0[-Woverride-module]
