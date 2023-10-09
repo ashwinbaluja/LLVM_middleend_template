@@ -1,0 +1,4 @@
+H1: 	Result = 42
+H1: 	Result = 0
+CAT variables = 1
+CAT cost = 8
