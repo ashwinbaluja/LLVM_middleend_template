@@ -9,6 +9,8 @@
 #include "llvm/IR/BasicBlock.h"
 #include "llvm/IR/CFG.h"
 #include "llvm/IR/Constants.h"
+#include "llvm/Transforms/Utils/BasicBlockUtils.h"
+
 
 #include <string>
 #include <set>
@@ -231,23 +233,16 @@ namespace
      } while (prev_out != out);
 
 
-    set<Instruction *> constants = {};
+    map<Instruction *, Value *> constants = {};
 
     for (auto &b : F) {
-      for (auto &inst : b) {
-        errs() << "\n";
-	      inst.print(errs());
-        errs() << "\n";
-        errs() << "begining of out!\n";
-        for (auto &outinst: out[&inst]) {
-          outinst->print(errs());
-          errs() << "\n";
-        }
-        errs() << "end of out!!\n\n";
+      map<Instruction*, Value*> changes = {};
+      for (auto& inst : b) {
         errs() << "\n\nCONSTANTS---\n";
 
-        for (auto &consta : constants) {
-            consta->print(errs());
+        for (auto const& consta: constants) {
+            consta.first->print(errs());
+	    if (consta.second != NULL){consta.second->print(errs());}
         }
         errs() << "\n!---!\n\n";
 
@@ -257,52 +252,67 @@ namespace
         if (isa<CallInst>(inst)) {
             callinst = &(cast<CallInst>(inst));
             if (isa<ConstantInt>(inst.getOperand(0))) {
-                errs() << "CONSTANT INT FOUND!\n";
-                constants.insert(&inst);
+                constants.insert({&inst, NULL});
             }
+            else if (callinst->getCalledFunction()->getName() == "CAT_set" && isa<ConstantInt>(callinst->getOperand(1))) {
+		constants.insert({&inst, cast<Value>(callinst->getOperand(0))});
+		errs() << callinst->getOperand(0);
+	    }
           
-            for (auto &constant : constants) {
+            for (auto const& constant : constants) {
                 bool flag = false;
                 for (auto &outinst : out[&inst]) {
-                    if (outinst == constant) {
+                    if (outinst == constant.first) {
                         flag = true;
                         break;
                     }
                 }
                 if (!flag) {
-                    eraseQueue.insert(constant);
+                    eraseQueue.insert(constant.first);
+                    errs() << "\n";
                     inst.print(errs());
                     errs() << "this killed ";
-                    constant->print(errs());
+                    constant.first->print(errs());
                     errs() << "\n";
                 }
             }
         }
 
         for (auto &erased : eraseQueue) {
-          errs() << "errased ";
-          erased->print(errs());
-	  errs() << "\n";
           constants.erase(erased);
         }
 
 
         if (callinst != NULL) {
           callinst->print(errs());
-	  errs() << "\n";
+          string name = callinst->getCalledFunction()->getName().str();
+	  errs() << "\nvals\n";
           for (int i = 0; i < callinst->arg_size(); i++) {
             Value* val = callinst->getOperand(i);
-
-            for (auto &constant : constants) {
+            errs() << "\n   val: ";
+            val->print(errs());
+            errs() << "\n";
+            for (auto &constanttup : constants) {
+	      Instruction* constant = constanttup.first;
+	      Value* constantval = constanttup.second;
+              if (constantval == NULL) {constantval = cast<Value>(constant);}
 	      callinst->print(errs());
-              errs() << constant << val << "----\n";
-              if (constant->getOperand(0) == val){
-                ConstantInt* constval = cast<ConstantInt>(val);
+              if (constantval == val){
+                ConstantInt* constval = (constanttup.second != NULL) ? cast<ConstantInt>(constant->getOperand(1)) : cast<ConstantInt>(constant->getOperand(0));
 	        errs() << "\nbefore\n";
-		callinst->print(errs());
-                callinst->setOperand(i, constval);
+		errs() << b;//callinst->print(errs());
 		errs() << "\nafter\n";
-		callinst->print(errs());
+
+
+		if (name == "CAT_get") {
+		  errs() << "catgetfound";
+                  changes.insert({callinst, constval});
+		  errs() << b;
+		}
+		else {
+                  callinst->setOperand(i, constval);
+		}
+		//callinst->print(errs());
 		errs() << "-\n";
                 //val->print(errs());
               }
@@ -311,6 +321,14 @@ namespace
         }
 
       }
+      //for (auto const& instcount : changes) {
+      for (auto const& x : changes) {
+	BasicBlock::iterator ii(x.first);
+        x.first->print(errs());
+        //          changes.add(ii, constval)
+        ReplaceInstWithValue(b.getInstList(), ii, x.second);
+      }
+      errs() << b << "\nfinalbasicblock\n";
     }
 
     return false;
