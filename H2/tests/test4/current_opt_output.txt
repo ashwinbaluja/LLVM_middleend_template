@@ -1,4 +1,0 @@
-Error opening '/Users/azb/CAT/lib/CAT.so': dlopen(/Users/azb/CAT/lib/CAT.so, 0x0009): tried: '/Users/azb/CAT/lib/CAT.so' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/azb/CAT/lib/CAT.so' (no such file), '/Users/azb/CAT/lib/CAT.so' (no such file)
-  -load request ignored.
-opt: Unknown command line argument '-CAT'.  Try: 'opt --help'
-opt: Did you mean '--aa'?

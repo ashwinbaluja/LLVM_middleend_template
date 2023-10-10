@@ -1,0 +1,6 @@
+H0: Begin
+H0: I'm going to do some very important computation
+H0:   Output = 10000
+H0: End
+CAT variables = 1
+CAT cost = 16

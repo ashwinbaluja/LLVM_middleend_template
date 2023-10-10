@@ -235,6 +235,20 @@ namespace
 
     for (auto &b : F) {
       for (auto &inst : b) {
+        errs() << "\n";
+	inst.print(errs());
+	errs() << "begining of out!\n";
+      for (auto &outinst: out[&inst]) {
+      outinst->print(errs());
+	errs() << "\n";
+	}
+	errs() << "end of out!!\n\n";
+	    errs() << "\n\nCONSTANTS---\n";
+
+        for (auto &consta : constants) {
+            consta->print(errs());
+        }
+errs() << "\n!---!\n\n";
 
         set<Instruction *> eraseQueue = {};
 
@@ -242,31 +256,55 @@ namespace
         if (isa<CallInst>(inst)) {
           callinst = &(cast<CallInst>(inst));
           if (isa<ConstantInt>(inst.getOperand(0))) {
+	    errs() << "CONSTANT INT FOUND!\n";
             constants.insert(&inst);
           }
+	  else {//if (out[&inst].find(&inst) != out[&inst].end()) {
           for (auto &constant : constants) {
-            if (out[&inst].find(constant) != out[&inst].end()) {
+           bool flag = false;
+	for (auto &outinst : out[&inst]) {
+            if (outinst == constant) {
+            flag = true;
+            break;}
+	    }
+            if (flag) {break;}
+            //if (out[&inst].find(constant) != out[&inst].end()) {
               eraseQueue.insert(constant);
-            }
-          }
+              inst.print(errs());
+	      errs() << "this killed ";
+              constant->print(errs());
+	      errs() << "\n";
+            //}
+           }
+	  }
         }
 
         for (auto &erased : eraseQueue) {
+          errs() << "errased ";
+          erased->print(errs());
+	  errs() << "\n";
           constants.erase(erased);
         }
 
 
         if (callinst != NULL) {
-
+          callinst->print(errs());
+	  errs() << "\n";
           for (int i = 0; i < callinst->arg_size(); i++) {
             Value* val = callinst->getOperand(i);
 
             for (auto &constant : constants) {
+	      callinst->print(errs());
+              errs() << constant << val << "----\n";
               if (constant->getOperand(0) == val){
                 ConstantInt* constval = cast<ConstantInt>(val);
+	        errs() << "\nbefore\n";
+		callinst->print(errs());
                 callinst->setOperand(i, constval);
-                errs() << "replacing: ";
-                val->print(errs());
+		errs() << "\nafter\n";
+		callinst->print(errs());
+		errs() << "-\n";
+                //val->print(errs());
               }
             }
           }
