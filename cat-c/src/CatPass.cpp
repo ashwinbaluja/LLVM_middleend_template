@@ -8,7 +8,7 @@
 #include "llvm/Support/Casting.h"
 #include "llvm/IR/BasicBlock.h"
 #include "llvm/IR/CFG.h"
-
+#include "llvm/IR/Constants.h"
 
 #include <string>
 #include <set>
@@ -55,8 +55,7 @@ namespace
       var_to_inst = {};
       in = {};
       out = {};
-      
-      errs() << "Function \"" << F.getName() << "\"\n";
+
       for (auto &b : F)
       {
         for (auto &inst : b)
@@ -105,36 +104,9 @@ namespace
           }
         }
       }
-      /*
-      errs() << "GEN:\n\n";
-      for (map<Instruction *, set<Instruction *>>::iterator it = gen.begin(); it != gen.end(); ++it)
-      {
-        it->first->print(errs());
-        errs() << "!";
-
-        for (Instruction *inst : it->second)
-        {
-          inst->print(errs());
-          errs() << ", "; // Optional: to separate the items in the set
-        }
-
-        errs() << "\n";
-      }
-       */
 
       for (map<Value*, set<Instruction *>>::iterator it = var_to_inst.begin(); it != var_to_inst.end(); ++it)
       {
-        //it->first->print(errs());
-        /*
-        for (CallInst *inst : it->second)
-        {
-          inst->print(errs());
-          errs() << "|||||||||| ";
-        }
-
-        errs() << "\n";
-        */
-        // populate kill
         if (it->second.size() > 1)
         {
           for (Instruction *inst : it->second)
@@ -149,28 +121,6 @@ namespace
           }
         }
       }
-
-
-      // print kill
-
-      /*
-     
-      errs() << "kill:\n\n";
-      for (map<Instruction *, set<Instruction *>>::iterator it = kill.begin(); it != kill.end(); ++it)
-      {
-        it->first->print(errs());
-        errs() << "!";
-
-        for (Instruction *inst : it->second)
-        {
-          inst->print(errs());
-          errs() << ", "; // Optional: to separate the items in the set
-        }
-
-        errs() << "\n";
-      }
-      
-       */
      prev_out = {};
      do {
 
@@ -279,40 +229,45 @@ namespace
         
 
      } while (prev_out != out);
-      
 
-      for (map<Instruction *, set<Instruction *>>::iterator it = in.begin(); it != in.end(); ++it)
-      {
-        errs () << "INSTRUCTION:   ";
-        it->first->print(errs());
-        errs() << "\n***************** IN\n{\n";
 
-        for (Instruction *inst : it->second)
-        {
-          inst->print(errs());
-          errs() << "\n"; // Optional: to separate the items in the set
-        }
-        errs() << "}\n";
+    set<Instruction *> constants = {};
 
-        errs() << "**************************************\n";
-        errs() << "***************** OUT\n{\n";
-
-        for (Instruction *inst : out[it->first])
-        {
-          if (isa<ReturnInst>(inst)) {
-            continue;
+    for (auto &b : F) {
+      for (auto &inst : b) {
+        CallInst* callinst = NULL;
+        if (isa<CallInst>(inst)) {
+          callinst = &(cast<CallInst>(inst));
+          if (isa<ConstantInt>(inst.getOperand(0))) {
+            constants.insert(&inst);
           }
-          inst->print(errs());
-          errs() << "\n"; // Optional: to separate the items in the set
+          for (auto &constant : constants) {
+            if (out[&inst].find(constant) != out[&inst].end()) {
+              constants.erase(constant);
+            }
+          }
         }
-        errs() << "}\n";
-        errs() << "**************************************\n";
-        errs() << "\n\n\n";
+
+
+        for (int i = 0; i < callinst->arg_size(); i++) {
+          Value* val = callinst->getOperand(i);
+          
+          for (auto &constant : constants) {
+            if (constant->getOperand(0) == val){
+              ConstantInt* constval = cast<ConstantInt>(val);
+              callinst->setOperand(i, constval);
+              errs() << "replacing: ";
+              val->print(errs());
+            }
+           
+            
+          }
+        }
+
       }
+    }
 
-
-
-      return false;
+    return false;
     };
 
     // We don't modify the program, so we preserve all analyses.
