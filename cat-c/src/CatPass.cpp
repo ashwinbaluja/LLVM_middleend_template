@@ -236,47 +236,47 @@ namespace
     for (auto &b : F) {
       for (auto &inst : b) {
         errs() << "\n";
-	inst.print(errs());
-	errs() << "begining of out!\n";
-      for (auto &outinst: out[&inst]) {
-      outinst->print(errs());
-	errs() << "\n";
-	}
-	errs() << "end of out!!\n\n";
-	    errs() << "\n\nCONSTANTS---\n";
+	      inst.print(errs());
+        errs() << "\n";
+        errs() << "begining of out!\n";
+        for (auto &outinst: out[&inst]) {
+          outinst->print(errs());
+          errs() << "\n";
+        }
+        errs() << "end of out!!\n\n";
+        errs() << "\n\nCONSTANTS---\n";
 
         for (auto &consta : constants) {
             consta->print(errs());
         }
-errs() << "\n!---!\n\n";
+        errs() << "\n!---!\n\n";
 
         set<Instruction *> eraseQueue = {};
 
         CallInst* callinst = NULL;
         if (isa<CallInst>(inst)) {
-          callinst = &(cast<CallInst>(inst));
-          if (isa<ConstantInt>(inst.getOperand(0))) {
-	    errs() << "CONSTANT INT FOUND!\n";
-            constants.insert(&inst);
-          }
-	  else {//if (out[&inst].find(&inst) != out[&inst].end()) {
-          for (auto &constant : constants) {
-           bool flag = false;
-	for (auto &outinst : out[&inst]) {
-            if (outinst == constant) {
-            flag = true;
-            break;}
-	    }
-            if (flag) {break;}
-            //if (out[&inst].find(constant) != out[&inst].end()) {
-              eraseQueue.insert(constant);
-              inst.print(errs());
-	      errs() << "this killed ";
-              constant->print(errs());
-	      errs() << "\n";
-            //}
-           }
-	  }
+            callinst = &(cast<CallInst>(inst));
+            if (isa<ConstantInt>(inst.getOperand(0))) {
+                errs() << "CONSTANT INT FOUND!\n";
+                constants.insert(&inst);
+            }
+          
+            for (auto &constant : constants) {
+                bool flag = false;
+                for (auto &outinst : out[&inst]) {
+                    if (outinst == constant) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) {
+                    eraseQueue.insert(constant);
+                    inst.print(errs());
+                    errs() << "this killed ";
+                    constant->print(errs());
+                    errs() << "\n";
+                }
+            }
         }
 
         for (auto &erased : eraseQueue) {
