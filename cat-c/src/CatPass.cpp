@@ -235,6 +235,9 @@ namespace
 
     for (auto &b : F) {
       for (auto &inst : b) {
+
+        set<Instruction *> eraseQueue = {};
+
         CallInst* callinst = NULL;
         if (isa<CallInst>(inst)) {
           callinst = &(cast<CallInst>(inst));
@@ -243,24 +246,29 @@ namespace
           }
           for (auto &constant : constants) {
             if (out[&inst].find(constant) != out[&inst].end()) {
-              constants.erase(constant);
+              eraseQueue.insert(constant);
             }
           }
         }
 
+        for (auto &erased : eraseQueue) {
+          constants.erase(erased);
+        }
 
-        for (int i = 0; i < callinst->arg_size(); i++) {
-          Value* val = callinst->getOperand(i);
-          
-          for (auto &constant : constants) {
-            if (constant->getOperand(0) == val){
-              ConstantInt* constval = cast<ConstantInt>(val);
-              callinst->setOperand(i, constval);
-              errs() << "replacing: ";
-              val->print(errs());
+
+        if (callinst != NULL) {
+
+          for (int i = 0; i < callinst->arg_size(); i++) {
+            Value* val = callinst->getOperand(i);
+
+            for (auto &constant : constants) {
+              if (constant->getOperand(0) == val){
+                ConstantInt* constval = cast<ConstantInt>(val);
+                callinst->setOperand(i, constval);
+                errs() << "replacing: ";
+                val->print(errs());
+              }
             }
-           
-            
           }
         }
 

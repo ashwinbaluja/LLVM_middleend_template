@@ -1,5 +1,5 @@
 OPTIONS=-I../misc
-OPT=-O2 -lm
+OPT=-O2 -lm 
 
 all: compiler_output program.ll
 
