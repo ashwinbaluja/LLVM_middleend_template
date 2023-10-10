@@ -13,10 +13,10 @@ define dso_local void @my_execution(i32 noundef %0) local_unnamed_addr #0 {
   %3 = call i8* @CAT_new(i64 noundef %2) #3
   %4 = call i8* @CAT_new(i64 noundef 0) #3
   %5 = call i8* @CAT_new(i64 noundef 0) #3
-  call void @CAT_add(i8* noundef %5, i8* noundef %3, i8* noundef %4) #3
+  call void @CAT_add(i8* noundef %5, i8* noundef %3, i8* noundef null) #3
   %6 = call i64 @CAT_get(i8* noundef %5) #3
   %7 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([13 x i8], [13 x i8]* @.str, i64 0, i64 0), i64 noundef %6)
-  call void @CAT_add(i8* noundef %5, i8* noundef %5, i8* noundef %4) #3
+  call void @CAT_add(i8* noundef %5, i8* noundef %5, i8* noundef null) #3
   %8 = call i64 @CAT_get(i8* noundef %5) #3
   %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([13 x i8], [13 x i8]* @.str, i64 0, i64 0), i64 noundef %8)
   call void @CAT_set(i8* noundef %5, i64 noundef 0) #3

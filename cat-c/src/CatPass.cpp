@@ -235,15 +235,18 @@ namespace
 
     for (auto &b : F) {
       for (auto &inst : b) {
-        errs() << "\n";
+        errs() << "\n\n\n\nNEW INSTRUCTION\n";
 	      inst.print(errs());
         errs() << "\n";
+        /*
         errs() << "begining of out!\n";
         for (auto &outinst: out[&inst]) {
           outinst->print(errs());
           errs() << "\n";
         }
         errs() << "end of out!!\n\n";
+        */
+        
         errs() << "\n\nCONSTANTS---\n";
 
         for (auto &consta : constants) {
@@ -252,11 +255,12 @@ namespace
         errs() << "\n!---!\n\n";
 
         set<Instruction *> eraseQueue = {};
-
+        bool newConstant = false;
         CallInst* callinst = NULL;
         if (isa<CallInst>(inst)) {
             callinst = &(cast<CallInst>(inst));
             if (isa<ConstantInt>(inst.getOperand(0))) {
+                newConstant = true;
                 errs() << "CONSTANT INT FOUND!\n";
                 constants.insert(&inst);
             }
@@ -282,33 +286,60 @@ namespace
         for (auto &erased : eraseQueue) {
           errs() << "errased ";
           erased->print(errs());
-	  errs() << "\n";
+	        errs() << "\n";
           constants.erase(erased);
         }
 
 
-        if (callinst != NULL) {
+        if (callinst && !newConstant) {
+          errs() << "STARTING TO REPLACE\n";
           callinst->print(errs());
-	  errs() << "\n";
+          errs() << "\n";
           for (int i = 0; i < callinst->arg_size(); i++) {
-            Value* val = callinst->getOperand(i);
+            Value* operand = callinst->getOperand(i);
+            if (!operand) continue;
 
-            for (auto &constant : constants) {
-	      callinst->print(errs());
-              errs() << constant << val << "----\n";
-              if (constant->getOperand(0) == val){
-                ConstantInt* constval = cast<ConstantInt>(val);
-	        errs() << "\nbefore\n";
-		callinst->print(errs());
-                callinst->setOperand(i, constval);
-		errs() << "\nafter\n";
-		callinst->print(errs());
-		errs() << "-\n";
-                //val->print(errs());
-              }
+            for (auto &constantElem : constants) {
+                CallInst* constantCall = dyn_cast<CallInst>(constantElem);
+                if (!constantCall) continue;
+
+                Value* potentialVar = (constantCall->arg_size() == 1) ? 
+                                        static_cast<Value*>(constantCall) : 
+                                        constantCall->getOperand(1);
+                if (!potentialVar) continue;
+
+                if (operand == potentialVar) {
+                  if (auto constValue = dyn_cast<ConstantInt>(constantCall->getOperand(0))) {
+                      LLVMContext& context = operand->getContext();
+                      Type* operandType = operand->getType();
+
+                      Constant* newConstant = nullptr;
+                      if (operandType->isPointerTy() && cast<PointerType>(operandType)->getElementType()->isIntegerTy()) {
+                          newConstant = ConstantExpr::getIntToPtr(constValue, operandType);
+                      } else {
+                          // TODO: non integer types
+                          newConstant = constValue;
+                      }
+
+                      if (newConstant) {
+                          errs() << "\nbefore\n";
+                          callinst->print(errs());
+                          callinst->setOperand(i, newConstant);
+                          errs() << "\nafter\n";
+                          callinst->print(errs());
+                          errs() << "-\n";
+                      } else {
+                          errs() << "Failed to create a new constant for operand type: " << *operandType << "\n";
+                      }
+                }
             }
-          }
+
         }
+    }
+}
+
+
+        // TODO: replacing constants for return inst
 
       }
     }

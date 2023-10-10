@@ -14,27 +14,27 @@ define dso_local void @CAT_execution(i32 %0) local_unnamed_addr #0 {
   %2 = call i8* @CAT_new(i64 noundef 1) #3
   %3 = call i8* @CAT_new(i64 noundef 2) #3
   %4 = call i8* @CAT_new(i64 noundef 42) #3
-  %5 = call i64 @CAT_get(i8* noundef %2) #3
+  %5 = call i64 @CAT_get(i8* noundef inttoptr (i64 1 to i8*)) #3
   %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([17 x i8], [17 x i8]* @.str, i64 0, i64 0), i64 noundef %5)
-  %7 = call i64 @CAT_get(i8* noundef %3) #3
+  %7 = call i64 @CAT_get(i8* noundef inttoptr (i64 2 to i8*)) #3
   %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([17 x i8], [17 x i8]* @.str.1, i64 0, i64 0), i64 noundef %7)
-  %9 = call i64 @CAT_get(i8* noundef %4) #3
+  %9 = call i64 @CAT_get(i8* noundef inttoptr (i64 42 to i8*)) #3
   %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([17 x i8], [17 x i8]* @.str.2, i64 0, i64 0), i64 noundef %9)
   call void @CAT_set(i8* noundef %4, i64 noundef 0) #3
-  %11 = call i64 @CAT_get(i8* noundef %2) #3
+  %11 = call i64 @CAT_get(i8* noundef inttoptr (i64 1 to i8*)) #3
   %12 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([17 x i8], [17 x i8]* @.str, i64 0, i64 0), i64 noundef %11)
-  %13 = call i64 @CAT_get(i8* noundef %3) #3
+  %13 = call i64 @CAT_get(i8* noundef inttoptr (i64 2 to i8*)) #3
   %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([17 x i8], [17 x i8]* @.str.1, i64 0, i64 0), i64 noundef %13)
   %15 = call i64 @CAT_get(i8* noundef %4) #3
   %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([17 x i8], [17 x i8]* @.str.2, i64 0, i64 0), i64 noundef %15)
-  call void @CAT_add(i8* noundef %4, i8* noundef %2, i8* noundef %3) #3
-  %17 = call i64 @CAT_get(i8* noundef %2) #3
+  call void @CAT_add(i8* noundef %4, i8* noundef inttoptr (i64 1 to i8*), i8* noundef inttoptr (i64 2 to i8*)) #3
+  %17 = call i64 @CAT_get(i8* noundef inttoptr (i64 1 to i8*)) #3
   %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([17 x i8], [17 x i8]* @.str, i64 0, i64 0), i64 noundef %17)
-  %19 = call i64 @CAT_get(i8* noundef %3) #3
+  %19 = call i64 @CAT_get(i8* noundef inttoptr (i64 2 to i8*)) #3
   %20 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([17 x i8], [17 x i8]* @.str.1, i64 0, i64 0), i64 noundef %19)
   %21 = call i64 @CAT_get(i8* noundef %4) #3
   %22 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([17 x i8], [17 x i8]* @.str.2, i64 0, i64 0), i64 noundef %21)
-  call void @CAT_sub(i8* noundef %4, i8* noundef %2, i8* noundef %3) #3
+  call void @CAT_sub(i8* noundef %4, i8* noundef inttoptr (i64 1 to i8*), i8* noundef inttoptr (i64 2 to i8*)) #3
   %23 = call i64 @CAT_get(i8* noundef %4) #3
   %24 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([17 x i8], [17 x i8]* @.str.2, i64 0, i64 0), i64 noundef %23)
   ret void

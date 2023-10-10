@@ -11,10 +11,10 @@ define dso_local i32 @main(i32 noundef %0, i8** nocapture noundef readnone %1) l
   %3 = call i8* @CAT_new(i64 noundef 5) #3
   %4 = call i8* @CAT_new(i64 noundef 8) #3
   %5 = call i8* @CAT_new(i64 noundef 0) #3
-  call void @CAT_add(i8* noundef %5, i8* noundef %3, i8* noundef %4) #3
+  call void @CAT_add(i8* noundef %5, i8* noundef inttoptr (i64 5 to i8*), i8* noundef inttoptr (i64 8 to i8*)) #3
   call void @CAT_set(i8* noundef %3, i64 noundef 3) #3
   %6 = call i64 @CAT_get(i8* noundef %5) #3
-  call void @CAT_sub(i8* noundef %5, i8* noundef %3, i8* noundef %4) #3
+  call void @CAT_sub(i8* noundef %5, i8* noundef %3, i8* noundef inttoptr (i64 8 to i8*)) #3
   %7 = call i64 @CAT_variables() #3
   %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i64 0, i64 0), i64 noundef %7)
   %9 = call i64 @CAT_cost() #3

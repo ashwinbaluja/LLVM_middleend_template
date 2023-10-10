@@ -22,23 +22,23 @@ define dso_local void @CAT_execution(i32 noundef %0) local_unnamed_addr #0 {
   br i1 %6, label %7, label %8
 
 7:                                                ; preds = %1
-  call void @CAT_add(i8* noundef %2, i8* noundef %3, i8* noundef %4) #3
-  call void @CAT_sub(i8* noundef %4, i8* noundef %3, i8* noundef %2) #3
+  call void @CAT_add(i8* noundef %2, i8* noundef inttoptr (i64 8 to i8*), i8* noundef inttoptr (i64 8 to i8*)) #3
+  call void @CAT_sub(i8* noundef %4, i8* noundef inttoptr (i64 8 to i8*), i8* noundef %2) #3
   br label %8
 
 8:                                                ; preds = %7, %1
   %9 = call i64 @CAT_get(i8* noundef %2) #3
   %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %9)
-  %11 = call i64 @CAT_get(i8* noundef %3) #3
+  %11 = call i64 @CAT_get(i8* noundef inttoptr (i64 8 to i8*)) #3
   %12 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %11)
   %13 = call i64 @CAT_get(i8* noundef %4) #3
   %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %13)
   %15 = call i64 @CAT_get(i8* noundef %5) #3
   %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.3, i64 0, i64 0), i64 noundef %15)
-  call void @CAT_add(i8* noundef %2, i8* noundef %3, i8* noundef %4) #3
+  call void @CAT_add(i8* noundef %2, i8* noundef inttoptr (i64 8 to i8*), i8* noundef %4) #3
   %17 = call i64 @CAT_get(i8* noundef %2) #3
   %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %17)
-  %19 = call i64 @CAT_get(i8* noundef %3) #3
+  %19 = call i64 @CAT_get(i8* noundef inttoptr (i64 8 to i8*)) #3
   %20 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %19)
   %21 = call i64 @CAT_get(i8* noundef %4) #3
   %22 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %21)
@@ -54,7 +54,7 @@ define dso_local void @CAT_execution(i32 noundef %0) local_unnamed_addr #0 {
 28:                                               ; preds = %26, %8
   %29 = call i64 @CAT_get(i8* noundef %2) #3
   %30 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %29)
-  %31 = call i64 @CAT_get(i8* noundef %3) #3
+  %31 = call i64 @CAT_get(i8* noundef inttoptr (i64 8 to i8*)) #3
   %32 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %31)
   %33 = call i64 @CAT_get(i8* noundef %4) #3
   %34 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %33)

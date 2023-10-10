@@ -63,7 +63,7 @@ define dso_local void @CAT_execution(i32 noundef %0) local_unnamed_addr #0 {
 
 24:                                               ; preds = %1
   %25 = call i8* @CAT_new(i64 noundef 5) #3
-  %26 = call i64 @CAT_get(i8* noundef %25) #3
+  %26 = call i64 @CAT_get(i8* noundef inttoptr (i64 5 to i8*)) #3
   %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %26)
   br label %3
 }

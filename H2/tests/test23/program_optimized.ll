@@ -12,18 +12,18 @@ target triple = "x86_64-unknown-linux-gnu"
 ; Function Attrs: nounwind uwtable
 define dso_local void @CAT_execution(i32 %0) local_unnamed_addr #0 {
   %2 = call i8* @CAT_new(i64 noundef 5) #3
-  %3 = call i64 @CAT_get(i8* noundef %2) #3
+  %3 = call i64 @CAT_get(i8* noundef inttoptr (i64 5 to i8*)) #3
   %4 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %3)
   %5 = call i8* @CAT_new(i64 noundef 8) #3
-  %6 = call i64 @CAT_get(i8* noundef %5) #3
+  %6 = call i64 @CAT_get(i8* noundef inttoptr (i64 8 to i8*)) #3
   %7 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %6)
   %8 = call i8* @CAT_new(i64 noundef 42) #3
-  %9 = call i64 @CAT_get(i8* noundef %8) #3
+  %9 = call i64 @CAT_get(i8* noundef inttoptr (i64 42 to i8*)) #3
   %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %9)
-  call void @CAT_add(i8* noundef %8, i8* noundef %2, i8* noundef %5) #3
+  call void @CAT_add(i8* noundef %8, i8* noundef inttoptr (i64 5 to i8*), i8* noundef inttoptr (i64 8 to i8*)) #3
   %11 = call i64 @CAT_get(i8* noundef %8) #3
   %12 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %11)
-  call void @CAT_sub(i8* noundef %8, i8* noundef %2, i8* noundef %5) #3
+  call void @CAT_sub(i8* noundef %8, i8* noundef inttoptr (i64 5 to i8*), i8* noundef inttoptr (i64 8 to i8*)) #3
   %13 = call i64 @CAT_get(i8* noundef %8) #3
   %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %13)
   call void @CAT_set(i8* noundef %8, i64 noundef 5) #3

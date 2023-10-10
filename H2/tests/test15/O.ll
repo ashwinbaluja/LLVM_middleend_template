@@ -12,8 +12,8 @@ define dso_local void @myF() local_unnamed_addr #0 {
   %1 = call i8* @CAT_new(i64 noundef 5) #3
   %2 = call i8* @CAT_new(i64 noundef 6) #3
   %3 = call i8* @CAT_new(i64 noundef 0) #3
-  call void @CAT_add(i8* noundef %3, i8* noundef %1, i8* noundef %2) #3
-  call void @CAT_sub(i8* noundef %3, i8* noundef %3, i8* noundef %1) #3
+  call void @CAT_add(i8* noundef %3, i8* noundef inttoptr (i64 5 to i8*), i8* noundef inttoptr (i64 6 to i8*)) #3
+  call void @CAT_sub(i8* noundef %3, i8* noundef %3, i8* noundef inttoptr (i64 5 to i8*)) #3
   %4 = call i64 @CAT_get(i8* noundef %3) #3
   %5 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str, i64 0, i64 0), i64 noundef %4)
   call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
