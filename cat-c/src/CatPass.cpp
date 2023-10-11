@@ -10,11 +10,15 @@
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
 #include "llvm/Transforms/Utils/BasicBlockUtils.h"
+#include "llvm/IR/IRBuilder.h"
+#include "llvm/IR/Type.h"
+#include "llvm/IR/LLVMContext.h"
 
 #include <algorithm>
 #include <map>
 #include <set>
 #include <string>
+#include <vector>
 
 using namespace llvm;
 using namespace std;
@@ -51,6 +55,8 @@ struct CAT : public FunctionPass {
     var_to_inst = {};
     in = {};
     out = {};
+    map<Instruction *, Value *> constants = {};
+
 
     for (auto &b : F) {
       for (auto &inst : b) {
@@ -202,10 +208,11 @@ struct CAT : public FunctionPass {
 
     } while (prev_out != out);
 
-    map<Instruction *, Value *> constants = {};
 
     for (auto &b : F) {
       map<Instruction *, Value *> changes = {};
+      map<CallInst *, map<int, ConstantInt*>> operandChanges = {};
+
       for (auto &inst : b) {
         errs() << "\n\nCONSTANTS---\n";
 
@@ -238,7 +245,9 @@ struct CAT : public FunctionPass {
                 break;
               }
             }
+            CallInst* killed = NULL;
             if (!flag) {
+              killed = cast<CallInst>(constant.first);
               eraseQueue.insert(constant.first);
               errs() << "\n";
               inst.print(errs());
@@ -246,7 +255,33 @@ struct CAT : public FunctionPass {
               constant.first->print(errs());
               errs() << "\n";
             }
+
+            if (!flag && callinst->arg_size() > 1) {
+              bool correct1 = false;
+              bool correct2 = false;
+              for (auto &c: constants){
+                if (c.first == callinst->getOperand(1)){
+                  correct1 = true;
+                }
+                if (c.first == callinst->getOperand(2)){
+                  correct2 = true;
+                }
+              }
+              bool bothConstants = correct1 && correct2;
+              
+              if (bothConstants) {
+                if (callinst->getOperand(0) == callinst->getOperand(1)){
+                  eraseQueue.erase(constant.first);
+                }
+                if (callinst->getOperand(0) == callinst->getOperand(2)){
+                  eraseQueue.erase(constant.first);
+                }
+              }
+            }
           }
+
+
+
         }
 
         for (auto &erased : eraseQueue) {
@@ -257,6 +292,7 @@ struct CAT : public FunctionPass {
           callinst->print(errs());
           string name = callinst->getCalledFunction()->getName().str();
           errs() << "\nvals\n";
+
           for (int i = 0; i < callinst->arg_size(); i++) {
             Value *val = callinst->getOperand(i);
             errs() << "\n   val: ";
@@ -283,9 +319,13 @@ struct CAT : public FunctionPass {
                   errs() << "catgetfound";
                   changes.insert({callinst, constval});
                   errs() << b;
-                } else {
-                  if (i > 0) {
-                    callinst->setOperand(i, constval);
+                } else if (name == "CAT_add" || name == "CAT_sub") {
+                  if (i == 0) continue;
+                  if (operandChanges.find(callinst) == operandChanges.end()) {
+                    map<int, ConstantInt*> newmap = {{i, constval}};
+                    operandChanges.insert({callinst, newmap});
+                  } else {
+                    operandChanges[callinst].insert({i, constval});
                   }
                 }
                 errs() << "-\n";
@@ -294,10 +334,64 @@ struct CAT : public FunctionPass {
           }
         }
       }
+
+    Module *M = F.getParent();
+    Function *CATSetFunc = M->getFunction("CAT_set");
+    IRBuilder<> builder(&b);
+    LLVMContext &context = b.getContext();
+
+      for (auto const &x : operandChanges) {
+        x.first->print(errs());
+        errs() << x.second.size();
+        errs() << "~\n";
+        if (x.second.size() == 2) {
+          string name = x.first->getCalledFunction()->getName().str();
+
+          auto it = x.second.find(1);
+          auto it2 = x.second.find(2);
+          builder.SetInsertPoint(x.first);
+          if (name == "CAT_add"){
+            Value *arg1 = x.first->getOperand(0); 
+            Value *arg2 = ConstantInt::get(Type::getInt64Ty(context), it->second->getSExtValue() + it2->second->getSExtValue());
+            CallInst *call = builder.CreateCall(CATSetFunc, {arg1, arg2});
+            x.first->eraseFromParent();
+
+          }
+          else if (name == "CAT_sub"){
+            Value *arg1 = x.first->getOperand(0);
+            Value *arg2 = ConstantInt::get(Type::getInt64Ty(context), it->second->getSExtValue() - it2->second->getSExtValue());
+            CallInst *call = builder.CreateCall(CATSetFunc, {arg1, arg2});
+            x.first->eraseFromParent();
+          }
+        }
+        else if (x.second.size() == 1) {
+          builder.SetInsertPoint(x.first);
+          string name = x.first->getCalledFunction()->getName().str();
+          for (auto const &y : x.second) {
+            errs() << y.first << "^^^^";
+            if (y.second->getSExtValue() == 0){
+              if (name == "CAT_add") {
+                Value *arg1 = x.first->getOperand(0);
+                Value *arg2 = y.first == 1 ? x.first->getOperand(2) : x.first->getOperand(1);
+                CallInst *call = builder.CreateCall(CATSetFunc, {arg1, arg2});
+                x.first->eraseFromParent();
+              }
+              else if (name == "CAT_sub" && y.first == 2){
+                Value *arg1 = x.first->getOperand(0);
+                Value *arg2 = x.first->getOperand(1);
+                CallInst *call = builder.CreateCall(CATSetFunc, {arg1, arg2});
+                x.first->eraseFromParent();
+              }
+            }
+          }
+        }
+      }
+
+
       // for (auto const& instcount : changes) {
       for (auto const &x : changes) {
         BasicBlock::iterator ii(x.first);
-        errs() << "\n\n\n\n";
+        errs() << "\n\n\n\n$$$$$$$$";
         x.first->print(errs());
         ReplaceInstWithValue(b.getInstList(), ii, x.second);
         x.second->print(errs());
