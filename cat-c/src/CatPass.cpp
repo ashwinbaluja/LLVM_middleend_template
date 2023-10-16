@@ -234,7 +234,7 @@ struct CAT : public FunctionPass {
           } else if (callinst->getCalledFunction()->getName() == "CAT_set" &&
                      isa<ConstantInt>(callinst->getOperand(1))) {
             constants.insert({&inst, cast<Value>(callinst->getOperand(0))});
-            errs() << callinst->getOperand(0);
+            //errs() << callinst->getOperand(0);
           }
 
           for (auto const &constant : constants) {
@@ -249,11 +249,11 @@ struct CAT : public FunctionPass {
             if (!flag) {
               killed = cast<CallInst>(constant.first);
               eraseQueue.insert(constant.first);
-              errs() << "\n";
+              //errs() << "\n";
               inst.print(errs());
-              errs() << "this killed ";
+              //errs() << "this killed ";
               constant.first->print(errs());
-              errs() << "\n";
+              //errs() << "\n";
             }
 
             if (!flag && callinst->arg_size() > 1) {
@@ -284,20 +284,17 @@ struct CAT : public FunctionPass {
 
         }
 
-        for (auto &erased : eraseQueue) {
-          constants.erase(erased);
-        }
 
         if (callinst != NULL) {
           callinst->print(errs());
           string name = callinst->getCalledFunction()->getName().str();
-          errs() << "\nvals\n";
+          //errs() << "\nvals\n";
 
           for (int i = 0; i < callinst->arg_size(); i++) {
             Value *val = callinst->getOperand(i);
-            errs() << "\n   val: ";
+            //errs() << "\n   val: ";
             val->print(errs());
-            errs() << "\n";
+            //errs() << "\n";
 
             for (auto &constanttup : constants) {
               Instruction *constant = constanttup.first;
@@ -311,14 +308,11 @@ struct CAT : public FunctionPass {
                     (constanttup.second != NULL)
                         ? cast<ConstantInt>(constant->getOperand(1))
                         : cast<ConstantInt>(constant->getOperand(0));
-                errs() << "\nbefore\n";
-                errs() << b;
-                errs() << "\nafter\n";
+                //errs() << "\nbefore\n";
+                //errs() << "\nafter\n";
 
                 if (name == "CAT_get") {
-                  errs() << "catgetfound";
                   changes.insert({callinst, constval});
-                  errs() << b;
                 } else if (name == "CAT_add" || name == "CAT_sub") {
                   if (i == 0) continue;
                   if (operandChanges.find(callinst) == operandChanges.end()) {
@@ -328,22 +322,27 @@ struct CAT : public FunctionPass {
                     operandChanges[callinst].insert({i, constval});
                   }
                 }
-                errs() << "-\n";
+                //errs() << "-\n";
               }
             }
           }
+        }
+        for (auto &erased : eraseQueue) {
+          constants.erase(erased);
         }
       }
 
     Module *M = F.getParent();
     Function *CATSetFunc = M->getFunction("CAT_set");
+    Function *CATGetFunc = M->getFunction("CAT_get");
+
     IRBuilder<> builder(&b);
     LLVMContext &context = b.getContext();
 
       for (auto const &x : operandChanges) {
-        x.first->print(errs());
-        errs() << x.second.size();
-        errs() << "~\n";
+        //x.first->print(errs());
+        //errs() << x.second.size();
+        //errs() << "~\n";
         if (x.second.size() == 2) {
           string name = x.first->getCalledFunction()->getName().str();
 
@@ -372,13 +371,22 @@ struct CAT : public FunctionPass {
             if (y.second->getSExtValue() == 0){
               if (name == "CAT_add") {
                 Value *arg1 = x.first->getOperand(0);
+                //x.first->print(errs());
                 Value *arg2 = y.first == 1 ? x.first->getOperand(2) : x.first->getOperand(1);
+                if (!isa<ConstantInt>(arg2)) {
+                  CallInst *getcall = builder.CreateCall(CATGetFunc, {arg2});
+                  arg2 = cast<Value>(getcall);
+                }
                 CallInst *call = builder.CreateCall(CATSetFunc, {arg1, arg2});
                 x.first->eraseFromParent();
               }
               else if (name == "CAT_sub" && y.first == 2){
                 Value *arg1 = x.first->getOperand(0);
                 Value *arg2 = x.first->getOperand(1);
+                if (!isa<ConstantInt>(arg2)) {
+                  CallInst *getcall = builder.CreateCall(CATGetFunc, {arg2});
+                  arg2 = cast<Value>(getcall);
+                }
                 CallInst *call = builder.CreateCall(CATSetFunc, {arg1, arg2});
                 x.first->eraseFromParent();
               }
@@ -391,13 +399,14 @@ struct CAT : public FunctionPass {
       // for (auto const& instcount : changes) {
       for (auto const &x : changes) {
         BasicBlock::iterator ii(x.first);
-        errs() << "\n\n\n\n$$$$$$$$";
+        errs() << "\n";
         x.first->print(errs());
+        errs() << "|";
         ReplaceInstWithValue(b.getInstList(), ii, x.second);
         x.second->print(errs());
-        errs() << "\n\n\n\n";
       }
-      errs() << b << "\nfinalbasicblock\n";
+
+      errs() << b;
     }
 
     return false;
