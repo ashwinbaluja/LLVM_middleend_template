@@ -210,19 +210,22 @@ struct CAT : public FunctionPass {
 
 
     for (auto &b : F) {
+
+      errs() << "before";
+      errs() << b;
       map<Instruction *, Value *> changes = {};
       map<CallInst *, map<int, ConstantInt*>> operandChanges = {};
 
       for (auto &inst : b) {
-        errs() << "\n\nCONSTANTS---\n";
+        //errs() << "\n\nCONSTANTS---\n";
 
         for (auto const &consta : constants) {
-          consta.first->print(errs());
+          //consta.first->print(errs());
           if (consta.second != NULL) {
             consta.second->print(errs());
           }
         }
-        errs() << "\n!---!\n\n";
+        //errs() << "\n!---!\n\n";
 
         set<Instruction *> eraseQueue = {};
 
@@ -250,9 +253,9 @@ struct CAT : public FunctionPass {
               killed = cast<CallInst>(constant.first);
               eraseQueue.insert(constant.first);
               //errs() << "\n";
-              inst.print(errs());
+              //inst.print(errs());
               //errs() << "this killed ";
-              constant.first->print(errs());
+              //constant.first->print(errs());
               //errs() << "\n";
             }
 
@@ -286,14 +289,14 @@ struct CAT : public FunctionPass {
 
 
         if (callinst != NULL) {
-          callinst->print(errs());
+          //callinst->print(errs());
           string name = callinst->getCalledFunction()->getName().str();
           //errs() << "\nvals\n";
 
           for (int i = 0; i < callinst->arg_size(); i++) {
             Value *val = callinst->getOperand(i);
             //errs() << "\n   val: ";
-            val->print(errs());
+            //val->print(errs());
             //errs() << "\n";
 
             for (auto &constanttup : constants) {
@@ -406,6 +409,7 @@ struct CAT : public FunctionPass {
         x.second->print(errs());
       }
 
+      errs() << "\nafter";
       errs() << b;
     }
 
