@@ -208,6 +208,7 @@ struct CAT : public FunctionPass {
     } while (prev_out != out);
 
     map<BasicBlock *, map<Instruction *, Value *>> globalconstants = {};
+    map<BasicBlock *, map<Instruction *, Value *>> globalkilled = {};
 
     for (auto &b : F) {
       map<Instruction *, Value *> constants = {};
@@ -231,9 +232,12 @@ struct CAT : public FunctionPass {
             constantval = cast<Value>(map.first);
           }
 
+          Value* current;
+
           for (const auto &constant : constants) {
 
             Value *constantval2 = constant.second;
+            current = constantval2;
             if (constantval2 == NULL) {
               constantval2 = cast<Value>(constant.first);
             }
@@ -261,7 +265,40 @@ struct CAT : public FunctionPass {
           }
         }
       }
+
+      for (BasicBlock *pred : predecessors(&b)) {
+        for (const auto &map : globalkilled[pred]) {
+          Value *flag = NULL;
+          Value *constantval = map.second;
+
+          CallInst* calli = cast<CallInst>(map.first);
+
+          if (constantval == NULL) {
+            constantval = cast<Value>(map.first);
+          }
+          bool found = false;
+          for (const auto &map2 : globalconstants[pred]) {
+            Value *flag = NULL;
+            Value *constantval2 = map2.second;
+
+            CallInst* calli2 = cast<CallInst>(map2.first);
+
+            if (constantval2 == NULL) {
+              constantval2 = cast<Value>(map2.first);
+            }
+
+            if (constantval == constantval2) {
+              found = true;
+            }
+          }
+          if (!found) {
+            falseFinds.insert(constantval);
+          }
+        }
+      }
+
       set<Instruction*> eraseQ = {};
+
       for (auto const &inst : constants){
         Value* constantval = inst.second;
         if (constantval == NULL) {
@@ -407,11 +444,19 @@ struct CAT : public FunctionPass {
           }
         }
         for (auto &erased : eraseQueue) {
+          errs() << "\nendofblockkilling:";
+          erased -> print(errs());
+          if (globalkilled.find(&b) == globalkilled.end()) {
+            map<Instruction*, Value*> temp = {};
+            globalkilled.insert({&b, temp});
+          }
+          globalkilled[&b].insert({erased, constants[erased]});
           constants.erase(erased);
         }
 
         for (auto const &a : constants) {
-          errs() << "()()" << a.second;
+          errs() << "\nconstantatm";
+          a.first -> print(errs());
         }
       }
 
