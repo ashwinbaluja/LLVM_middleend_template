@@ -1,4 +1,4 @@
-; ModuleID = 'program.bc'
+; ModuleID = 'output_code_iter_1.bc'
 source_filename = "program.c"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
@@ -12,21 +12,16 @@ target triple = "x86_64-unknown-linux-gnu"
 ; Function Attrs: nounwind uwtable
 define dso_local void @CAT_execution(i32 %0) local_unnamed_addr #0 {
   %2 = call i8* @CAT_new(i64 noundef 5) #3
-  %3 = call i64 @CAT_get(i8* noundef %2) #3
-  %4 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %3)
-  %5 = call i8* @CAT_new(i64 noundef 8) #3
-  %6 = call i64 @CAT_get(i8* noundef %5) #3
-  %7 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %6)
-  %8 = call i8* @CAT_new(i64 noundef 42) #3
-  %9 = call i64 @CAT_get(i8* noundef %8) #3
-  %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %9)
-  call void @CAT_add(i8* noundef %8, i8* noundef %2, i8* noundef %5) #3
-  %11 = call i64 @CAT_get(i8* noundef %8) #3
-  %12 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %11)
-  call void @CAT_sub(i8* noundef %8, i8* noundef %2, i8* noundef %5) #3
-  %13 = call i64 @CAT_get(i8* noundef %8) #3
-  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef %13)
-  call void @CAT_set(i8* noundef %8, i64 noundef 5) #3
+  %3 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef 5)
+  %4 = call i8* @CAT_new(i64 noundef 8) #3
+  %5 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef 8)
+  %6 = call i8* @CAT_new(i64 noundef 42) #3
+  %7 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef 42)
+  call void @CAT_set(i8* %6, i64 13)
+  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef 13)
+  call void @CAT_set(i8* %6, i64 -3)
+  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.2, i64 0, i64 0), i64 noundef -3)
+  call void @CAT_set(i8* noundef %6, i64 noundef 5) #3
   ret void
 }
 
@@ -35,15 +30,6 @@ declare dso_local i8* @CAT_new(i64 noundef) local_unnamed_addr #1
 
 ; Function Attrs: nofree nounwind
 declare dso_local noundef i32 @printf(i8* nocapture noundef readonly, ...) local_unnamed_addr #2
-
-; Function Attrs: argmemonly nounwind
-declare dso_local i64 @CAT_get(i8* noundef) local_unnamed_addr #1
-
-; Function Attrs: argmemonly nounwind
-declare dso_local void @CAT_add(i8* noundef, i8* noundef, i8* noundef) local_unnamed_addr #1
-
-; Function Attrs: argmemonly nounwind
-declare dso_local void @CAT_sub(i8* noundef, i8* noundef, i8* noundef) local_unnamed_addr #1
 
 ; Function Attrs: argmemonly nounwind
 declare dso_local void @CAT_set(i8* noundef, i64 noundef) local_unnamed_addr #1

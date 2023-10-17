@@ -11,34 +11,22 @@ define dso_local i32 @main(i32 noundef %0, i8** nocapture noundef readnone %1) l
   %3 = call i8* @CAT_new(i64 noundef 5) #3
   %4 = call i8* @CAT_new(i64 noundef 8) #3
   %5 = call i8* @CAT_new(i64 noundef 0) #3
-  call void @CAT_add(i8* noundef %5, i8* noundef %3, i8* noundef %4) #3
+  call void @CAT_set(i8* %5, i64 13)
   call void @CAT_set(i8* noundef %3, i64 noundef 3) #3
-  %6 = call i64 @CAT_get(i8* noundef %5) #3
-  call void @CAT_sub(i8* noundef %5, i8* noundef %3, i8* noundef %4) #3
-  %7 = call i64 @CAT_variables() #3
-  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i64 0, i64 0), i64 noundef %7)
-  %9 = call i64 @CAT_cost() #3
-  %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i64 noundef %9)
+  call void @CAT_set(i8* %5, i64 -5)
+  %6 = call i64 @CAT_variables() #3
+  %7 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i64 0, i64 0), i64 noundef %6)
+  %8 = call i64 @CAT_cost() #3
+  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)
   call void @CAT_destroy(i8* noundef %3) #3
-  %11 = icmp eq i64 %6, 3
-  %12 = zext i1 %11 to i32
-  ret i32 %12
+  ret i32 0
 }
 
 ; Function Attrs: argmemonly nounwind
 declare dso_local i8* @CAT_new(i64 noundef) local_unnamed_addr #1
 
 ; Function Attrs: argmemonly nounwind
-declare dso_local void @CAT_add(i8* noundef, i8* noundef, i8* noundef) local_unnamed_addr #1
-
-; Function Attrs: argmemonly nounwind
 declare dso_local void @CAT_set(i8* noundef, i64 noundef) local_unnamed_addr #1
-
-; Function Attrs: argmemonly nounwind
-declare dso_local i64 @CAT_get(i8* noundef) local_unnamed_addr #1
-
-; Function Attrs: argmemonly nounwind
-declare dso_local void @CAT_sub(i8* noundef, i8* noundef, i8* noundef) local_unnamed_addr #1
 
 ; Function Attrs: nofree nounwind
 declare dso_local noundef i32 @printf(i8* nocapture noundef readonly, ...) local_unnamed_addr #2

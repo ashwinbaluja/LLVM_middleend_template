@@ -1,4 +1,4 @@
-; ModuleID = 'program.bc'
+; ModuleID = 'output_code_iter_0.bc'
 source_filename = "program.c"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
@@ -13,56 +13,54 @@ target triple = "x86_64-unknown-linux-gnu"
 ; Function Attrs: nounwind uwtable
 define dso_local void @CAT_execution(i32 noundef %0) local_unnamed_addr #0 {
   %2 = call i8* @CAT_new(i64 noundef 5) #4
-  %3 = call i64 @CAT_get(i8* noundef %2) #4
-  %4 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %3)
-  %5 = icmp sgt i32 %0, 0
-  call void @llvm.assume(i1 %5)
-  %6 = icmp ugt i32 %0, 10
-  %7 = icmp ugt i32 %0, 20
-  br label %17
+  %3 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef 5)
+  %4 = icmp sgt i32 %0, 0
+  call void @llvm.assume(i1 %4)
+  %5 = icmp ugt i32 %0, 10
+  %6 = icmp ugt i32 %0, 20
+  br label %15
 
-8:                                                ; preds = %27
-  %9 = call i64 @CAT_get(i8* noundef %25) #4
-  %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([15 x i8], [15 x i8]* @.str.3, i64 0, i64 0), i64 noundef %9)
-  %11 = call i64 @CAT_get(i8* noundef %24) #4
-  %12 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %11)
-  call void @CAT_sub(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
-  %13 = call i64 @CAT_get(i8* noundef %24) #4
-  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %13)
-  call void @CAT_set(i8* noundef %24, i64 noundef 42) #4
-  %15 = call i64 @CAT_get(i8* noundef %24) #4
-  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %15)
+7:                                                ; preds = %25
+  %8 = call i64 @CAT_get(i8* noundef %23) #4
+  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([15 x i8], [15 x i8]* @.str.3, i64 0, i64 0), i64 noundef %8)
+  %10 = call i64 @CAT_get(i8* noundef %22) #4
+  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)
+  call void @CAT_sub(i8* noundef %22, i8* noundef %22, i8* noundef %22) #4
+  %12 = call i64 @CAT_get(i8* noundef %22) #4
+  %13 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %12)
+  call void @CAT_set(i8* noundef %22, i64 noundef 42) #4
+  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef 42)
   ret void
 
-17:                                               ; preds = %1, %27
-  %18 = phi i32 [ 0, %1 ], [ %30, %27 ]
-  %19 = call i8* @CAT_new(i64 noundef 8) #4
-  br i1 %6, label %20, label %21
+15:                                               ; preds = %1, %25
+  %16 = phi i32 [ 0, %1 ], [ %28, %25 ]
+  %17 = call i8* @CAT_new(i64 noundef 8) #4
+  br i1 %5, label %18, label %19
 
-20:                                               ; preds = %17
-  call void @CAT_add(i8* noundef %19, i8* noundef %19, i8* noundef %19) #4
-  br label %21
+18:                                               ; preds = %15
+  call void @CAT_set(i8* %17, i64 16)
+  br label %19
 
-21:                                               ; preds = %20, %17
-  %22 = call i64 @CAT_get(i8* noundef %19) #4
-  %23 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %22)
-  %24 = call i8* @CAT_new(i64 noundef 0) #4
-  %25 = call i8* @CAT_new(i64 noundef 42) #4
-  call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %19) #4
-  call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %24) #4
-  call void @CAT_add(i8* noundef %24, i8* noundef %24, i8* noundef %24) #4
-  br i1 %7, label %26, label %27
+19:                                               ; preds = %18, %15
+  %20 = call i64 @CAT_get(i8* noundef %17) #4
+  %21 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %20)
+  %22 = call i8* @CAT_new(i64 noundef 0) #4
+  %23 = call i8* @CAT_new(i64 noundef 42) #4
+  call void @CAT_add(i8* noundef %22, i8* noundef %2, i8* noundef %17) #4
+  call void @CAT_add(i8* noundef %22, i8* noundef %2, i8* noundef %22) #4
+  call void @CAT_add(i8* noundef %22, i8* noundef %22, i8* noundef %22) #4
+  br i1 %6, label %24, label %25
 
-26:                                               ; preds = %21
-  call void @CAT_add(i8* noundef %24, i8* noundef %2, i8* noundef %2) #4
-  br label %27
+24:                                               ; preds = %19
+  call void @CAT_set(i8* %22, i64 10)
+  br label %25
 
-27:                                               ; preds = %26, %21
-  %28 = call i64 @CAT_get(i8* noundef %24) #4
-  %29 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %28)
-  %30 = add nuw i32 %18, 1
-  %31 = icmp eq i32 %30, %0
-  br i1 %31, label %8, label %17, !llvm.loop !3
+25:                                               ; preds = %24, %19
+  %26 = call i64 @CAT_get(i8* noundef %22) #4
+  %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %26)
+  %28 = add nuw nsw i32 %16, 1
+  %29 = icmp eq i32 %28, %0
+  br i1 %29, label %7, label %15, !llvm.loop !3
 }
 
 ; Function Attrs: argmemonly nounwind

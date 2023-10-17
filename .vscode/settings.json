@@ -16,6 +16,7 @@
         "typeinfo": "cpp",
         "functional": "cpp",
         "sstream": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "random": "cpp"
     }
 }

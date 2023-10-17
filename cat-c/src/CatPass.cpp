@@ -224,15 +224,15 @@ struct CAT : public FunctionPass {
           Value *flag = NULL;
           Value *constantval = map.second;
 
-          CallInst* calli = cast<CallInst>(map.first);
-          Value *constop = (calli->arg_size() == 1) ? calli->getOperand(0) : calli->getOperand(1);
-
+          CallInst *calli = cast<CallInst>(map.first);
+          Value *constop = (calli->arg_size() == 1) ? calli->getOperand(0)
+                                                    : calli->getOperand(1);
 
           if (constantval == NULL) {
             constantval = cast<Value>(map.first);
           }
 
-          Value* current;
+          Value *current;
 
           for (const auto &constant : constants) {
 
@@ -243,8 +243,9 @@ struct CAT : public FunctionPass {
             }
 
             if (constantval2 == constantval) {
-              CallInst* calli2 = cast<CallInst>(constant.first);
-              flag = (calli2->arg_size() == 1) ? calli2->getOperand(0) : calli2->getOperand(1);
+              CallInst *calli2 = cast<CallInst>(constant.first);
+              flag = (calli2->arg_size() == 1) ? calli2->getOperand(0)
+                                               : calli2->getOperand(1);
               break;
             }
           }
@@ -254,8 +255,8 @@ struct CAT : public FunctionPass {
                 cast<ConstantInt>(flag)->getSExtValue()) {
               falseFinds.insert(constantval);
               errs() << "\n found bad: ";
-              map.first -> print(errs());
-              flag -> print(errs());
+              map.first->print(errs());
+              flag->print(errs());
               errs() << "\n";
             } else {
               constants.insert({map.first, map.second});
@@ -271,7 +272,7 @@ struct CAT : public FunctionPass {
           Value *flag = NULL;
           Value *constantval = map.second;
 
-          CallInst* calli = cast<CallInst>(map.first);
+          CallInst *calli = cast<CallInst>(map.first);
 
           if (constantval == NULL) {
             constantval = cast<Value>(map.first);
@@ -281,7 +282,7 @@ struct CAT : public FunctionPass {
             Value *flag = NULL;
             Value *constantval2 = map2.second;
 
-            CallInst* calli2 = cast<CallInst>(map2.first);
+            CallInst *calli2 = cast<CallInst>(map2.first);
 
             if (constantval2 == NULL) {
               constantval2 = cast<Value>(map2.first);
@@ -297,15 +298,15 @@ struct CAT : public FunctionPass {
         }
       }
 
-      set<Instruction*> eraseQ = {};
+      set<Instruction *> eraseQ = {};
 
-      for (auto const &inst : constants){
-        Value* constantval = inst.second;
+      for (auto const &inst : constants) {
+        Value *constantval = inst.second;
         if (constantval == NULL) {
           constantval = cast<Value>(inst.first);
         }
-        for (auto &v: falseFinds){
-          if (v == constantval){
+        for (auto &v : falseFinds) {
+          if (v == constantval) {
             eraseQ.insert(inst.first);
           }
         }
@@ -445,9 +446,9 @@ struct CAT : public FunctionPass {
         }
         for (auto &erased : eraseQueue) {
           errs() << "\nendofblockkilling:";
-          erased -> print(errs());
+          erased->print(errs());
           if (globalkilled.find(&b) == globalkilled.end()) {
-            map<Instruction*, Value*> temp = {};
+            map<Instruction *, Value *> temp = {};
             globalkilled.insert({&b, temp});
           }
           globalkilled[&b].insert({erased, constants[erased]});
@@ -456,7 +457,7 @@ struct CAT : public FunctionPass {
 
         for (auto const &a : constants) {
           errs() << "\nconstantatm";
-          a.first -> print(errs());
+          a.first->print(errs());
         }
       }
 

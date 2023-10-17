@@ -12,37 +12,33 @@ target triple = "x86_64-unknown-linux-gnu"
 ; Function Attrs: nounwind uwtable
 define dso_local void @CAT_execution(i32 noundef %0) local_unnamed_addr #0 {
   %2 = call i8* @CAT_new(i64 noundef 5) #3
-  %3 = call i64 @CAT_get(i8* noundef %2) #3
-  %4 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef %3)
-  %5 = call i8* @CAT_new(i64 noundef 8) #3
-  %6 = icmp sgt i32 %0, 10
-  br i1 %6, label %7, label %8
+  %3 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i64 noundef 5)
+  %4 = call i8* @CAT_new(i64 noundef 8) #3
+  %5 = icmp sgt i32 %0, 10
+  br i1 %5, label %6, label %7
 
-7:                                                ; preds = %1
-  call void @CAT_add(i8* noundef %5, i8* noundef %5, i8* noundef %5) #3
-  br label %8
+6:                                                ; preds = %1
+  call void @CAT_set(i8* %4, i64 16)
+  br label %7
 
-8:                                                ; preds = %7, %1
-  %9 = call i64 @CAT_get(i8* noundef %5) #3
-  %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %9)
+7:                                                ; preds = %6, %1
+  %8 = call i64 @CAT_get(i8* noundef %4) #3
+  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)
+  %10 = call i8* @CAT_new(i64 noundef 0) #3
+  call void @CAT_add(i8* noundef %10, i8* noundef %2, i8* noundef %4) #3
   %11 = call i8* @CAT_new(i64 noundef 0) #3
-  call void @CAT_add(i8* noundef %11, i8* noundef %2, i8* noundef %5) #3
+  call void @CAT_add(i8* noundef %11, i8* noundef %2, i8* noundef %10) #3
   %12 = call i8* @CAT_new(i64 noundef 0) #3
-  call void @CAT_add(i8* noundef %12, i8* noundef %2, i8* noundef %11) #3
+  call void @CAT_add(i8* noundef %12, i8* noundef %10, i8* noundef %11) #3
   %13 = call i8* @CAT_new(i64 noundef 0) #3
-  call void @CAT_add(i8* noundef %13, i8* noundef %11, i8* noundef %12) #3
   %14 = call i8* @CAT_new(i64 noundef 0) #3
-  %15 = call i8* @CAT_new(i64 noundef 0) #3
-  call void @CAT_add(i8* noundef %14, i8* noundef %2, i8* noundef %2) #3
-  call void @CAT_add(i8* noundef %15, i8* noundef %2, i8* noundef %2) #3
-  %16 = call i64 @CAT_get(i8* noundef %15) #3
-  %17 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %16)
-  call void @CAT_sub(i8* noundef %15, i8* noundef %15, i8* noundef %2) #3
-  %18 = call i64 @CAT_get(i8* noundef %15) #3
-  %19 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %18)
-  call void @CAT_set(i8* noundef %15, i64 noundef 42) #3
-  %20 = call i64 @CAT_get(i8* noundef %15) #3
-  %21 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef %20)
+  call void @CAT_set(i8* %13, i64 10)
+  call void @CAT_set(i8* %14, i64 10)
+  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef 10)
+  call void @CAT_set(i8* %14, i64 5)
+  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef 5)
+  call void @CAT_set(i8* noundef %14, i64 noundef 42) #3
+  %17 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i64 noundef 42)
   ret void
 }
 
@@ -57,9 +53,6 @@ declare dso_local i64 @CAT_get(i8* noundef) local_unnamed_addr #1
 
 ; Function Attrs: argmemonly nounwind
 declare dso_local void @CAT_add(i8* noundef, i8* noundef, i8* noundef) local_unnamed_addr #1
-
-; Function Attrs: argmemonly nounwind
-declare dso_local void @CAT_sub(i8* noundef, i8* noundef, i8* noundef) local_unnamed_addr #1
 
 ; Function Attrs: argmemonly nounwind
 declare dso_local void @CAT_set(i8* noundef, i64 noundef) local_unnamed_addr #1

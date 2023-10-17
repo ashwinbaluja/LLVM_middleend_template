@@ -1,14 +1,18 @@
  i8* @CAT_new
  i8* @CAT_new
  i8* @CAT_new
- void @CAT_add
- void @CAT_sub
- i64 @CAT_get
  void @CAT_set
- i64 @CAT_get
+ void @CAT_set
+ void @CAT_set
  i8* @CAT_new
- void @CAT_add
- void @CAT_sub
+ i8* @CAT_new
+ i8* @CAT_new
+ void @CAT_set
+ void @CAT_set
+ void @CAT_set
+ i8* @CAT_new
+ void @CAT_set
+ void @CAT_set
  void @CAT_set
  i64 @CAT_variables
  i64 @CAT_cost
