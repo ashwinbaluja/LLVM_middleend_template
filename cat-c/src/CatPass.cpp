@@ -2,17 +2,17 @@
 #include "llvm/IR/CFG.h"
 #include "llvm/IR/Constants.h"
 #include "llvm/IR/Function.h"
+#include "llvm/IR/IRBuilder.h"
 #include "llvm/IR/InstVisitor.h"
 #include "llvm/IR/Instruction.h"
+#include "llvm/IR/LLVMContext.h"
 #include "llvm/IR/LegacyPassManager.h"
+#include "llvm/IR/Type.h"
 #include "llvm/Pass.h"
 #include "llvm/Support/Casting.h"
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
 #include "llvm/Transforms/Utils/BasicBlockUtils.h"
-#include "llvm/IR/IRBuilder.h"
-#include "llvm/IR/Type.h"
-#include "llvm/IR/LLVMContext.h"
 
 #include <algorithm>
 #include <map>
@@ -55,10 +55,9 @@ struct CAT : public FunctionPass {
     var_to_inst = {};
     in = {};
     out = {};
-    map<Instruction *, Value *> constants = {};
-
 
     for (auto &b : F) {
+
       for (auto &inst : b) {
         if (!isa<Instruction>(&inst)) {
           continue;
@@ -208,24 +207,104 @@ struct CAT : public FunctionPass {
 
     } while (prev_out != out);
 
+    map<BasicBlock *, map<Instruction *, Value *>> globalconstants = {};
 
     for (auto &b : F) {
+      map<Instruction *, Value *> constants = {};
+      set<Value *> falseFinds = {};
 
-      errs() << "before";
-      errs() << b;
-      map<Instruction *, Value *> changes = {};
-      map<CallInst *, map<int, ConstantInt*>> operandChanges = {};
+      for (BasicBlock *pred : predecessors(&b)) {
+        errs() << pred << "basicblock";
+        if (globalconstants.find(pred) == globalconstants.end()) {
+          continue;
+        }
+        for (const auto &map : globalconstants[pred]) {
 
-      for (auto &inst : b) {
-        //errs() << "\n\nCONSTANTS---\n";
+          Value *flag = NULL;
+          Value *constantval = map.second;
 
-        for (auto const &consta : constants) {
-          //consta.first->print(errs());
-          if (consta.second != NULL) {
-            consta.second->print(errs());
+          CallInst* calli = cast<CallInst>(map.first);
+          Value *constop = (calli->arg_size() == 1) ? calli->getOperand(0) : calli->getOperand(1);
+
+
+          if (constantval == NULL) {
+            constantval = cast<Value>(map.first);
+          }
+
+          for (const auto &constant : constants) {
+
+            Value *constantval2 = constant.second;
+            if (constantval2 == NULL) {
+              constantval2 = cast<Value>(constant.first);
+            }
+
+            if (constantval2 == constantval) {
+              CallInst* calli2 = cast<CallInst>(constant.first);
+              flag = (calli2->arg_size() == 1) ? calli2->getOperand(0) : calli2->getOperand(1);
+              break;
+            }
+          }
+
+          if (flag != NULL) {
+            if (cast<ConstantInt>(constop)->getSExtValue() !=
+                cast<ConstantInt>(flag)->getSExtValue()) {
+              falseFinds.insert(constantval);
+              errs() << "\n found bad: ";
+              map.first -> print(errs());
+              flag -> print(errs());
+              errs() << "\n";
+            } else {
+              constants.insert({map.first, map.second});
+            }
+          } else {
+            constants.insert({map.first, map.second});
           }
         }
-        //errs() << "\n!---!\n\n";
+      }
+      set<Instruction*> eraseQ = {};
+      for (auto const &inst : constants){
+        Value* constantval = inst.second;
+        if (constantval == NULL) {
+          constantval = cast<Value>(inst.first);
+        }
+        for (auto &v: falseFinds){
+          if (v == constantval){
+            eraseQ.insert(inst.first);
+          }
+        }
+      }
+
+      for (auto &inst : eraseQ) {
+        errs() << "REMOVED\n\n";
+        inst->print(errs());
+        errs() << constants.size() << "->";
+        constants.erase(inst);
+        errs() << constants.size();
+      }
+
+      map<Instruction *, Value *> changes = {};
+      map<CallInst *, map<int, ConstantInt *>> operandChanges = {};
+
+      errs() << "\nconstant";
+      for (auto &consta : constants) {
+        consta.first->print(errs());
+        errs() << consta.second;
+        errs() << "\n";
+      }
+      errs() << "----\n";
+      errs() << b;
+      errs() << "endconstant\n";
+
+      for (auto &inst : b) {
+        // errs() << "\n\nCONSTANTS---\n";
+
+        for (auto const &consta : constants) {
+          // consta.first->print(errs());
+          if (consta.second != NULL) {
+            // consta.second->print(errs());
+          }
+        }
+        // errs() << "\n!---!\n\n";
 
         set<Instruction *> eraseQueue = {};
 
@@ -237,7 +316,7 @@ struct CAT : public FunctionPass {
           } else if (callinst->getCalledFunction()->getName() == "CAT_set" &&
                      isa<ConstantInt>(callinst->getOperand(1))) {
             constants.insert({&inst, cast<Value>(callinst->getOperand(0))});
-            //errs() << callinst->getOperand(0);
+            // errs() << callinst->getOperand(0);
           }
 
           for (auto const &constant : constants) {
@@ -248,56 +327,52 @@ struct CAT : public FunctionPass {
                 break;
               }
             }
-            CallInst* killed = NULL;
+            CallInst *killed = NULL;
             if (!flag) {
               killed = cast<CallInst>(constant.first);
               eraseQueue.insert(constant.first);
-              //errs() << "\n";
-              //inst.print(errs());
-              //errs() << "this killed ";
-              //constant.first->print(errs());
-              //errs() << "\n";
+              // errs() << "\n";
+              // inst.print(errs());
+              // errs() << "this killed ";
+              // constant.first->print(errs());
+              // errs() << "\n";
             }
 
-            if (!flag && callinst->arg_size() > 1) {
-              bool correct1 = false;
-              bool correct2 = false;
-              for (auto &c: constants){
-                if (c.first == callinst->getOperand(1)){
-                  correct1 = true;
-                }
-                if (c.first == callinst->getOperand(2)){
-                  correct2 = true;
-                }
-              }
-              bool bothConstants = correct1 && correct2;
-              
-              if (bothConstants) {
-                if (callinst->getOperand(0) == callinst->getOperand(1)){
-                  eraseQueue.erase(constant.first);
-                }
-                if (callinst->getOperand(0) == callinst->getOperand(2)){
-                  eraseQueue.erase(constant.first);
-                }
-              }
-            }
+            // if (!flag && callinst->arg_size() > 1) {
+            //   bool correct1 = false;
+            //   bool correct2 = false;
+            //   for (auto &c : constants) {
+            //     if (c.first == callinst->getOperand(1)) {
+            //       correct1 = true;
+            //     }
+            //     if (c.first == callinst->getOperand(2)) {
+            //       correct2 = true;
+            //     }
+            //   }
+            //   bool bothConstants = correct1 && correct2;
+
+            //   if (bothConstants) {
+            //     if (callinst->getOperand(0) == callinst->getOperand(1)) {
+            //       eraseQueue.erase(constant.first);
+            //     }
+            //     if (callinst->getOperand(0) == callinst->getOperand(2)) {
+            //       eraseQueue.erase(constant.first);
+            //     }
+            //   }
+            // }
           }
-
-
-
         }
 
-
         if (callinst != NULL) {
-          //callinst->print(errs());
+          // callinst->print(errs());
           string name = callinst->getCalledFunction()->getName().str();
-          //errs() << "\nvals\n";
+          // errs() << "\nvals\n";
 
           for (int i = 0; i < callinst->arg_size(); i++) {
             Value *val = callinst->getOperand(i);
-            //errs() << "\n   val: ";
-            //val->print(errs());
-            //errs() << "\n";
+            // errs() << "\n   val: ";
+            // val->print(errs());
+            // errs() << "\n";
 
             for (auto &constanttup : constants) {
               Instruction *constant = constanttup.first;
@@ -311,21 +386,22 @@ struct CAT : public FunctionPass {
                     (constanttup.second != NULL)
                         ? cast<ConstantInt>(constant->getOperand(1))
                         : cast<ConstantInt>(constant->getOperand(0));
-                //errs() << "\nbefore\n";
-                //errs() << "\nafter\n";
+                // errs() << "\nbefore\n";
+                // errs() << "\nafter\n";
 
                 if (name == "CAT_get") {
                   changes.insert({callinst, constval});
                 } else if (name == "CAT_add" || name == "CAT_sub") {
-                  if (i == 0) continue;
+                  if (i == 0)
+                    continue;
                   if (operandChanges.find(callinst) == operandChanges.end()) {
-                    map<int, ConstantInt*> newmap = {{i, constval}};
+                    map<int, ConstantInt *> newmap = {{i, constval}};
                     operandChanges.insert({callinst, newmap});
                   } else {
                     operandChanges[callinst].insert({i, constval});
                   }
                 }
-                //errs() << "-\n";
+                // errs() << "-\n";
               }
             }
           }
@@ -333,61 +409,73 @@ struct CAT : public FunctionPass {
         for (auto &erased : eraseQueue) {
           constants.erase(erased);
         }
+
+        for (auto const &a : constants) {
+          errs() << "()()" << a.second;
+        }
       }
 
-    Module *M = F.getParent();
-    Function *CATSetFunc = M->getFunction("CAT_set");
-    Function *CATGetFunc = M->getFunction("CAT_get");
+      Module *M = F.getParent();
+      Function *CATSetFunc = M->getFunction("CAT_set");
+      Function *CATGetFunc = M->getFunction("CAT_get");
 
-    IRBuilder<> builder(&b);
-    LLVMContext &context = b.getContext();
+      IRBuilder<> builder(&b);
+      LLVMContext &context = b.getContext();
 
       for (auto const &x : operandChanges) {
-        //x.first->print(errs());
-        //errs() << x.second.size();
-        //errs() << "~\n";
+        // x.first->print(errs());
+        // errs() << x.second.size();
+        // errs() << "~\n";
         if (x.second.size() == 2) {
           string name = x.first->getCalledFunction()->getName().str();
 
           auto it = x.second.find(1);
           auto it2 = x.second.find(2);
           builder.SetInsertPoint(x.first);
-          if (name == "CAT_add"){
-            Value *arg1 = x.first->getOperand(0); 
-            Value *arg2 = ConstantInt::get(Type::getInt64Ty(context), it->second->getSExtValue() + it2->second->getSExtValue());
+          if (name == "CAT_add") {
+            Value *arg1 = x.first->getOperand(0);
+            Value *arg2 = ConstantInt::get(Type::getInt64Ty(context),
+                                           it->second->getSExtValue() +
+                                               it2->second->getSExtValue());
             CallInst *call = builder.CreateCall(CATSetFunc, {arg1, arg2});
             x.first->eraseFromParent();
 
-          }
-          else if (name == "CAT_sub"){
+          } else if (name == "CAT_sub") {
             Value *arg1 = x.first->getOperand(0);
-            Value *arg2 = ConstantInt::get(Type::getInt64Ty(context), it->second->getSExtValue() - it2->second->getSExtValue());
+            Value *arg2 = ConstantInt::get(Type::getInt64Ty(context),
+                                           it->second->getSExtValue() -
+                                               it2->second->getSExtValue());
             CallInst *call = builder.CreateCall(CATSetFunc, {arg1, arg2});
             x.first->eraseFromParent();
           }
-        }
-        else if (x.second.size() == 1) {
+        } else if (x.second.size() == 1) {
           builder.SetInsertPoint(x.first);
           string name = x.first->getCalledFunction()->getName().str();
           for (auto const &y : x.second) {
             errs() << y.first << "^^^^";
-            if (y.second->getSExtValue() == 0){
+            if (y.second->getSExtValue() == 0) {
               if (name == "CAT_add") {
                 Value *arg1 = x.first->getOperand(0);
-                //x.first->print(errs());
-                Value *arg2 = y.first == 1 ? x.first->getOperand(2) : x.first->getOperand(1);
+                // x.first->print(errs());
+                Value *arg2 = y.first == 1 ? x.first->getOperand(2)
+                                           : x.first->getOperand(1);
                 if (!isa<ConstantInt>(arg2)) {
                   CallInst *getcall = builder.CreateCall(CATGetFunc, {arg2});
+                  errs() << "\n";
+                  getcall->print(errs());
+                  errs() << "getinsertreplace\n";
                   arg2 = cast<Value>(getcall);
                 }
                 CallInst *call = builder.CreateCall(CATSetFunc, {arg1, arg2});
                 x.first->eraseFromParent();
-              }
-              else if (name == "CAT_sub" && y.first == 2){
+              } else if (name == "CAT_sub" && y.first == 2) {
                 Value *arg1 = x.first->getOperand(0);
                 Value *arg2 = x.first->getOperand(1);
                 if (!isa<ConstantInt>(arg2)) {
                   CallInst *getcall = builder.CreateCall(CATGetFunc, {arg2});
+                  errs() << "\n";
+                  getcall->print(errs());
+                  errs() << "getinsertreplace\n";
                   arg2 = cast<Value>(getcall);
                 }
                 CallInst *call = builder.CreateCall(CATSetFunc, {arg1, arg2});
@@ -397,7 +485,6 @@ struct CAT : public FunctionPass {
           }
         }
       }
-
 
       // for (auto const& instcount : changes) {
       for (auto const &x : changes) {
@@ -409,8 +496,7 @@ struct CAT : public FunctionPass {
         x.second->print(errs());
       }
 
-      errs() << "\nafter";
-      errs() << b;
+      globalconstants.insert({&b, constants});
     }
 
     return false;
