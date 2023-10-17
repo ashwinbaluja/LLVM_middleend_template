@@ -1,0 +1,10 @@
+H5: 	Value of = 5
+H5: 	Value of = 3
+H5: 	Value of = 5
+H5: 	Value of = 3
+H5: 	Value of = 0
+H5: 	Value of = 3
+H5: 	Value of = 5
+H5: 	Value of = 3
+CAT variables = 2
+CAT cost = 35
