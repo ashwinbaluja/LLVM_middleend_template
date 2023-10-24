@@ -547,52 +547,57 @@ struct CAT : public FunctionPass {
               phiVal->print(errs());
               errs() << "\n";
             } else {
-              // ConstantInt *prev = NULL;
-              // int flag = true;
-              // Value *v;
-              // for (unsigned i = 0, e = phi->getNumIncomingValues(); i != e; ++i) {
-              //   Value *incomingValue = phi->getIncomingValue(i);
-              //   errs() << "incomingValue: ";
-              //   incomingValue->print(errs());
-              //   errs() << "\n";
-              //   CallInst *calli = cast<CallInst>(incomingValue);
-              //   v = (calli->arg_size() == 1) ? calli->getOperand(0)
-              //                                       : calli->getOperand(1);
-              //   ConstantInt *incomingConstant = NULL;
-              //   if (isa<ConstantInt>(v)){
-              //     incomingConstant = cast<ConstantInt>(v);
-              //     errs() << "incomingConstant: ";
-              //     incomingConstant->print(errs());
-              //     errs() << "\n";
-              //   }
-              //   if (i == 0) {
-              //     if (incomingConstant == NULL) {
-              //       flag = false;
-              //       break;
-              //     }
-              //     prev = incomingConstant;
-              //     continue;
-              //   }
+              ConstantInt *prev = NULL;
+              int flag = true;
+              Value *v;
+              for (unsigned i = 0, e = phi->getNumIncomingValues(); i != e; ++i) {
+                Value *incomingValue = phi->getIncomingValue(i);
+                errs() << "incomingValue: ";
+                incomingValue->print(errs());
+                errs() << "\n";
+                CallInst *calli = dyn_cast<CallInst>(incomingValue);
+                if (!calli) {
+                  flag = false;
+                  break;
+                }
+                v = (calli->arg_size() == 1) ? calli->getOperand(0)
+                                                    : calli->getOperand(1);
+                                                  
+                ConstantInt *incomingConstant = NULL;
+                if (isa<ConstantInt>(v)){
+                  incomingConstant = cast<ConstantInt>(v);
+                  errs() << "incomingConstant: ";
+                  incomingConstant->print(errs());
+                  errs() << "\n";
+                }
+                if (i == 0) {
+                  if (incomingConstant == NULL) {
+                    flag = false;
+                    break;
+                  }
+                  prev = incomingConstant;
+                  continue;
+                }
 
-              //   if (incomingConstant == NULL || incomingConstant->getSExtValue() != prev->getSExtValue()) {
-              //     errs() << "not equal\nprev: ";
-              //     prev->print(errs());
-              //     flag = false;
-              //     break;
-              //   }
-              //   errs() << "constant: ";
-              //   incomingConstant->print(errs());
-              //   errs() << "\n";
-              //   prev = incomingConstant;
-              //   }
-              //   if (flag) {
-              //     changes.insert({&inst, v});
-              //     operandReplacement.insert({&(cast<Value>(inst)), prev});
-              //     errs() << "constantphifoundHERE";
-              //     phi->print(errs());
-              //     prev->print(errs());
-              //     errs() << "\n";
-              //   }
+                if (incomingConstant == NULL || incomingConstant->getSExtValue() != prev->getSExtValue()) {
+                  errs() << "not equal\nprev: ";
+                  prev->print(errs());
+                  flag = false;
+                  break;
+                }
+                errs() << "constant: ";
+                incomingConstant->print(errs());
+                errs() << "\n";
+                prev = incomingConstant;
+                }
+                if (flag) {
+                  changes.insert({&inst, phi->getIncomingValue(0)});
+                  operandReplacement.insert({&(cast<Value>(inst)), prev});
+                  errs() << "constantphifoundHERE";
+                  phi->print(errs());
+                  prev->print(errs());
+                  errs() << "\n";
+                }
 
             }
             
