@@ -1,0 +1,787 @@
+make[1]: Entering directory '/home/hwo2853/LLVM/H3/tests/test47'
+timeout 10m ../misc/run_test.sh "--basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker" "program.bc" "program_optimized.bc" 0 0
+#### Running the CAT compiler
+####   Command line =  opt --enable-new-pm=0 -load ~/CAT/lib/CAT.so program.bc --basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker -CAT -o program_optimized.bc
+
+loopBlocks
+
+12:                                               ; preds = %2, %12
+  %13 = phi i8* [ %5, %2 ], [ %19, %12 ]
+  %14 = phi i32 [ 0, %2 ], [ %20, %12 ]
+  %15 = call i64 @CAT_get(i8* noundef %13) #3
+  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)
+  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #3
+  %17 = call i64 @CAT_get(i8* noundef %13) #3
+  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %17)
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3
+  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #3
+  %19 = call i8* @CAT_new(i64 noundef 1) #3
+  %20 = add nuw nsw i32 %14, 1
+  %21 = icmp eq i32 %20, 500
+  br i1 %21, label %6, label %12, !llvm.loop !3
+ loopToBlock ****
+0x6fbe5d0 : 
+
+constant----
+0x6fb7740endconstant
+  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3  %4 = call i8* @CAT_new(i64 noundef 2) #3  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+
+BLOCK AFTER MODIFICATION
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #3
+  %4 = call i8* @CAT_new(i64 noundef 2) #3
+  %5 = call i8* @CAT_new(i64 noundef 0) #3
+  br label %12
+
+
+NEXTBLOCK
+0x6fb7740basicblock0x6fbe5d0basicblock
+constant  %3 = call i8* @CAT_new(i64 noundef 40) #30x0
+  %4 = call i8* @CAT_new(i64 noundef 2) #30x0
+  %5 = call i8* @CAT_new(i64 noundef 0) #30x0
+----
+0x6fbe5d0endconstant
+phiNode
+incomingvalue
+  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantphifound  %13 = phi i8* [ %5, %2 ], [ %19, %12 ]  %5 = call i8* @CAT_new(i64 noundef 0) #3
+
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3phiNode
+incomingvalue
+i32 0
+incomingvalue
+  %20 = add nuw nsw i32 %14, 1
+
+
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  %15 = call i64 @CAT_get(i8* noundef %13) #3  %15 = call i64 @CAT_get(i8* noundef %13) #3  %15 = call i64 @CAT_get(i8* noundef %13) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #3  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #3  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #3  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #3  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #3  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #3  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #3  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #3  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  %17 = call i64 @CAT_get(i8* noundef %13) #3  %17 = call i64 @CAT_get(i8* noundef %13) #3  %17 = call i64 @CAT_get(i8* noundef %13) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %17)  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %17)  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %17)  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %17)  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %17)  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %17)
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3
+endofblockkilling:  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #3  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #3  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #3  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #3  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #3  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #3
+endofblockkilling:  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  %19 = call i8* @CAT_new(i64 noundef 1) #3  %19 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %19 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %19 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %19 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %19 = call i8* @CAT_new(i64 noundef 1) #3
+  %13 = phi i8* [ %5, %2 ], [ %19, %12 ]|  %5 = call i8* @CAT_new(i64 noundef 0) #3
+
+BLOCK AFTER MODIFICATION
+
+12:                                               ; preds = %2, %12
+  %13 = phi i32 [ 0, %2 ], [ %19, %12 ]
+  %14 = call i64 @CAT_get(i8* noundef %5) #3
+  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %14)
+  call void @CAT_set(i8* %5, i64 42)
+  %16 = call i64 @CAT_get(i8* noundef %5) #3
+  %17 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %16)
+  call void @CAT_set(i8* %3, i64 80)
+  call void @CAT_set(i8* %4, i64 4)
+  %18 = call i8* @CAT_new(i64 noundef 1) #3
+  %19 = add nuw nsw i32 %13, 1
+  %20 = icmp eq i32 %19, 500
+  br i1 %20, label %6, label %12, !llvm.loop !3
+
+
+NEXTBLOCK
+0x6fbe5d0basicblock
+constant  %5 = call i8* @CAT_new(i64 noundef 0) #30x0
+  %18 = call i8* @CAT_new(i64 noundef 1) #30x0
+----
+0x6fbe580endconstant
+  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %7 = call i8* @CAT_new(i64 noundef 52) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_add(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_add(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_add(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_add(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_add(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_add(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_add(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_add(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_add(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3
+endofblockkilling:  %7 = call i8* @CAT_new(i64 noundef 52) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3
+
+BLOCK AFTER MODIFICATION
+
+6:                                                ; preds = %12
+  %7 = call i8* @CAT_new(i64 noundef 52) #3
+  call void @CAT_set(i8* %7, i64 104)
+  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3
+  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+  %8 = call i64 @CAT_variables() #3
+  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)
+  %10 = call i64 @CAT_cost() #3
+  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)
+  ret i32 0
+
+
+NEXTBLOCK
+0x6fb7740basicblock0x6fbe5d0basicblockREMOVED
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #34->3REMOVED
+
+  %4 = call i8* @CAT_new(i64 noundef 2) #33->2
+constant  %5 = call i8* @CAT_new(i64 noundef 0) #30x0
+  %18 = call i8* @CAT_new(i64 noundef 1) #30x0
+----
+0x6fbe5d0endconstant
+phiNode
+incomingvalue
+i32 0
+incomingvalue
+  %19 = add nuw nsw i32 %13, 1
+
+
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3  %14 = call i64 @CAT_get(i8* noundef %5) #3  %14 = call i64 @CAT_get(i8* noundef %5) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %14)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %14)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %14)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %14)
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)
+endofblockkilling:  call void @CAT_set(i8* %5, i64 42)
+endofblockkilling:  %5 = call i8* @CAT_new(i64 noundef 0) #3
+endofblockkilling:  %18 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)
+endofblockkilling:  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)
+endofblockkilling:  call void @CAT_set(i8* %4, i64 4)  %18 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %18 = call i8* @CAT_new(i64 noundef 1) #3
+  %14 = call i64 @CAT_get(i8* noundef %5) #3|i64 0
+
+BLOCK AFTER MODIFICATION
+
+12:                                               ; preds = %2, %12
+  %13 = phi i32 [ 0, %2 ], [ %18, %12 ]
+  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)
+  call void @CAT_set(i8* %5, i64 42)
+  %15 = call i64 @CAT_get(i8* noundef %5) #3
+  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)
+  call void @CAT_set(i8* %3, i64 80)
+  call void @CAT_set(i8* %4, i64 4)
+  %17 = call i8* @CAT_new(i64 noundef 1) #3
+  %18 = add nuw nsw i32 %13, 1
+  %19 = icmp eq i32 %18, 500
+  br i1 %19, label %6, label %12, !llvm.loop !3
+
+
+NEXTBLOCK
+
+constant----
+0x6fb7740endconstant
+  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3  %4 = call i8* @CAT_new(i64 noundef 2) #3  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+
+BLOCK AFTER MODIFICATION
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #3
+  %4 = call i8* @CAT_new(i64 noundef 2) #3
+  %5 = call i8* @CAT_new(i64 noundef 0) #3
+  br label %12
+
+
+NEXTBLOCK
+0x6fbe5d0basicblock
+constant  %5 = call i8* @CAT_new(i64 noundef 0) #30x0
+  %17 = call i8* @CAT_new(i64 noundef 1) #30x0
+----
+0x6fbe580endconstant
+  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %7 = call i8* @CAT_new(i64 noundef 52) #3
+constantatm  %17 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)
+endofblockkilling:  %5 = call i8* @CAT_new(i64 noundef 0) #3
+endofblockkilling:  %7 = call i8* @CAT_new(i64 noundef 52) #3
+endofblockkilling:  %17 = call i8* @CAT_new(i64 noundef 1) #3
+endofblockkilling:  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+
+BLOCK AFTER MODIFICATION
+
+6:                                                ; preds = %12
+  %7 = call i8* @CAT_new(i64 noundef 52) #3
+  call void @CAT_set(i8* %7, i64 104)
+  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3
+  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+  %8 = call i64 @CAT_variables() #3
+  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)
+  %10 = call i64 @CAT_cost() #3
+  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)
+  ret i32 0
+
+
+NEXTBLOCK
+0x6fb7740basicblock0x6fbe5d0basicblockREMOVED
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #34->3REMOVED
+
+  %4 = call i8* @CAT_new(i64 noundef 2) #33->2
+constant  %5 = call i8* @CAT_new(i64 noundef 0) #30x0
+  %17 = call i8* @CAT_new(i64 noundef 1) #30x0
+----
+0x6fbe5d0endconstant
+phiNode
+incomingvalue
+i32 0
+incomingvalue
+  %18 = add nuw nsw i32 %13, 1
+
+
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %17 = call i8* @CAT_new(i64 noundef 1) #3  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %17 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)
+endofblockkilling:  call void @CAT_set(i8* %5, i64 42)
+endofblockkilling:  %5 = call i8* @CAT_new(i64 noundef 0) #3
+endofblockkilling:  %17 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)
+endofblockkilling:  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)
+endofblockkilling:  call void @CAT_set(i8* %4, i64 4)  %17 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %17 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %17 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %17 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  %17 = call i8* @CAT_new(i64 noundef 1) #3
+
+BLOCK AFTER MODIFICATION
+
+12:                                               ; preds = %2, %12
+  %13 = phi i32 [ 0, %2 ], [ %18, %12 ]
+  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)
+  call void @CAT_set(i8* %5, i64 42)
+  %15 = call i64 @CAT_get(i8* noundef %5) #3
+  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)
+  call void @CAT_set(i8* %3, i64 80)
+  call void @CAT_set(i8* %4, i64 4)
+  %17 = call i8* @CAT_new(i64 noundef 1) #3
+  %18 = add nuw nsw i32 %13, 1
+  %19 = icmp eq i32 %18, 500
+  br i1 %19, label %6, label %12, !llvm.loop !3
+
+
+NEXTBLOCK
+####  The compiler modified the input bitcode: the fixed point isn't reached.
+#### Running the CAT compiler
+####   Command line =  opt --enable-new-pm=0 -load ~/CAT/lib/CAT.so output_code_iter_0.bc --basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker -CAT -o program_optimized.bc
+
+loopBlocks
+
+12:                                               ; preds = %2, %12
+  %13 = phi i32 [ 0, %2 ], [ %18, %12 ]
+  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)
+  call void @CAT_set(i8* %5, i64 42)
+  %15 = call i64 @CAT_get(i8* noundef %5) #3
+  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)
+  call void @CAT_set(i8* %3, i64 80)
+  call void @CAT_set(i8* %4, i64 4)
+  %17 = call i8* @CAT_new(i64 noundef 1) #3
+  %18 = add nuw nsw i32 %13, 1
+  %19 = icmp eq i32 %18, 500
+  br i1 %19, label %6, label %12, !llvm.loop !3
+ loopToBlock ****
+0x68184b0 : 
+
+constant----
+0x6811750endconstant
+  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3  %4 = call i8* @CAT_new(i64 noundef 2) #3  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+
+BLOCK AFTER MODIFICATION
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #3
+  %4 = call i8* @CAT_new(i64 noundef 2) #3
+  %5 = call i8* @CAT_new(i64 noundef 0) #3
+  br label %12
+
+
+NEXTBLOCK
+0x6811750basicblock0x68184b0basicblock
+constant  %3 = call i8* @CAT_new(i64 noundef 40) #30x0
+  %4 = call i8* @CAT_new(i64 noundef 2) #30x0
+  %5 = call i8* @CAT_new(i64 noundef 0) #30x0
+----
+0x68184b0endconstant
+phiNode
+incomingvalue
+i32 0
+incomingvalue
+  %18 = add nuw nsw i32 %13, 1
+
+
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)
+endofblockkilling:  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)  %15 = call i64 @CAT_get(i8* noundef %5) #3  %15 = call i64 @CAT_get(i8* noundef %5) #3  %15 = call i64 @CAT_get(i8* noundef %5) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)  %16 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef %15)
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)
+endofblockkilling:  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)
+endofblockkilling:  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)  %17 = call i8* @CAT_new(i64 noundef 1) #3  %17 = call i8* @CAT_new(i64 noundef 1) #3  %17 = call i8* @CAT_new(i64 noundef 1) #3  %17 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %17 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %17 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %17 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %17 = call i8* @CAT_new(i64 noundef 1) #3
+  %15 = call i64 @CAT_get(i8* noundef %5) #3|i64 42
+
+BLOCK AFTER MODIFICATION
+
+12:                                               ; preds = %2, %12
+  %13 = phi i32 [ 0, %2 ], [ %17, %12 ]
+  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)
+  call void @CAT_set(i8* %5, i64 42)
+  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)
+  call void @CAT_set(i8* %3, i64 80)
+  call void @CAT_set(i8* %4, i64 4)
+  %16 = call i8* @CAT_new(i64 noundef 1) #3
+  %17 = add nuw nsw i32 %13, 1
+  %18 = icmp eq i32 %17, 500
+  br i1 %18, label %6, label %12, !llvm.loop !3
+
+
+NEXTBLOCK
+0x68184b0basicblock
+constant  call void @CAT_set(i8* %5, i64 42)0x6819300
+  call void @CAT_set(i8* %3, i64 80)0x68191c0
+  call void @CAT_set(i8* %4, i64 4)0x6819260
+  %16 = call i8* @CAT_new(i64 noundef 1) #30x0
+----
+0x6818460endconstant
+  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3
+constantatm  %7 = call i8* @CAT_new(i64 noundef 52) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)
+endofblockkilling:  %7 = call i8* @CAT_new(i64 noundef 52) #3
+constantatm  call void @CAT_set(i8* %7, i64 104)
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3  call void @CAT_sub(i8* noundef %7, i8* noundef %7, i8* noundef %7) #3
+endofblockkilling:  call void @CAT_set(i8* %7, i64 104)
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+
+BLOCK AFTER MODIFICATION
+
+6:                                                ; preds = %12
+  %7 = call i8* @CAT_new(i64 noundef 52) #3
+  call void @CAT_set(i8* %7, i64 104)
+  call void @CAT_set(i8* %7, i64 0)
+  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+  %8 = call i64 @CAT_variables() #3
+  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)
+  %10 = call i64 @CAT_cost() #3
+  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)
+  ret i32 0
+
+
+NEXTBLOCK
+0x6811750basicblock0x68184b0basicblock
+ found bad:   call void @CAT_set(i8* %5, i64 42)i64 0
+
+ found bad:   call void @CAT_set(i8* %3, i64 80)i64 40
+
+ found bad:   call void @CAT_set(i8* %4, i64 4)i64 2
+REMOVED
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #34->3REMOVED
+
+  %4 = call i8* @CAT_new(i64 noundef 2) #33->2REMOVED
+
+  %5 = call i8* @CAT_new(i64 noundef 0) #32->1
+constant  %16 = call i8* @CAT_new(i64 noundef 1) #30x0
+----
+0x68184b0endconstant
+phiNode
+incomingvalue
+i32 0
+incomingvalue
+  %17 = add nuw nsw i32 %13, 1
+
+
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  %16 = call i8* @CAT_new(i64 noundef 1) #3  %16 = call i8* @CAT_new(i64 noundef 1) #3  %16 = call i8* @CAT_new(i64 noundef 1) #3  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+
+BLOCK AFTER MODIFICATION
+
+12:                                               ; preds = %2, %12
+  %13 = phi i32 [ 0, %2 ], [ %17, %12 ]
+  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)
+  call void @CAT_set(i8* %5, i64 42)
+  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)
+  call void @CAT_set(i8* %3, i64 80)
+  call void @CAT_set(i8* %4, i64 4)
+  %16 = call i8* @CAT_new(i64 noundef 1) #3
+  %17 = add nuw nsw i32 %13, 1
+  %18 = icmp eq i32 %17, 500
+  br i1 %18, label %6, label %12, !llvm.loop !3
+
+
+NEXTBLOCK
+
+constant----
+0x6811750endconstant
+  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3  %4 = call i8* @CAT_new(i64 noundef 2) #3  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+
+BLOCK AFTER MODIFICATION
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #3
+  %4 = call i8* @CAT_new(i64 noundef 2) #3
+  %5 = call i8* @CAT_new(i64 noundef 0) #3
+  br label %12
+
+
+NEXTBLOCK
+####  The compiler modified the input bitcode: the fixed point isn't reached.
+#### Running the CAT compiler
+####   Command line =  opt --enable-new-pm=0 -load ~/CAT/lib/CAT.so output_code_iter_1.bc --basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker -CAT -o program_optimized.bc
+
+loopBlocks
+
+12:                                               ; preds = %2, %12
+  %13 = phi i32 [ 0, %2 ], [ %17, %12 ]
+  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)
+  call void @CAT_set(i8* %5, i64 42)
+  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)
+  call void @CAT_set(i8* %3, i64 80)
+  call void @CAT_set(i8* %4, i64 4)
+  %16 = call i8* @CAT_new(i64 noundef 1) #3
+  %17 = add nuw nsw i32 %13, 1
+  %18 = icmp eq i32 %17, 500
+  br i1 %18, label %6, label %12, !llvm.loop !3
+ loopToBlock ****
+0x6f20160 : 
+
+constant----
+0x6f196b0endconstant
+  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3  %4 = call i8* @CAT_new(i64 noundef 2) #3  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3
+
+BLOCK AFTER MODIFICATION
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #3
+  %4 = call i8* @CAT_new(i64 noundef 2) #3
+  %5 = call i8* @CAT_new(i64 noundef 0) #3
+  br label %12
+
+
+NEXTBLOCK
+0x6f196b0basicblock0x6f20160basicblock
+constant  %3 = call i8* @CAT_new(i64 noundef 40) #30x0
+  %4 = call i8* @CAT_new(i64 noundef 2) #30x0
+  %5 = call i8* @CAT_new(i64 noundef 0) #30x0
+----
+0x6f20160endconstant
+phiNode
+incomingvalue
+i32 0
+incomingvalue
+  %17 = add nuw nsw i32 %13, 1
+
+
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  %5 = call i8* @CAT_new(i64 noundef 0) #3  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %5, i64 42)
+endofblockkilling:  %5 = call i8* @CAT_new(i64 noundef 0) #3
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)
+constantatm  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %3, i64 80)
+endofblockkilling:  %3 = call i8* @CAT_new(i64 noundef 40) #3
+constantatm  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)  call void @CAT_set(i8* %4, i64 4)
+endofblockkilling:  %4 = call i8* @CAT_new(i64 noundef 2) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)  %16 = call i8* @CAT_new(i64 noundef 1) #3  %16 = call i8* @CAT_new(i64 noundef 1) #3  %16 = call i8* @CAT_new(i64 noundef 1) #3  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+
+BLOCK AFTER MODIFICATION
+
+12:                                               ; preds = %2, %12
+  %13 = phi i32 [ 0, %2 ], [ %17, %12 ]
+  %14 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 0)
+  call void @CAT_set(i8* %5, i64 42)
+  %15 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i64 noundef 42)
+  call void @CAT_set(i8* %3, i64 80)
+  call void @CAT_set(i8* %4, i64 4)
+  %16 = call i8* @CAT_new(i64 noundef 1) #3
+  %17 = add nuw nsw i32 %13, 1
+  %18 = icmp eq i32 %17, 500
+  br i1 %18, label %6, label %12, !llvm.loop !3
+
+
+NEXTBLOCK
+0x6f20160basicblock
+constant  call void @CAT_set(i8* %5, i64 42)0x6f20fb0
+  call void @CAT_set(i8* %3, i64 80)0x6f20860
+  call void @CAT_set(i8* %4, i64 4)0x6f20900
+  %16 = call i8* @CAT_new(i64 noundef 1) #30x0
+----
+0x6f20110endconstant
+  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3  %7 = call i8* @CAT_new(i64 noundef 52) #3
+constantatm  %7 = call i8* @CAT_new(i64 noundef 52) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)  call void @CAT_set(i8* %7, i64 104)
+endofblockkilling:  %7 = call i8* @CAT_new(i64 noundef 52) #3
+constantatm  call void @CAT_set(i8* %7, i64 104)
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* %7, i64 0)  call void @CAT_set(i8* %7, i64 0)  call void @CAT_set(i8* %7, i64 0)  call void @CAT_set(i8* %7, i64 0)  call void @CAT_set(i8* %7, i64 0)  call void @CAT_set(i8* %7, i64 0)  call void @CAT_set(i8* %7, i64 0)  call void @CAT_set(i8* %7, i64 0)  call void @CAT_set(i8* %7, i64 0)  call void @CAT_set(i8* %7, i64 0)  call void @CAT_set(i8* %7, i64 0)  call void @CAT_set(i8* %7, i64 0)
+endofblockkilling:  call void @CAT_set(i8* %7, i64 104)
+constantatm  call void @CAT_set(i8* %7, i64 0)
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+endofblockkilling:  call void @CAT_set(i8* %7, i64 0)
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+constantatm  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+constantatm  call void @CAT_set(i8* %5, i64 42)
+constantatm  call void @CAT_set(i8* %3, i64 80)
+constantatm  call void @CAT_set(i8* %4, i64 4)
+constantatm  %16 = call i8* @CAT_new(i64 noundef 1) #3
+
+BLOCK AFTER MODIFICATION
+
+6:                                                ; preds = %12
+  %7 = call i8* @CAT_new(i64 noundef 52) #3
+  call void @CAT_set(i8* %7, i64 104)
+  call void @CAT_set(i8* %7, i64 0)
+  call void @CAT_set(i8* noundef %7, i64 noundef 42) #3
+  %8 = call i64 @CAT_variables() #3
+  %9 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %8)
+  %10 = call i64 @CAT_cost() #3
+  %11 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %10)
+  ret i32 0
+
+
+NEXTBLOCK
+####  The compiler did not modify the input bitcode: the fixed point has been reached.
+llvm-dis program_optimized.bc
+clang -O2 -lm program_optimized.bc ../misc/CAT.o -o program_optimized
+./program_optimized > program_optimized_output
+../misc/check.sh "output/oracle.txt" "program_optimized_output"
+Checking output/oracle.txt against program_optimized_output
+  Test failed because output  isn't correct
+  Output differences can be found in "diff"
+make[1]: *** [Makefile:43: check] Error 1
+make[1]: Leaving directory '/home/hwo2853/LLVM/H3/tests/test47'

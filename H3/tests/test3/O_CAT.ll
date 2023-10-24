@@ -1,0 +1,10 @@
+ i8* @CAT_new
+ i8* @CAT_new
+ i8* @CAT_new
+ void @CAT_set
+ void @CAT_set
+ void @CAT_set
+ void @CAT_destroy
+ void @CAT_execution
+ i64 @CAT_variables
+ i64 @CAT_cost

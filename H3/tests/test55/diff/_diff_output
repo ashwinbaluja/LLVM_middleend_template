@@ -1,0 +1,44 @@
+4c4
+< Inside loop: Value = 42
+---
+> Inside loop: Value = 5
+6c6
+< Inside loop: Value = 42
+---
+> Inside loop: Value = 5
+8c8
+< Inside loop: Value = 42
+---
+> Inside loop: Value = 5
+10c10
+< Inside loop: Value = 42
+---
+> Inside loop: Value = 5
+12c12
+< Inside loop: Value = 42
+---
+> Inside loop: Value = 5
+14c14
+< Inside loop: Value = 42
+---
+> Inside loop: Value = 5
+16c16
+< Inside loop: Value = 42
+---
+> Inside loop: Value = 5
+18c18
+< Inside loop: Value = 42
+---
+> Inside loop: Value = 5
+20c20
+< Inside loop: Value = 42
+---
+> Inside loop: Value = 5
+22c22
+< Inside loop: Value = 42
+---
+> Inside loop: Value = 5
+24c24
+< After loop:	Value = 42
+---
+> After loop:	Value = 5
