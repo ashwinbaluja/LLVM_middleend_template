@@ -239,22 +239,28 @@ struct CAT : public FunctionPass {
         }
       }
     }
-    // print loopBlocks
-    errs() << "\nloopBlocks\n";
-    for (auto &b: loopBlocks){
-      errs() << *b << " ";
-    }
+    // // print loopBlocks
+    // errs() << "\nloopBlocks\n";
+    // for (auto &b: loopBlocks){
+    //   errs() << *b << " ";
+    // }
 
     for (auto& b: loopBlocks){
       queue<BasicBlock *> preds = {};
       set<BasicBlock *> visited3 = {};
       queue<BasicBlock *> succs = {};
       set<BasicBlock *> visited4 = {};
-      for (auto *bn : predecessors(b))
+      for (auto *bn : predecessors(b)){
+        if (loopBlocks.find(bn) != loopBlocks.end()) {
           preds.push(bn);
-      for (auto *bn : successors(b))
+        }
+      }
+      for (auto *bn : successors(b)){
+        if (loopBlocks.find(bn) != loopBlocks.end()) {
           succs.push(bn);
-      
+        }
+      }
+          
       while (preds.size() > 0) {
         BasicBlock *b2 = preds.front();
         preds.pop();
@@ -262,7 +268,9 @@ struct CAT : public FunctionPass {
           continue;
         bool leaves = false;
         set<BasicBlock* > toPush = {};
+        
         visited3.insert(b2);
+        
         for (auto *bn : predecessors(b2)) {
           if (loopBlocks.find(bn) == loopBlocks.end()) {
             leaves = true;
@@ -296,31 +304,33 @@ struct CAT : public FunctionPass {
           }
         }
       }
-
-      while (succs.size() > 0) {
-        BasicBlock *b2 = succs.front();
-        succs.pop();
-        preds.push(b2);
+      // // print visited3
+      // errs() << "\nvisited3\n";
+      // for (auto &b: visited3){
+      //   errs() << *b << " ";
+      // }
+      // // print visited4
+      // errs() << "\nvisited4\n";
+      // for (auto &b: visited4){
+      //   errs() << *b << " ";
+      // }
+      
+      for (auto &b: visited3){
+        visited4.insert(b);
       }
-      set<BasicBlock* > temp = {};
-      loopToBlocks.insert({b, temp});
-      while(preds.size() > 0) {
-
-        BasicBlock *b2 = preds.front();
-        preds.pop();
-        loopToBlocks[b].insert(b2);
-      }
-    
+      visited4.insert(b);
+      loopToBlocks.insert({b, visited4});
     }
     //print loopToBlock
-    errs() << "loopToBlock ****\n";
-    for (auto &b: loopToBlocks){
-      errs() << b.first << " : ";
-      for (auto &bn: b.second){
-        errs() << *bn << " ";
-      }
-      errs() << "\n";
-    }
+    // errs() << "loopToBlock ****\n";
+    // for (auto &b: loopToBlocks){
+    //   b.first->print(errs());
+    //   errs() << ": \n";
+    //   for (auto &bn: b.second){
+    //     errs() << *bn << " ";
+    //   }
+    //   errs() << "____________________\n";
+    // }
     
     for (auto &pair : loopToBlocks){
       BasicBlock *b = pair.first;
@@ -340,6 +350,19 @@ struct CAT : public FunctionPass {
         }
     }
 
+    // print loopToBadConstants
+    errs() << "loopToBadConstants ****\n";
+    for (auto &b: loopToBadConstants){
+      errs() << "loop\n";
+      b.first->print(errs());
+      errs() << ": \n";
+      for (auto &bn: b.second){
+        bn->print(errs());
+        errs() << " ";
+      }
+      errs() << "____________________\n";
+    }
+
 
     BasicBlock *first = q.front();
 
@@ -356,7 +379,6 @@ struct CAT : public FunctionPass {
       set<Value *> falseFinds = {};
 
       for (BasicBlock *pred : predecessors(b)) {
-        errs() << pred << "basicblock";
         if (globalconstants.find(pred) == globalconstants.end()) {
           continue;
         }
@@ -411,14 +433,28 @@ struct CAT : public FunctionPass {
       
 
       if (loopToBlocks.find(b) != loopToBlocks.end()) {
-        for (auto &inst : *b) {
-          Value * vinst = cast<Value>(&inst);
-          for (auto &bn: loopToBlocks[b]){
-            if (loopToBadConstants[bn].find(vinst) != loopToBadConstants[bn].end()){
-              falseFinds.insert(vinst);
-              break;
+        for (auto &bn: loopToBlocks[b]){
+          for (auto &bad: loopToBadConstants[bn]){
+            falseFinds.insert(bad);
+          }
+        }
+        for (auto &inst: *b){
+          if (isa<CallInst>(inst)) {
+            CallInst *cinst = &(cast<CallInst>(inst));
+            Value *vinst = cinst->getOperand(0);
+            for (int i = 1; i < cinst->arg_size(); i++) {
+              if (falseFinds.find(cinst->getOperand(i)) != falseFinds.end()) {
+                falseFinds.insert(vinst);
+                break;
+              }
             }
           }
+        }
+        // print falseFinds
+        errs() << "\nfalseFinds\n";
+        for (auto &v: falseFinds){
+        v->print(errs());
+        errs() << " ";
         }
       }
 
@@ -493,6 +529,10 @@ struct CAT : public FunctionPass {
         bool found = false;
         if (isa<PHINode>(inst)) {
           errs() << "phiNode\n";
+          /* ADDED THIS BIT AND GOT ERROR*/
+          if (falseFinds.find(&inst) != falseFinds.end()) {
+            continue;
+          }
           PHINode *phi = cast<PHINode>(&inst);
           for (unsigned i = 0, e = phi->getNumIncomingValues(); i != e; ++i) {
             Value *incomingValue = phi->getIncomingValue(i);
