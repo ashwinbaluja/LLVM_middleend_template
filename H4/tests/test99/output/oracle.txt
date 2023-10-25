@@ -1,0 +1,8 @@
+L1: 5
+L2: 5
+Result = 42
+
+
+
+CAT variables = 15
+CAT cost = 157

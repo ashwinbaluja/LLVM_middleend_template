@@ -1,0 +1,3 @@
+H5: 	Value of d1 = 8
+CAT variables = 2
+CAT cost = 13

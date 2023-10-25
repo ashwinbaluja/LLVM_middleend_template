@@ -1,0 +1,3 @@
+H5: 	Value of = 5
+CAT variables = 2
+CAT cost = 13

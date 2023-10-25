@@ -1,0 +1,8 @@
+H5: Value of s1->d1 = 8
+H5: Value of s1->d2 = 9
+H5: Value of s1->d3 = 10
+H5: Value of s2->d1 = 1
+H5: Value of s2->d2 = 2
+H5: Value of s2->d3 = 3
+CAT variables = 7
+CAT cost = 48

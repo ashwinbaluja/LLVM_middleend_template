@@ -1,0 +1,10 @@
+ Begin
+ 	Value 1 = 5
+ 	Value 2 = 8
+ 	Result = 13
+ 	Result = -3
+ 	Result = 42
+ 	Result = 119
+ End
+CAT variables = 3
+CAT cost = 32

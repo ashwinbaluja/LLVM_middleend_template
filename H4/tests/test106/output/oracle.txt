@@ -1,0 +1,5 @@
+Value of d1 = 42
+Value of d2 = 3
+Value of d3 = 0
+CAT variables = 3
+CAT cost = 18

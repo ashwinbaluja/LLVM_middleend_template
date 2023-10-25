@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include "CAT.h"
+
+void myF (int userInput){
+	CATData	d1,d2,d3,d4,d5,d6,d7;
+
+  goto L1;
+
+END:
+  CAT_set(d6, 42);
+	CAT_sub(d6, d1, d5);
+	CAT_add(d6, d6, d3);
+	printf("H1: 	Result = %ld\n", CAT_get(d7));
+	printf("H1: 	Result = %ld\n", CAT_get(d6));
+	return ;
+
+L1:
+	d1	= CAT_new(5);
+	printf("H1: 	Value 1 = %ld\n", CAT_get(d1));
+
+  d2	= CAT_new(8);
+  if (userInput > 10){
+	  CAT_add(d2, d2, d2);
+  }
+	printf("H1: 	Value 2 = %ld\n", CAT_get(d2));
+
+	d3	= CAT_new(0);
+	CAT_add(d3, d1, d2);
+	
+  d4	= CAT_new(0);
+	CAT_add(d4, d1, d3);
+	
+  d5	= CAT_new(0);
+	CAT_add(d5, d3, d4);
+	
+  d6	= CAT_new(3);
+	d7	= CAT_new(4);
+  CAT_set(d6, 42);
+  goto END;
+}
+
+int main (int argc, char *argv[]){
+
+	myF(argc);
+
+    printf("CAT variables = %ld\n", CAT_variables());
+  printf("CAT cost = %ld\n", CAT_cost());
+	return 0;
+}

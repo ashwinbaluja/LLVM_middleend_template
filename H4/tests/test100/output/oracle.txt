@@ -1,0 +1,7 @@
+H1: Begin
+d1: f00fba11
+d2: feeff00f
+d1: 0
+H1: End
+CAT variables = 2
+CAT cost = 16

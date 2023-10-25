@@ -1,0 +1,4 @@
+1c1
+< Value of d1 = 42
+---
+> Value of d1 = 5

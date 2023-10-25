@@ -1,0 +1,7 @@
+Hello
+Hello 2
+HELLO 45.420000
+Invoking a function
+Values: 10
+CAT variables = 2
+CAT cost = 16

@@ -1,0 +1,2526 @@
+make[1]: Entering directory '/home/hwo2853/LLVM/H4/tests/test112'
+timeout 10m ../misc/run_test.sh "--basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker" "program.bc" "program_optimized.bc" 0 0
+#### Running the CAT compiler
+####   Command line =  opt --enable-new-pm=0 -load ~/CAT/lib/CAT.so program.bc --basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker -CAT -o program_optimized.bc
+loopToBadConstants ****
+
+
+Instruction
+  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+
+endofblockkilling:  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+Constant after instruction
+
+
+Instruction
+  %3 = bitcast i8* %2 to %struct.MyT*
+
+Constant after instruction
+
+
+Instruction
+  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+
+endofblockkilling:  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+Constant after instruction
+
+
+Instruction
+  %5 = bitcast i8* %4 to %struct.MyT*
+
+Constant after instruction
+
+
+Instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  %7 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 0
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  store i8* %6, i8** %7, align 8, !tbaa !3
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  %9 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 1
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  store i8* %8, i8** %9, align 8, !tbaa !8
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  %11 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 2
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  store i8* %10, i8** %11, align 8, !tbaa !9
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  %13 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 0
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  store i8* %12, i8** %13, align 8, !tbaa !3
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %15 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 1
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  store i8* %14, i8** %15, align 8, !tbaa !8
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %17 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 2
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  store i8* %16, i8** %17, align 8, !tbaa !9
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %18 = call i64 @CAT_get(i8* noundef %6) #6
+
+optimize Cat_get
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %19 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i64 noundef %18)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %20 = load i8*, i8** %9, align 8, !tbaa !8
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %21 = call i64 @CAT_get(i8* noundef %20) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %22 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.1, i64 0, i64 0), i64 noundef %21)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %23 = load i8*, i8** %11, align 8, !tbaa !9
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %24 = call i64 @CAT_get(i8* noundef %23) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %25 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.2, i64 0, i64 0), i64 noundef %24)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %26 = load i8*, i8** %13, align 8, !tbaa !3
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %27 = call i64 @CAT_get(i8* noundef %26) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %28 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.3, i64 0, i64 0), i64 noundef %27)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %29 = load i8*, i8** %15, align 8, !tbaa !8
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %30 = call i64 @CAT_get(i8* noundef %29) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %31 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.4, i64 0, i64 0), i64 noundef %30)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %32 = load i8*, i8** %17, align 8, !tbaa !9
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %33 = call i64 @CAT_get(i8* noundef %32) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %34 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.5, i64 0, i64 0), i64 noundef %33)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %35 = call i8* @CAT_new(i64 noundef 5) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %35 = call i8* @CAT_new(i64 noundef 5) #6
+
+
+Instruction
+  call void @CAT_add(i8* noundef %35, i8* noundef %35, i8* noundef %35) #6
+
+endofblockkilling:  %35 = call i8* @CAT_new(i64 noundef 5) #6
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  call void @CAT_sub(i8* noundef %35, i8* noundef %35, i8* noundef %35) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  call void @CAT_set(i8* noundef %35, i64 noundef 42) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %35, i64 noundef 42) #6
+
+
+Instruction
+  %36 = bitcast %struct.MyOutputT* %0 to i8**
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %35, i64 noundef 42) #6
+
+
+Instruction
+  store i8* %2, i8** %36, align 8, !tbaa !10
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %35, i64 noundef 42) #6
+
+
+Instruction
+  %37 = getelementptr inbounds %struct.MyOutputT, %struct.MyOutputT* %0, i64 0, i32 1
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %35, i64 noundef 42) #6
+
+
+Instruction
+  %38 = bitcast %struct.MyT** %37 to i8**
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %35, i64 noundef 42) #6
+
+
+Instruction
+  store i8* %4, i8** %38, align 8, !tbaa !12
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %35, i64 noundef 42) #6
+
+
+Instruction
+  ret void
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %35, i64 noundef 42) #6
+i64 8
+
+BLOCK AFTER MODIFICATION
+
+  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+  %3 = bitcast i8* %2 to %struct.MyT*
+  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+  %5 = bitcast i8* %4 to %struct.MyT*
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %7 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 0
+  store i8* %6, i8** %7, align 8, !tbaa !3
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %9 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 1
+  store i8* %8, i8** %9, align 8, !tbaa !8
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %11 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 2
+  store i8* %10, i8** %11, align 8, !tbaa !9
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %13 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 0
+  store i8* %12, i8** %13, align 8, !tbaa !3
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %15 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 1
+  store i8* %14, i8** %15, align 8, !tbaa !8
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %17 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 2
+  store i8* %16, i8** %17, align 8, !tbaa !9
+  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i64 noundef 8)
+  %19 = load i8*, i8** %9, align 8, !tbaa !8
+  %20 = call i64 @CAT_get(i8* noundef %19) #6
+  %21 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.1, i64 0, i64 0), i64 noundef %20)
+  %22 = load i8*, i8** %11, align 8, !tbaa !9
+  %23 = call i64 @CAT_get(i8* noundef %22) #6
+  %24 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.2, i64 0, i64 0), i64 noundef %23)
+  %25 = load i8*, i8** %13, align 8, !tbaa !3
+  %26 = call i64 @CAT_get(i8* noundef %25) #6
+  %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.3, i64 0, i64 0), i64 noundef %26)
+  %28 = load i8*, i8** %15, align 8, !tbaa !8
+  %29 = call i64 @CAT_get(i8* noundef %28) #6
+  %30 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.4, i64 0, i64 0), i64 noundef %29)
+  %31 = load i8*, i8** %17, align 8, !tbaa !9
+  %32 = call i64 @CAT_get(i8* noundef %31) #6
+  %33 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.5, i64 0, i64 0), i64 noundef %32)
+  %34 = call i8* @CAT_new(i64 noundef 5) #6
+  call void @CAT_set(i8* %34, i64 10)
+  call void @CAT_sub(i8* noundef %34, i8* noundef %34, i8* noundef %34) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+  %35 = bitcast %struct.MyOutputT* %0 to i8**
+  store i8* %2, i8** %35, align 8, !tbaa !10
+  %36 = getelementptr inbounds %struct.MyOutputT, %struct.MyOutputT* %0, i64 0, i32 1
+  %37 = bitcast %struct.MyT** %36 to i8**
+  store i8* %4, i8** %37, align 8, !tbaa !12
+  ret void
+
+
+NEXTBLOCK
+
+
+Instruction
+  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+
+endofblockkilling:  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+Constant after instruction
+
+
+Instruction
+  %3 = bitcast i8* %2 to %struct.MyT*
+
+Constant after instruction
+
+
+Instruction
+  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+
+endofblockkilling:  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+Constant after instruction
+
+
+Instruction
+  %5 = bitcast i8* %4 to %struct.MyT*
+
+Constant after instruction
+
+
+Instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  %7 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 0
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  store i8* %6, i8** %7, align 8, !tbaa !3
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  %9 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 1
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  store i8* %8, i8** %9, align 8, !tbaa !8
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  %11 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 2
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  store i8* %10, i8** %11, align 8, !tbaa !9
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  %13 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 0
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  store i8* %12, i8** %13, align 8, !tbaa !3
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %15 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 1
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  store i8* %14, i8** %15, align 8, !tbaa !8
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %17 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 2
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  store i8* %16, i8** %17, align 8, !tbaa !9
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i64 noundef 8)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %19 = load i8*, i8** %9, align 8, !tbaa !8
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %20 = call i64 @CAT_get(i8* noundef %19) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %21 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.1, i64 0, i64 0), i64 noundef %20)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %22 = load i8*, i8** %11, align 8, !tbaa !9
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %23 = call i64 @CAT_get(i8* noundef %22) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %24 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.2, i64 0, i64 0), i64 noundef %23)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %25 = load i8*, i8** %13, align 8, !tbaa !3
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %26 = call i64 @CAT_get(i8* noundef %25) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.3, i64 0, i64 0), i64 noundef %26)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %28 = load i8*, i8** %15, align 8, !tbaa !8
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %29 = call i64 @CAT_get(i8* noundef %28) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %30 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.4, i64 0, i64 0), i64 noundef %29)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %31 = load i8*, i8** %17, align 8, !tbaa !9
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %32 = call i64 @CAT_get(i8* noundef %31) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %33 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.5, i64 0, i64 0), i64 noundef %32)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %34 = call i8* @CAT_new(i64 noundef 5) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %34 = call i8* @CAT_new(i64 noundef 5) #6
+
+
+Instruction
+  call void @CAT_set(i8* %34, i64 10)
+
+endofblockkilling:  call void @CAT_set(i8* %34, i64 10)
+endofblockkilling:  %16 = call i8* @CAT_new(i64 noundef 3) #6
+endofblockkilling:  %6 = call i8* @CAT_new(i64 noundef 8) #6
+endofblockkilling:  %8 = call i8* @CAT_new(i64 noundef 9) #6
+endofblockkilling:  %10 = call i8* @CAT_new(i64 noundef 10) #6
+endofblockkilling:  %12 = call i8* @CAT_new(i64 noundef 1) #6
+endofblockkilling:  %14 = call i8* @CAT_new(i64 noundef 2) #6
+endofblockkilling:  %34 = call i8* @CAT_new(i64 noundef 5) #6
+Constant after instruction
+
+
+Instruction
+  call void @CAT_sub(i8* noundef %34, i8* noundef %34, i8* noundef %34) #6
+
+Constant after instruction
+
+
+Instruction
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  %35 = bitcast %struct.MyOutputT* %0 to i8**
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  store i8* %2, i8** %35, align 8, !tbaa !10
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  %36 = getelementptr inbounds %struct.MyOutputT, %struct.MyOutputT* %0, i64 0, i32 1
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  %37 = bitcast %struct.MyT** %36 to i8**
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  store i8* %4, i8** %37, align 8, !tbaa !12
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  ret void
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+BLOCK AFTER MODIFICATION
+
+  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+  %3 = bitcast i8* %2 to %struct.MyT*
+  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+  %5 = bitcast i8* %4 to %struct.MyT*
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %7 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 0
+  store i8* %6, i8** %7, align 8, !tbaa !3
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %9 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 1
+  store i8* %8, i8** %9, align 8, !tbaa !8
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %11 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 2
+  store i8* %10, i8** %11, align 8, !tbaa !9
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %13 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 0
+  store i8* %12, i8** %13, align 8, !tbaa !3
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %15 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 1
+  store i8* %14, i8** %15, align 8, !tbaa !8
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %17 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 2
+  store i8* %16, i8** %17, align 8, !tbaa !9
+  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i64 noundef 8)
+  %19 = load i8*, i8** %9, align 8, !tbaa !8
+  %20 = call i64 @CAT_get(i8* noundef %19) #6
+  %21 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.1, i64 0, i64 0), i64 noundef %20)
+  %22 = load i8*, i8** %11, align 8, !tbaa !9
+  %23 = call i64 @CAT_get(i8* noundef %22) #6
+  %24 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.2, i64 0, i64 0), i64 noundef %23)
+  %25 = load i8*, i8** %13, align 8, !tbaa !3
+  %26 = call i64 @CAT_get(i8* noundef %25) #6
+  %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.3, i64 0, i64 0), i64 noundef %26)
+  %28 = load i8*, i8** %15, align 8, !tbaa !8
+  %29 = call i64 @CAT_get(i8* noundef %28) #6
+  %30 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.4, i64 0, i64 0), i64 noundef %29)
+  %31 = load i8*, i8** %17, align 8, !tbaa !9
+  %32 = call i64 @CAT_get(i8* noundef %31) #6
+  %33 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.5, i64 0, i64 0), i64 noundef %32)
+  %34 = call i8* @CAT_new(i64 noundef 5) #6
+  call void @CAT_set(i8* %34, i64 10)
+  call void @CAT_sub(i8* noundef %34, i8* noundef %34, i8* noundef %34) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+  %35 = bitcast %struct.MyOutputT* %0 to i8**
+  store i8* %2, i8** %35, align 8, !tbaa !10
+  %36 = getelementptr inbounds %struct.MyOutputT, %struct.MyOutputT* %0, i64 0, i32 1
+  %37 = bitcast %struct.MyT** %36 to i8**
+  store i8* %4, i8** %37, align 8, !tbaa !12
+  ret void
+
+
+NEXTBLOCK
+loopToBadConstants ****
+
+
+Instruction
+  %3 = alloca %struct.MyOutputT, align 8
+
+Constant after instruction
+
+
+Instruction
+  %4 = bitcast %struct.MyOutputT* %3 to i8*
+
+Constant after instruction
+
+
+Instruction
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %4) #5
+
+endofblockkilling:  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %4) #5
+Constant after instruction
+
+
+Instruction
+  call void @a_generic_C_function(%struct.MyOutputT* noundef nonnull %3)
+
+Constant after instruction
+
+
+Instruction
+  %5 = call i64 @CAT_variables() #6
+
+Constant after instruction
+
+
+Instruction
+  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.6, i64 0, i64 0), i64 noundef %5)
+
+Constant after instruction
+
+
+Instruction
+  %7 = call i64 @CAT_cost() #6
+
+Constant after instruction
+
+
+Instruction
+  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.7, i64 0, i64 0), i64 noundef %7)
+
+Constant after instruction
+
+
+Instruction
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %4) #5
+
+endofblockkilling:  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %4) #5
+Constant after instruction
+
+
+Instruction
+  ret i32 0
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+  %3 = alloca %struct.MyOutputT, align 8
+  %4 = bitcast %struct.MyOutputT* %3 to i8*
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %4) #5
+  call void @a_generic_C_function(%struct.MyOutputT* noundef nonnull %3)
+  %5 = call i64 @CAT_variables() #6
+  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.6, i64 0, i64 0), i64 noundef %5)
+  %7 = call i64 @CAT_cost() #6
+  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.7, i64 0, i64 0), i64 noundef %7)
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %4) #5
+  ret i32 0
+
+
+NEXTBLOCK
+####  The compiler modified the input bitcode: the fixed point isn't reached.
+#### Running the CAT compiler
+####   Command line =  opt --enable-new-pm=0 -load ~/CAT/lib/CAT.so output_code_iter_0.bc --basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker -CAT -o program_optimized.bc
+loopToBadConstants ****
+
+
+Instruction
+  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+
+endofblockkilling:  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+Constant after instruction
+
+
+Instruction
+  %3 = bitcast i8* %2 to %struct.MyT*
+
+Constant after instruction
+
+
+Instruction
+  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+
+endofblockkilling:  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+Constant after instruction
+
+
+Instruction
+  %5 = bitcast i8* %4 to %struct.MyT*
+
+Constant after instruction
+
+
+Instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  %7 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 0
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  store i8* %6, i8** %7, align 8, !tbaa !3
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  %9 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 1
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  store i8* %8, i8** %9, align 8, !tbaa !8
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  %11 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 2
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  store i8* %10, i8** %11, align 8, !tbaa !9
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  %13 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 0
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  store i8* %12, i8** %13, align 8, !tbaa !3
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %15 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 1
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  store i8* %14, i8** %15, align 8, !tbaa !8
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %17 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 2
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  store i8* %16, i8** %17, align 8, !tbaa !9
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i64 noundef 8)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %19 = load i8*, i8** %9, align 8, !tbaa !8
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %20 = call i64 @CAT_get(i8* noundef %19) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %21 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.1, i64 0, i64 0), i64 noundef %20)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %22 = load i8*, i8** %11, align 8, !tbaa !9
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %23 = call i64 @CAT_get(i8* noundef %22) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %24 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.2, i64 0, i64 0), i64 noundef %23)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %25 = load i8*, i8** %13, align 8, !tbaa !3
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %26 = call i64 @CAT_get(i8* noundef %25) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.3, i64 0, i64 0), i64 noundef %26)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %28 = load i8*, i8** %15, align 8, !tbaa !8
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %29 = call i64 @CAT_get(i8* noundef %28) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %30 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.4, i64 0, i64 0), i64 noundef %29)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %31 = load i8*, i8** %17, align 8, !tbaa !9
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %32 = call i64 @CAT_get(i8* noundef %31) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %33 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.5, i64 0, i64 0), i64 noundef %32)
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %34 = call i8* @CAT_new(i64 noundef 5) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %34 = call i8* @CAT_new(i64 noundef 5) #6
+
+
+Instruction
+  call void @CAT_set(i8* %34, i64 10)
+
+endofblockkilling:  %34 = call i8* @CAT_new(i64 noundef 5) #6
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* %34, i64 10)
+
+
+Instruction
+  call void @CAT_sub(i8* noundef %34, i8* noundef %34, i8* noundef %34) #6
+
+endofblockkilling:  call void @CAT_set(i8* %34, i64 10)
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  %35 = bitcast %struct.MyOutputT* %0 to i8**
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  store i8* %2, i8** %35, align 8, !tbaa !10
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  %36 = getelementptr inbounds %struct.MyOutputT, %struct.MyOutputT* %0, i64 0, i32 1
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  %37 = bitcast %struct.MyT** %36 to i8**
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  store i8* %4, i8** %37, align 8, !tbaa !12
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  ret void
+
+Constant after instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+BLOCK AFTER MODIFICATION
+
+  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+  %3 = bitcast i8* %2 to %struct.MyT*
+  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+  %5 = bitcast i8* %4 to %struct.MyT*
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %7 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 0
+  store i8* %6, i8** %7, align 8, !tbaa !3
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %9 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 1
+  store i8* %8, i8** %9, align 8, !tbaa !8
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %11 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 2
+  store i8* %10, i8** %11, align 8, !tbaa !9
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %13 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 0
+  store i8* %12, i8** %13, align 8, !tbaa !3
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %15 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 1
+  store i8* %14, i8** %15, align 8, !tbaa !8
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %17 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 2
+  store i8* %16, i8** %17, align 8, !tbaa !9
+  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i64 noundef 8)
+  %19 = load i8*, i8** %9, align 8, !tbaa !8
+  %20 = call i64 @CAT_get(i8* noundef %19) #6
+  %21 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.1, i64 0, i64 0), i64 noundef %20)
+  %22 = load i8*, i8** %11, align 8, !tbaa !9
+  %23 = call i64 @CAT_get(i8* noundef %22) #6
+  %24 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.2, i64 0, i64 0), i64 noundef %23)
+  %25 = load i8*, i8** %13, align 8, !tbaa !3
+  %26 = call i64 @CAT_get(i8* noundef %25) #6
+  %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.3, i64 0, i64 0), i64 noundef %26)
+  %28 = load i8*, i8** %15, align 8, !tbaa !8
+  %29 = call i64 @CAT_get(i8* noundef %28) #6
+  %30 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.4, i64 0, i64 0), i64 noundef %29)
+  %31 = load i8*, i8** %17, align 8, !tbaa !9
+  %32 = call i64 @CAT_get(i8* noundef %31) #6
+  %33 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.5, i64 0, i64 0), i64 noundef %32)
+  %34 = call i8* @CAT_new(i64 noundef 5) #6
+  call void @CAT_set(i8* %34, i64 10)
+  call void @CAT_set(i8* %34, i64 0)
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+  %35 = bitcast %struct.MyOutputT* %0 to i8**
+  store i8* %2, i8** %35, align 8, !tbaa !10
+  %36 = getelementptr inbounds %struct.MyOutputT, %struct.MyOutputT* %0, i64 0, i32 1
+  %37 = bitcast %struct.MyT** %36 to i8**
+  store i8* %4, i8** %37, align 8, !tbaa !12
+  ret void
+
+
+NEXTBLOCK
+loopToBadConstants ****
+
+
+Instruction
+  %3 = alloca %struct.MyOutputT, align 8
+
+Constant after instruction
+
+
+Instruction
+  %4 = bitcast %struct.MyOutputT* %3 to i8*
+
+Constant after instruction
+
+
+Instruction
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %4) #5
+
+endofblockkilling:  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %4) #5
+Constant after instruction
+
+
+Instruction
+  call void @a_generic_C_function(%struct.MyOutputT* noundef nonnull %3)
+
+Constant after instruction
+
+
+Instruction
+  %5 = call i64 @CAT_variables() #6
+
+Constant after instruction
+
+
+Instruction
+  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.6, i64 0, i64 0), i64 noundef %5)
+
+Constant after instruction
+
+
+Instruction
+  %7 = call i64 @CAT_cost() #6
+
+Constant after instruction
+
+
+Instruction
+  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.7, i64 0, i64 0), i64 noundef %7)
+
+Constant after instruction
+
+
+Instruction
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %4) #5
+
+endofblockkilling:  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %4) #5
+Constant after instruction
+
+
+Instruction
+  ret i32 0
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+  %3 = alloca %struct.MyOutputT, align 8
+  %4 = bitcast %struct.MyOutputT* %3 to i8*
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %4) #5
+  call void @a_generic_C_function(%struct.MyOutputT* noundef nonnull %3)
+  %5 = call i64 @CAT_variables() #6
+  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.6, i64 0, i64 0), i64 noundef %5)
+  %7 = call i64 @CAT_cost() #6
+  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.7, i64 0, i64 0), i64 noundef %7)
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %4) #5
+  ret i32 0
+
+
+NEXTBLOCK
+####  The compiler modified the input bitcode: the fixed point isn't reached.
+#### Running the CAT compiler
+####   Command line =  opt --enable-new-pm=0 -load ~/CAT/lib/CAT.so output_code_iter_1.bc --basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker -CAT -o program_optimized.bc
+loopToBadConstants ****
+
+
+Instruction
+  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+
+endofblockkilling:  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+Constant after instruction
+
+
+Instruction
+  %3 = bitcast i8* %2 to %struct.MyT*
+
+Constant after instruction
+
+
+Instruction
+  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+
+endofblockkilling:  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+Constant after instruction
+
+
+Instruction
+  %5 = bitcast i8* %4 to %struct.MyT*
+
+Constant after instruction
+
+
+Instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  %7 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 0
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  store i8* %6, i8** %7, align 8, !tbaa !3
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+
+
+Instruction
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  %9 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 1
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  store i8* %8, i8** %9, align 8, !tbaa !8
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+
+
+Instruction
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  %11 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 2
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  store i8* %10, i8** %11, align 8, !tbaa !9
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+
+
+Instruction
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  %13 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 0
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  store i8* %12, i8** %13, align 8, !tbaa !3
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+
+
+Instruction
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %15 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 1
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  store i8* %14, i8** %15, align 8, !tbaa !8
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+
+
+Instruction
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %17 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 2
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  store i8* %16, i8** %17, align 8, !tbaa !9
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i64 noundef 8)
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %19 = load i8*, i8** %9, align 8, !tbaa !8
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %20 = call i64 @CAT_get(i8* noundef %19) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %21 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.1, i64 0, i64 0), i64 noundef %20)
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %22 = load i8*, i8** %11, align 8, !tbaa !9
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %23 = call i64 @CAT_get(i8* noundef %22) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %24 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.2, i64 0, i64 0), i64 noundef %23)
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %25 = load i8*, i8** %13, align 8, !tbaa !3
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %26 = call i64 @CAT_get(i8* noundef %25) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.3, i64 0, i64 0), i64 noundef %26)
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %28 = load i8*, i8** %15, align 8, !tbaa !8
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %29 = call i64 @CAT_get(i8* noundef %28) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %30 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.4, i64 0, i64 0), i64 noundef %29)
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %31 = load i8*, i8** %17, align 8, !tbaa !9
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %32 = call i64 @CAT_get(i8* noundef %31) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %33 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.5, i64 0, i64 0), i64 noundef %32)
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+
+
+Instruction
+  %34 = call i8* @CAT_new(i64 noundef 5) #6
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %34 = call i8* @CAT_new(i64 noundef 5) #6
+
+
+Instruction
+  call void @CAT_set(i8* %34, i64 10)
+
+endofblockkilling:  %34 = call i8* @CAT_new(i64 noundef 5) #6
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  call void @CAT_set(i8* %34, i64 10)
+
+
+Instruction
+  call void @CAT_set(i8* %34, i64 0)
+
+endofblockkilling:  call void @CAT_set(i8* %34, i64 10)
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  call void @CAT_set(i8* %34, i64 0)
+
+
+Instruction
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+endofblockkilling:  call void @CAT_set(i8* %34, i64 0)
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  %35 = bitcast %struct.MyOutputT* %0 to i8**
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  store i8* %2, i8** %35, align 8, !tbaa !10
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  %36 = getelementptr inbounds %struct.MyOutputT, %struct.MyOutputT* %0, i64 0, i32 1
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  %37 = bitcast %struct.MyT** %36 to i8**
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  store i8* %4, i8** %37, align 8, !tbaa !12
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+Instruction
+  ret void
+
+Constant after instruction
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+
+
+BLOCK AFTER MODIFICATION
+
+  %2 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+  %3 = bitcast i8* %2 to %struct.MyT*
+  %4 = call noalias dereferenceable_or_null(24) i8* @malloc(i64 noundef 24) #5
+  %5 = bitcast i8* %4 to %struct.MyT*
+  %6 = call i8* @CAT_new(i64 noundef 8) #6
+  %7 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 0
+  store i8* %6, i8** %7, align 8, !tbaa !3
+  %8 = call i8* @CAT_new(i64 noundef 9) #6
+  %9 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 1
+  store i8* %8, i8** %9, align 8, !tbaa !8
+  %10 = call i8* @CAT_new(i64 noundef 10) #6
+  %11 = getelementptr inbounds %struct.MyT, %struct.MyT* %3, i64 0, i32 2
+  store i8* %10, i8** %11, align 8, !tbaa !9
+  %12 = call i8* @CAT_new(i64 noundef 1) #6
+  %13 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 0
+  store i8* %12, i8** %13, align 8, !tbaa !3
+  %14 = call i8* @CAT_new(i64 noundef 2) #6
+  %15 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 1
+  store i8* %14, i8** %15, align 8, !tbaa !8
+  %16 = call i8* @CAT_new(i64 noundef 3) #6
+  %17 = getelementptr inbounds %struct.MyT, %struct.MyT* %5, i64 0, i32 2
+  store i8* %16, i8** %17, align 8, !tbaa !9
+  %18 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i64 0, i64 0), i64 noundef 8)
+  %19 = load i8*, i8** %9, align 8, !tbaa !8
+  %20 = call i64 @CAT_get(i8* noundef %19) #6
+  %21 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.1, i64 0, i64 0), i64 noundef %20)
+  %22 = load i8*, i8** %11, align 8, !tbaa !9
+  %23 = call i64 @CAT_get(i8* noundef %22) #6
+  %24 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.2, i64 0, i64 0), i64 noundef %23)
+  %25 = load i8*, i8** %13, align 8, !tbaa !3
+  %26 = call i64 @CAT_get(i8* noundef %25) #6
+  %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.3, i64 0, i64 0), i64 noundef %26)
+  %28 = load i8*, i8** %15, align 8, !tbaa !8
+  %29 = call i64 @CAT_get(i8* noundef %28) #6
+  %30 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.4, i64 0, i64 0), i64 noundef %29)
+  %31 = load i8*, i8** %17, align 8, !tbaa !9
+  %32 = call i64 @CAT_get(i8* noundef %31) #6
+  %33 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([27 x i8], [27 x i8]* @.str.5, i64 0, i64 0), i64 noundef %32)
+  %34 = call i8* @CAT_new(i64 noundef 5) #6
+  call void @CAT_set(i8* %34, i64 10)
+  call void @CAT_set(i8* %34, i64 0)
+  call void @CAT_set(i8* noundef %34, i64 noundef 42) #6
+  %35 = bitcast %struct.MyOutputT* %0 to i8**
+  store i8* %2, i8** %35, align 8, !tbaa !10
+  %36 = getelementptr inbounds %struct.MyOutputT, %struct.MyOutputT* %0, i64 0, i32 1
+  %37 = bitcast %struct.MyT** %36 to i8**
+  store i8* %4, i8** %37, align 8, !tbaa !12
+  ret void
+
+
+NEXTBLOCK
+loopToBadConstants ****
+
+
+Instruction
+  %3 = alloca %struct.MyOutputT, align 8
+
+Constant after instruction
+
+
+Instruction
+  %4 = bitcast %struct.MyOutputT* %3 to i8*
+
+Constant after instruction
+
+
+Instruction
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %4) #5
+
+endofblockkilling:  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %4) #5
+Constant after instruction
+
+
+Instruction
+  call void @a_generic_C_function(%struct.MyOutputT* noundef nonnull %3)
+
+Constant after instruction
+
+
+Instruction
+  %5 = call i64 @CAT_variables() #6
+
+Constant after instruction
+
+
+Instruction
+  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.6, i64 0, i64 0), i64 noundef %5)
+
+Constant after instruction
+
+
+Instruction
+  %7 = call i64 @CAT_cost() #6
+
+Constant after instruction
+
+
+Instruction
+  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.7, i64 0, i64 0), i64 noundef %7)
+
+Constant after instruction
+
+
+Instruction
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %4) #5
+
+endofblockkilling:  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %4) #5
+Constant after instruction
+
+
+Instruction
+  ret i32 0
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+  %3 = alloca %struct.MyOutputT, align 8
+  %4 = bitcast %struct.MyOutputT* %3 to i8*
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %4) #5
+  call void @a_generic_C_function(%struct.MyOutputT* noundef nonnull %3)
+  %5 = call i64 @CAT_variables() #6
+  %6 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.6, i64 0, i64 0), i64 noundef %5)
+  %7 = call i64 @CAT_cost() #6
+  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.7, i64 0, i64 0), i64 noundef %7)
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %4) #5
+  ret i32 0
+
+
+NEXTBLOCK
+####  The compiler did not modify the input bitcode: the fixed point has been reached.
+llvm-dis program_optimized.bc
+clang -O2 -lm program_optimized.bc ../misc/CAT.o -o program_optimized
+./program_optimized > program_optimized_output
+../misc/check.sh "output/oracle.txt" "program_optimized_output"
+Checking output/oracle.txt against program_optimized_output
+Test passed!
+make[1]: Leaving directory '/home/hwo2853/LLVM/H4/tests/test112'

@@ -1,0 +1,4 @@
+14c14
+< Value of d1 = 42
+---
+> Value of d1 = 99

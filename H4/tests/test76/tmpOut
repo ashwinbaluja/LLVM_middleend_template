@@ -1,0 +1,862 @@
+make[1]: Entering directory '/home/hwo2853/LLVM/H4/tests/test76'
+timeout 10m ../misc/run_test.sh "--basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker" "program.bc" "program_optimized.bc" 0 0
+#### Running the CAT compiler
+####   Command line =  opt --enable-new-pm=0 -load ~/CAT/lib/CAT.so program.bc --basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker -CAT -o program_optimized.bc
+loopToBadConstants ****
+loop
+
+11:                                               ; preds = %2, %15
+  %12 = phi i32 [ 0, %2 ], [ %16, %15 ]
+  %13 = phi i8* [ %5, %2 ], [ %.lcssa, %15 ]
+  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #4
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #4
+  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  br label %18
+: 
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4 ____________________
+loop
+
+15:                                               ; preds = %27
+  %.lcssa = phi i8* [ %28, %27 ]
+  %16 = add nuw nsw i32 %12, 1
+  %17 = icmp eq i32 %16, 10
+  br i1 %17, label %6, label %11, !llvm.loop !3
+: 
+____________________
+loop
+
+18:                                               ; preds = %11, %27
+  %19 = phi i32 [ 0, %11 ], [ %29, %27 ]
+  %20 = phi i8* [ %14, %11 ], [ %28, %27 ]
+  %21 = call i64 @CAT_get(i8* noundef %20) #4
+  %22 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([9 x i8], [9 x i8]* @.str, i64 0, i64 0), i64 noundef %21)
+  call void @CAT_add(i8* noundef %20, i8* noundef %3, i8* noundef %4) #4
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #4
+  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #4
+  %23 = call i32 @rand() #5
+  %24 = icmp slt i32 %23, 0
+  br i1 %24, label %25, label %27
+: 
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4 ____________________
+loop
+
+25:                                               ; preds = %18
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+  br label %27
+: 
+____________________
+loop
+
+27:                                               ; preds = %18, %25
+  %28 = phi i8* [ %26, %25 ], [ %20, %18 ]
+  %29 = add nuw nsw i32 %19, 1
+  %30 = icmp eq i32 %29, 10
+  br i1 %30, label %15, label %18, !llvm.loop !6
+: 
+____________________
+
+
+Instruction
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+
+
+Instruction
+  %4 = call i8* @CAT_new(i64 noundef 2) #4
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+  %4 = call i8* @CAT_new(i64 noundef 2) #4
+
+
+Instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+  %4 = call i8* @CAT_new(i64 noundef 2) #4
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+
+
+Instruction
+  br label %11
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+  %4 = call i8* @CAT_new(i64 noundef 2) #4
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+
+
+BLOCK AFTER MODIFICATION
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+  %4 = call i8* @CAT_new(i64 noundef 2) #4
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  br label %11
+
+
+NEXTBLOCK
+
+falseFinds
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4   %13 = phi i8* [ %5, %2 ], [ %.lcssa, %15 ] REMOVED
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #43->2REMOVED
+
+  %4 = call i8* @CAT_new(i64 noundef 2) #42->1
+
+Instruction
+  %12 = phi i32 [ 0, %2 ], [ %16, %15 ]
+phiNode
+not falsefind
+
+incomingValue: i32 0
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+
+
+Instruction
+  %13 = phi i8* [ %5, %2 ], [ %.lcssa, %15 ]
+phiNode
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+
+
+Instruction
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  br label %18
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+BLOCK AFTER MODIFICATION
+
+11:                                               ; preds = %2, %15
+  %12 = phi i32 [ 0, %2 ], [ %16, %15 ]
+  %13 = phi i8* [ %5, %2 ], [ %.lcssa, %15 ]
+  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #4
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #4
+  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  br label %18
+
+
+NEXTBLOCK
+
+falseFinds
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4   %20 = phi i8* [ %14, %11 ], [ %28, %27 ] 
+
+Instruction
+  %19 = phi i32 [ 0, %11 ], [ %29, %27 ]
+phiNode
+not falsefind
+
+incomingValue: i32 0
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %20 = phi i8* [ %14, %11 ], [ %28, %27 ]
+phiNode
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %21 = call i64 @CAT_get(i8* noundef %20) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %22 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([9 x i8], [9 x i8]* @.str, i64 0, i64 0), i64 noundef %21)
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %20, i8* noundef %3, i8* noundef %4) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %23 = call i32 @rand() #5
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %24 = icmp slt i32 %23, 0
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  br i1 %24, label %25, label %27
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+BLOCK AFTER MODIFICATION
+
+18:                                               ; preds = %11, %27
+  %19 = phi i32 [ 0, %11 ], [ %29, %27 ]
+  %20 = phi i8* [ %14, %11 ], [ %28, %27 ]
+  %21 = call i64 @CAT_get(i8* noundef %20) #4
+  %22 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([9 x i8], [9 x i8]* @.str, i64 0, i64 0), i64 noundef %21)
+  call void @CAT_add(i8* noundef %20, i8* noundef %3, i8* noundef %4) #4
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #4
+  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #4
+  %23 = call i32 @rand() #5
+  %24 = icmp slt i32 %23, 0
+  br i1 %24, label %25, label %27
+
+
+NEXTBLOCK
+
+falseFinds
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4 
+
+Instruction
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  br label %27
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+BLOCK AFTER MODIFICATION
+
+25:                                               ; preds = %18
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+  br label %27
+
+
+NEXTBLOCK
+
+falseFinds
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4 
+
+Instruction
+  %28 = phi i8* [ %26, %25 ], [ %20, %18 ]
+phiNode
+not falsefind
+
+incomingValue:   %26 = call i8* @CAT_new(i64 noundef 1) #4
+incomingConstant: i64 1
+incomingValue:   %20 = phi i8* [ %14, %11 ], [ %28, %27 ]
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %29 = add nuw nsw i32 %19, 1
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %30 = icmp eq i32 %29, 10
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  br i1 %30, label %15, label %18, !llvm.loop !6
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+BLOCK AFTER MODIFICATION
+
+27:                                               ; preds = %18, %25
+  %28 = phi i8* [ %26, %25 ], [ %20, %18 ]
+  %29 = add nuw nsw i32 %19, 1
+  %30 = icmp eq i32 %29, 10
+  br i1 %30, label %15, label %18, !llvm.loop !6
+
+
+NEXTBLOCK
+
+falseFinds
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4 
+
+Instruction
+  %.lcssa = phi i8* [ %28, %27 ]
+phiNode
+not falsefind
+
+constantphifound  %.lcssa = phi i8* [ %28, %27 ]  %28 = phi i8* [ %26, %25 ], [ %20, %18 ]
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %16 = add nuw nsw i32 %12, 1
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %17 = icmp eq i32 %16, 10
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  br i1 %17, label %6, label %11, !llvm.loop !3
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+  %.lcssa = phi i8* [ %26, %25 ], [ %20, %18 ]
+
+BLOCK AFTER MODIFICATION
+
+15:                                               ; preds = %27
+  %16 = add nuw nsw i32 %12, 1
+  %17 = icmp eq i32 %16, 10
+  br i1 %17, label %6, label %11, !llvm.loop !3
+
+
+NEXTBLOCK
+
+falseFinds
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4   %20 = phi i8* [ %14, %11 ], [ %.lcssa, %27 ] 
+
+Instruction
+  %19 = phi i32 [ 0, %11 ], [ %28, %27 ]
+phiNode
+not falsefind
+
+incomingValue: i32 0
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %20 = phi i8* [ %14, %11 ], [ %.lcssa, %27 ]
+phiNode
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %21 = call i64 @CAT_get(i8* noundef %20) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %22 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([9 x i8], [9 x i8]* @.str, i64 0, i64 0), i64 noundef %21)
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %20, i8* noundef %3, i8* noundef %4) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %23 = call i32 @rand() #5
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %24 = icmp slt i32 %23, 0
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  br i1 %24, label %25, label %27
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+BLOCK AFTER MODIFICATION
+
+18:                                               ; preds = %11, %27
+  %19 = phi i32 [ 0, %11 ], [ %28, %27 ]
+  %20 = phi i8* [ %14, %11 ], [ %.lcssa, %27 ]
+  %21 = call i64 @CAT_get(i8* noundef %20) #4
+  %22 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([9 x i8], [9 x i8]* @.str, i64 0, i64 0), i64 noundef %21)
+  call void @CAT_add(i8* noundef %20, i8* noundef %3, i8* noundef %4) #4
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #4
+  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #4
+  %23 = call i32 @rand() #5
+  %24 = icmp slt i32 %23, 0
+  br i1 %24, label %25, label %27
+
+
+NEXTBLOCK
+
+
+Instruction
+  %7 = call i64 @CAT_variables() #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %7)
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %9 = call i64 @CAT_cost() #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %9)
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  ret i32 0
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+BLOCK AFTER MODIFICATION
+
+6:                                                ; preds = %15
+  %7 = call i64 @CAT_variables() #4
+  %8 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0), i64 noundef %7)
+  %9 = call i64 @CAT_cost() #4
+  %10 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.2, i64 0, i64 0), i64 noundef %9)
+  ret i32 0
+
+
+NEXTBLOCK
+
+falseFinds
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4   %13 = phi i8* [ %5, %2 ], [ %.lcssa, %15 ] REMOVED
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #45->4REMOVED
+
+  %4 = call i8* @CAT_new(i64 noundef 2) #44->3
+
+Instruction
+  %12 = phi i32 [ 0, %2 ], [ %16, %15 ]
+phiNode
+not falsefind
+
+incomingValue: i32 0
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %13 = phi i8* [ %5, %2 ], [ %.lcssa, %15 ]
+phiNode
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  br label %18
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+BLOCK AFTER MODIFICATION
+
+11:                                               ; preds = %2, %15
+  %12 = phi i32 [ 0, %2 ], [ %16, %15 ]
+  %13 = phi i8* [ %5, %2 ], [ %.lcssa, %15 ]
+  call void @CAT_add(i8* noundef %13, i8* noundef %3, i8* noundef %4) #4
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #4
+  call void @CAT_add(i8* noundef %4, i8* noundef %4, i8* noundef %4) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  br label %18
+
+
+NEXTBLOCK
+
+
+Instruction
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+
+
+Instruction
+  %4 = call i8* @CAT_new(i64 noundef 2) #4
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+  %4 = call i8* @CAT_new(i64 noundef 2) #4
+
+
+Instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+  %4 = call i8* @CAT_new(i64 noundef 2) #4
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+
+
+Instruction
+  br label %11
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+  %4 = call i8* @CAT_new(i64 noundef 2) #4
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+
+
+BLOCK AFTER MODIFICATION
+
+  %3 = call i8* @CAT_new(i64 noundef 40) #4
+  %4 = call i8* @CAT_new(i64 noundef 2) #4
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  br label %11
+
+
+NEXTBLOCK
+
+falseFinds
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4 
+
+Instruction
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  br label %27
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+BLOCK AFTER MODIFICATION
+
+25:                                               ; preds = %18
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+  br label %27
+
+
+NEXTBLOCK
+
+falseFinds
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4 
+
+Instruction
+  %.lcssa = phi i8* [ %26, %25 ], [ %20, %18 ]
+phiNode
+not falsefind
+
+incomingValue:   %26 = call i8* @CAT_new(i64 noundef 1) #4
+incomingConstant: i64 1
+incomingValue:   %20 = phi i8* [ %14, %11 ], [ %.lcssa, %27 ]
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %28 = add nuw nsw i32 %19, 1
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %29 = icmp eq i32 %28, 10
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  br i1 %29, label %15, label %18, !llvm.loop !6
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+BLOCK AFTER MODIFICATION
+
+27:                                               ; preds = %18, %25
+  %.lcssa = phi i8* [ %26, %25 ], [ %20, %18 ]
+  %28 = add nuw nsw i32 %19, 1
+  %29 = icmp eq i32 %28, 10
+  br i1 %29, label %15, label %18, !llvm.loop !6
+
+
+NEXTBLOCK
+
+falseFinds
+  %3 = call i8* @CAT_new(i64 noundef 40) #4   %4 = call i8* @CAT_new(i64 noundef 2) #4 
+
+Instruction
+  %16 = add nuw nsw i32 %12, 1
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  %17 = icmp eq i32 %16, 10
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+Instruction
+  br i1 %17, label %6, label %11, !llvm.loop !3
+
+Constant after instruction
+  %5 = call i8* @CAT_new(i64 noundef 0) #4
+  %14 = call i8* @CAT_new(i64 noundef 1) #4
+  %26 = call i8* @CAT_new(i64 noundef 1) #4
+
+
+BLOCK AFTER MODIFICATION
+
+15:                                               ; preds = %27
+  %16 = add nuw nsw i32 %12, 1
+  %17 = icmp eq i32 %16, 10
+  br i1 %17, label %6, label %11, !llvm.loop !3
+
+
+NEXTBLOCK
+####  The compiler did not modify the input bitcode: the fixed point has been reached.
+llvm-dis program_optimized.bc
+clang -O2 -lm program_optimized.bc ../misc/CAT.o -o program_optimized
+./program_optimized > program_optimized_output
+../misc/check.sh "output/oracle.txt" "program_optimized_output"
+Checking output/oracle.txt against program_optimized_output
+Test passed!
+make[1]: Leaving directory '/home/hwo2853/LLVM/H4/tests/test76'

@@ -1,0 +1,6 @@
+H1: 	X    = 16
+H1: 	Y    = 80
+H1: 	Ref1 = 16
+H1: 	Ref2 = 16
+CAT variables = 3
+CAT cost = 19

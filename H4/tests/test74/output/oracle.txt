@@ -1,0 +1,3 @@
+0 42 43
+CAT variables = 2
+CAT cost = 17

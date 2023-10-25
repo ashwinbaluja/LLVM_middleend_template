@@ -1,0 +1,2004 @@
+make[1]: Entering directory '/home/hwo2853/LLVM/H4/tests/test71'
+timeout 10m ../misc/run_test.sh "--basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker" "program.bc" "program_optimized.bc" 0 0
+#### Running the CAT compiler
+####   Command line =  opt --enable-new-pm=0 -load ~/CAT/lib/CAT.so program.bc --basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker -CAT -o program_optimized.bc
+loopToBadConstants ****
+loop
+
+5:                                                ; preds = %.preheader, %16
+  %6 = phi i32 [ %18, %16 ], [ %1, %.preheader ]
+  %7 = phi i8* [ %21, %16 ], [ %0, %.preheader ]
+  %8 = call i64 @CAT_get(i8* noundef %7) #3
+  %9 = icmp sgt i64 %8, 10
+  br i1 %9, label %10, label %14
+: 
+____________________
+loop
+
+10:                                               ; preds = %5
+  %11 = call i64 @CAT_get(i8* noundef %7) #3
+  %12 = add nsw i64 %11, -1
+  %13 = call i8* @CAT_new(i64 noundef %12) #3
+  br label %16
+: 
+____________________
+loop
+
+14:                                               ; preds = %5
+  %15 = add nsw i32 %6, -1
+  br label %16
+: 
+____________________
+loop
+
+16:                                               ; preds = %10, %14
+  %17 = phi i8* [ %13, %10 ], [ %7, %14 ]
+  %18 = phi i32 [ %6, %10 ], [ %15, %14 ]
+  %19 = call i64 @CAT_get(i8* noundef %17) #3
+  %20 = add nsw i64 %19, -1
+  %21 = call i8* @CAT_new(i64 noundef %20) #3
+  %22 = icmp slt i32 %18, 100
+  br i1 %22, label %.loopexit, label %5
+: 
+____________________
+
+
+Instruction
+  %3 = icmp slt i32 %1, 100
+
+Constant after instruction
+
+
+Instruction
+  br i1 %3, label %4, label %.preheader
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+  %3 = icmp slt i32 %1, 100
+  br i1 %3, label %4, label %.preheader
+
+
+NEXTBLOCK
+
+
+Instruction
+  ret void
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+4:                                                ; preds = %.loopexit, %2
+  ret void
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %5
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+.preheader:                                       ; preds = %2
+  br label %5
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %6 = phi i32 [ %18, %16 ], [ %1, %.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %18 = phi i32 [ %6, %10 ], [ %15, %14 ]
+
+Constant after instruction
+
+
+Instruction
+  %7 = phi i8* [ %21, %16 ], [ %0, %.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %21 = call i8* @CAT_new(i64 noundef %20) #3
+
+Constant after instruction
+
+
+Instruction
+  %8 = call i64 @CAT_get(i8* noundef %7) #3
+
+Constant after instruction
+
+
+Instruction
+  %9 = icmp sgt i64 %8, 10
+
+Constant after instruction
+
+
+Instruction
+  br i1 %9, label %10, label %14
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+5:                                                ; preds = %.preheader, %16
+  %6 = phi i32 [ %18, %16 ], [ %1, %.preheader ]
+  %7 = phi i8* [ %21, %16 ], [ %0, %.preheader ]
+  %8 = call i64 @CAT_get(i8* noundef %7) #3
+  %9 = icmp sgt i64 %8, 10
+  br i1 %9, label %10, label %14
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %11 = call i64 @CAT_get(i8* noundef %7) #3
+
+Constant after instruction
+
+
+Instruction
+  %12 = add nsw i64 %11, -1
+
+Constant after instruction
+
+
+Instruction
+  %13 = call i8* @CAT_new(i64 noundef %12) #3
+
+Constant after instruction
+
+
+Instruction
+  br label %16
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+10:                                               ; preds = %5
+  %11 = call i64 @CAT_get(i8* noundef %7) #3
+  %12 = add nsw i64 %11, -1
+  %13 = call i8* @CAT_new(i64 noundef %12) #3
+  br label %16
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %15 = add nsw i32 %6, -1
+
+Constant after instruction
+
+
+Instruction
+  br label %16
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+14:                                               ; preds = %5
+  %15 = add nsw i32 %6, -1
+  br label %16
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %17 = phi i8* [ %13, %10 ], [ %7, %14 ]
+phiNode
+not falsefind
+
+incomingValue:   %13 = call i8* @CAT_new(i64 noundef %12) #3
+
+Constant after instruction
+
+
+Instruction
+  %18 = phi i32 [ %6, %10 ], [ %15, %14 ]
+phiNode
+not falsefind
+
+incomingValue:   %6 = phi i32 [ %18, %16 ], [ %1, %.preheader ]
+
+Constant after instruction
+
+
+Instruction
+  %19 = call i64 @CAT_get(i8* noundef %17) #3
+
+Constant after instruction
+
+
+Instruction
+  %20 = add nsw i64 %19, -1
+
+Constant after instruction
+
+
+Instruction
+  %21 = call i8* @CAT_new(i64 noundef %20) #3
+
+Constant after instruction
+
+
+Instruction
+  %22 = icmp slt i32 %18, 100
+
+Constant after instruction
+
+
+Instruction
+  br i1 %22, label %.loopexit, label %5
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+16:                                               ; preds = %10, %14
+  %17 = phi i8* [ %13, %10 ], [ %7, %14 ]
+  %18 = phi i32 [ %6, %10 ], [ %15, %14 ]
+  %19 = call i64 @CAT_get(i8* noundef %17) #3
+  %20 = add nsw i64 %19, -1
+  %21 = call i8* @CAT_new(i64 noundef %20) #3
+  %22 = icmp slt i32 %18, 100
+  br i1 %22, label %.loopexit, label %5
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %4
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+.loopexit:                                        ; preds = %16
+  br label %4
+
+
+NEXTBLOCK
+loopToBadConstants ****
+loop
+
+5:                                                ; preds = %.preheader, %16
+  %6 = phi i32 [ %18, %16 ], [ %0, %.preheader ]
+  %7 = phi i8* [ %21, %16 ], [ %3, %.preheader ]
+  %8 = call i64 @CAT_get(i8* noundef %7) #3
+  %9 = icmp sgt i64 %8, 10
+  br i1 %9, label %10, label %14
+: 
+____________________
+loop
+
+10:                                               ; preds = %5
+  %11 = call i64 @CAT_get(i8* noundef %7) #3
+  %12 = add nsw i64 %11, -1
+  %13 = call i8* @CAT_new(i64 noundef %12) #3
+  br label %16
+: 
+____________________
+loop
+
+14:                                               ; preds = %5
+  %15 = add nsw i32 %6, -1
+  br label %16
+: 
+____________________
+loop
+
+16:                                               ; preds = %14, %10
+  %17 = phi i8* [ %13, %10 ], [ %7, %14 ]
+  %18 = phi i32 [ %6, %10 ], [ %15, %14 ]
+  %19 = call i64 @CAT_get(i8* noundef %17) #3
+  %20 = add nsw i64 %19, -1
+  %21 = call i8* @CAT_new(i64 noundef %20) #3
+  %22 = icmp slt i32 %18, 100
+  br i1 %22, label %.loopexit, label %5
+: 
+____________________
+
+
+Instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %4 = icmp slt i32 %0, 100
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br i1 %4, label %23, label %.preheader
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+  %4 = icmp slt i32 %0, 100
+  br i1 %4, label %23, label %.preheader
+
+
+NEXTBLOCK
+
+
+Instruction
+  call void @CAT_add(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3
+
+endofblockkilling:  %3 = call i8* @CAT_new(i64 noundef 5) #3
+Constant after instruction
+
+
+Instruction
+  call void @CAT_sub(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3
+
+Constant after instruction
+
+
+Instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %24 = call i64 @CAT_variables() #3
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %25 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i64 0, i64 0), i64 noundef %24)
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %26 = call i64 @CAT_cost() #3
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i64 noundef %26)
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  ret i32 0
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+BLOCK AFTER MODIFICATION
+
+23:                                               ; preds = %.loopexit, %2
+  call void @CAT_set(i8* %3, i64 10)
+  call void @CAT_sub(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+  %24 = call i64 @CAT_variables() #3
+  %25 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i64 0, i64 0), i64 noundef %24)
+  %26 = call i64 @CAT_cost() #3
+  %27 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i64 noundef %26)
+  ret i32 0
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %5
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+.preheader:                                       ; preds = %2
+  br label %5
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %6 = phi i32 [ %18, %16 ], [ %0, %.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %18 = phi i32 [ %6, %10 ], [ %15, %14 ]
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %7 = phi i8* [ %21, %16 ], [ %3, %.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %21 = call i8* @CAT_new(i64 noundef %20) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %8 = call i64 @CAT_get(i8* noundef %7) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %9 = icmp sgt i64 %8, 10
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br i1 %9, label %10, label %14
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+5:                                                ; preds = %.preheader, %16
+  %6 = phi i32 [ %18, %16 ], [ %0, %.preheader ]
+  %7 = phi i8* [ %21, %16 ], [ %3, %.preheader ]
+  %8 = call i64 @CAT_get(i8* noundef %7) #3
+  %9 = icmp sgt i64 %8, 10
+  br i1 %9, label %10, label %14
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %11 = call i64 @CAT_get(i8* noundef %7) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %12 = add nsw i64 %11, -1
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %13 = call i8* @CAT_new(i64 noundef %12) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br label %16
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+10:                                               ; preds = %5
+  %11 = call i64 @CAT_get(i8* noundef %7) #3
+  %12 = add nsw i64 %11, -1
+  %13 = call i8* @CAT_new(i64 noundef %12) #3
+  br label %16
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %15 = add nsw i32 %6, -1
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br label %16
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+14:                                               ; preds = %5
+  %15 = add nsw i32 %6, -1
+  br label %16
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %17 = phi i8* [ %13, %10 ], [ %7, %14 ]
+phiNode
+not falsefind
+
+incomingValue:   %13 = call i8* @CAT_new(i64 noundef %12) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %18 = phi i32 [ %6, %10 ], [ %15, %14 ]
+phiNode
+not falsefind
+
+incomingValue:   %6 = phi i32 [ %18, %16 ], [ %0, %.preheader ]
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %19 = call i64 @CAT_get(i8* noundef %17) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %20 = add nsw i64 %19, -1
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %21 = call i8* @CAT_new(i64 noundef %20) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %22 = icmp slt i32 %18, 100
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br i1 %22, label %.loopexit, label %5
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+16:                                               ; preds = %14, %10
+  %17 = phi i8* [ %13, %10 ], [ %7, %14 ]
+  %18 = phi i32 [ %6, %10 ], [ %15, %14 ]
+  %19 = call i64 @CAT_get(i8* noundef %17) #3
+  %20 = add nsw i64 %19, -1
+  %21 = call i8* @CAT_new(i64 noundef %20) #3
+  %22 = icmp slt i32 %18, 100
+  br i1 %22, label %.loopexit, label %5
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %23
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+.loopexit:                                        ; preds = %16
+  br label %23
+
+
+NEXTBLOCK
+####  The compiler modified the input bitcode: the fixed point isn't reached.
+#### Running the CAT compiler
+####   Command line =  opt --enable-new-pm=0 -load ~/CAT/lib/CAT.so output_code_iter_0.bc --basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker -CAT -o program_optimized.bc
+loopToBadConstants ****
+loop
+
+.preheader:                                       ; preds = %.preheader.preheader, %14
+  %4 = phi i32 [ %16, %14 ], [ %1, %.preheader.preheader ]
+  %5 = phi i8* [ %19, %14 ], [ %0, %.preheader.preheader ]
+  %6 = call i64 @CAT_get(i8* noundef %5) #3
+  %7 = icmp sgt i64 %6, 10
+  br i1 %7, label %8, label %12
+: 
+____________________
+loop
+
+8:                                                ; preds = %.preheader
+  %9 = call i64 @CAT_get(i8* noundef %5) #3
+  %10 = add nsw i64 %9, -1
+  %11 = call i8* @CAT_new(i64 noundef %10) #3
+  br label %14
+: 
+____________________
+loop
+
+12:                                               ; preds = %.preheader
+  %13 = add nsw i32 %4, -1
+  br label %14
+: 
+____________________
+loop
+
+14:                                               ; preds = %8, %12
+  %15 = phi i8* [ %11, %8 ], [ %5, %12 ]
+  %16 = phi i32 [ %4, %8 ], [ %13, %12 ]
+  %17 = call i64 @CAT_get(i8* noundef %15) #3
+  %18 = add nsw i64 %17, -1
+  %19 = call i8* @CAT_new(i64 noundef %18) #3
+  %20 = icmp slt i32 %16, 100
+  br i1 %20, label %.loopexit.loopexit, label %.preheader
+: 
+____________________
+
+
+Instruction
+  %3 = icmp slt i32 %1, 100
+
+Constant after instruction
+
+
+Instruction
+  br i1 %3, label %.loopexit, label %.preheader.preheader
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+  %3 = icmp slt i32 %1, 100
+  br i1 %3, label %.loopexit, label %.preheader.preheader
+
+
+NEXTBLOCK
+
+
+Instruction
+  ret void
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+.loopexit:                                        ; preds = %.loopexit.loopexit, %2
+  ret void
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %.preheader
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+.preheader.preheader:                             ; preds = %2
+  br label %.preheader
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %4 = phi i32 [ %16, %14 ], [ %1, %.preheader.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %16 = phi i32 [ %4, %8 ], [ %13, %12 ]
+
+Constant after instruction
+
+
+Instruction
+  %5 = phi i8* [ %19, %14 ], [ %0, %.preheader.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %19 = call i8* @CAT_new(i64 noundef %18) #3
+
+Constant after instruction
+
+
+Instruction
+  %6 = call i64 @CAT_get(i8* noundef %5) #3
+
+Constant after instruction
+
+
+Instruction
+  %7 = icmp sgt i64 %6, 10
+
+Constant after instruction
+
+
+Instruction
+  br i1 %7, label %8, label %12
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+.preheader:                                       ; preds = %.preheader.preheader, %14
+  %4 = phi i32 [ %16, %14 ], [ %1, %.preheader.preheader ]
+  %5 = phi i8* [ %19, %14 ], [ %0, %.preheader.preheader ]
+  %6 = call i64 @CAT_get(i8* noundef %5) #3
+  %7 = icmp sgt i64 %6, 10
+  br i1 %7, label %8, label %12
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %9 = call i64 @CAT_get(i8* noundef %5) #3
+
+Constant after instruction
+
+
+Instruction
+  %10 = add nsw i64 %9, -1
+
+Constant after instruction
+
+
+Instruction
+  %11 = call i8* @CAT_new(i64 noundef %10) #3
+
+Constant after instruction
+
+
+Instruction
+  br label %14
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+8:                                                ; preds = %.preheader
+  %9 = call i64 @CAT_get(i8* noundef %5) #3
+  %10 = add nsw i64 %9, -1
+  %11 = call i8* @CAT_new(i64 noundef %10) #3
+  br label %14
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %13 = add nsw i32 %4, -1
+
+Constant after instruction
+
+
+Instruction
+  br label %14
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+12:                                               ; preds = %.preheader
+  %13 = add nsw i32 %4, -1
+  br label %14
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %15 = phi i8* [ %11, %8 ], [ %5, %12 ]
+phiNode
+not falsefind
+
+incomingValue:   %11 = call i8* @CAT_new(i64 noundef %10) #3
+
+Constant after instruction
+
+
+Instruction
+  %16 = phi i32 [ %4, %8 ], [ %13, %12 ]
+phiNode
+not falsefind
+
+incomingValue:   %4 = phi i32 [ %16, %14 ], [ %1, %.preheader.preheader ]
+
+Constant after instruction
+
+
+Instruction
+  %17 = call i64 @CAT_get(i8* noundef %15) #3
+
+Constant after instruction
+
+
+Instruction
+  %18 = add nsw i64 %17, -1
+
+Constant after instruction
+
+
+Instruction
+  %19 = call i8* @CAT_new(i64 noundef %18) #3
+
+Constant after instruction
+
+
+Instruction
+  %20 = icmp slt i32 %16, 100
+
+Constant after instruction
+
+
+Instruction
+  br i1 %20, label %.loopexit.loopexit, label %.preheader
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+14:                                               ; preds = %8, %12
+  %15 = phi i8* [ %11, %8 ], [ %5, %12 ]
+  %16 = phi i32 [ %4, %8 ], [ %13, %12 ]
+  %17 = call i64 @CAT_get(i8* noundef %15) #3
+  %18 = add nsw i64 %17, -1
+  %19 = call i8* @CAT_new(i64 noundef %18) #3
+  %20 = icmp slt i32 %16, 100
+  br i1 %20, label %.loopexit.loopexit, label %.preheader
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %.loopexit
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+.loopexit.loopexit:                               ; preds = %14
+  br label %.loopexit
+
+
+NEXTBLOCK
+loopToBadConstants ****
+loop
+
+.preheader:                                       ; preds = %.preheader.preheader, %15
+  %5 = phi i32 [ %17, %15 ], [ %0, %.preheader.preheader ]
+  %6 = phi i8* [ %20, %15 ], [ %3, %.preheader.preheader ]
+  %7 = call i64 @CAT_get(i8* noundef %6) #3
+  %8 = icmp sgt i64 %7, 10
+  br i1 %8, label %9, label %13
+: 
+____________________
+loop
+
+9:                                                ; preds = %.preheader
+  %10 = call i64 @CAT_get(i8* noundef %6) #3
+  %11 = add nsw i64 %10, -1
+  %12 = call i8* @CAT_new(i64 noundef %11) #3
+  br label %15
+: 
+____________________
+loop
+
+13:                                               ; preds = %.preheader
+  %14 = add nsw i32 %5, -1
+  br label %15
+: 
+____________________
+loop
+
+15:                                               ; preds = %13, %9
+  %16 = phi i8* [ %12, %9 ], [ %6, %13 ]
+  %17 = phi i32 [ %5, %9 ], [ %14, %13 ]
+  %18 = call i64 @CAT_get(i8* noundef %16) #3
+  %19 = add nsw i64 %18, -1
+  %20 = call i8* @CAT_new(i64 noundef %19) #3
+  %21 = icmp slt i32 %17, 100
+  br i1 %21, label %.loopexit.loopexit, label %.preheader
+: 
+____________________
+
+
+Instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %4 = icmp slt i32 %0, 100
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br i1 %4, label %.loopexit, label %.preheader.preheader
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+  %4 = icmp slt i32 %0, 100
+  br i1 %4, label %.loopexit, label %.preheader.preheader
+
+
+NEXTBLOCK
+
+
+Instruction
+  call void @CAT_set(i8* %3, i64 10)
+
+endofblockkilling:  %3 = call i8* @CAT_new(i64 noundef 5) #3
+Constant after instruction
+  call void @CAT_set(i8* %3, i64 10)
+
+
+Instruction
+  call void @CAT_sub(i8* noundef %3, i8* noundef %3, i8* noundef %3) #3
+
+endofblockkilling:  call void @CAT_set(i8* %3, i64 10)
+Constant after instruction
+
+
+Instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %22 = call i64 @CAT_variables() #3
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %23 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i64 0, i64 0), i64 noundef %22)
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %24 = call i64 @CAT_cost() #3
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %25 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i64 noundef %24)
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  ret i32 0
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+BLOCK AFTER MODIFICATION
+
+.loopexit:                                        ; preds = %.loopexit.loopexit, %2
+  call void @CAT_set(i8* %3, i64 10)
+  call void @CAT_set(i8* %3, i64 0)
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+  %22 = call i64 @CAT_variables() #3
+  %23 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i64 0, i64 0), i64 noundef %22)
+  %24 = call i64 @CAT_cost() #3
+  %25 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i64 noundef %24)
+  ret i32 0
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %.preheader
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+.preheader.preheader:                             ; preds = %2
+  br label %.preheader
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %5 = phi i32 [ %17, %15 ], [ %0, %.preheader.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %17 = phi i32 [ %5, %9 ], [ %14, %13 ]
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %6 = phi i8* [ %20, %15 ], [ %3, %.preheader.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %20 = call i8* @CAT_new(i64 noundef %19) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %7 = call i64 @CAT_get(i8* noundef %6) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %8 = icmp sgt i64 %7, 10
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br i1 %8, label %9, label %13
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+.preheader:                                       ; preds = %.preheader.preheader, %15
+  %5 = phi i32 [ %17, %15 ], [ %0, %.preheader.preheader ]
+  %6 = phi i8* [ %20, %15 ], [ %3, %.preheader.preheader ]
+  %7 = call i64 @CAT_get(i8* noundef %6) #3
+  %8 = icmp sgt i64 %7, 10
+  br i1 %8, label %9, label %13
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %10 = call i64 @CAT_get(i8* noundef %6) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %11 = add nsw i64 %10, -1
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %12 = call i8* @CAT_new(i64 noundef %11) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br label %15
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+9:                                                ; preds = %.preheader
+  %10 = call i64 @CAT_get(i8* noundef %6) #3
+  %11 = add nsw i64 %10, -1
+  %12 = call i8* @CAT_new(i64 noundef %11) #3
+  br label %15
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %14 = add nsw i32 %5, -1
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br label %15
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+13:                                               ; preds = %.preheader
+  %14 = add nsw i32 %5, -1
+  br label %15
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %16 = phi i8* [ %12, %9 ], [ %6, %13 ]
+phiNode
+not falsefind
+
+incomingValue:   %12 = call i8* @CAT_new(i64 noundef %11) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %17 = phi i32 [ %5, %9 ], [ %14, %13 ]
+phiNode
+not falsefind
+
+incomingValue:   %5 = phi i32 [ %17, %15 ], [ %0, %.preheader.preheader ]
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %18 = call i64 @CAT_get(i8* noundef %16) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %19 = add nsw i64 %18, -1
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %20 = call i8* @CAT_new(i64 noundef %19) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %21 = icmp slt i32 %17, 100
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br i1 %21, label %.loopexit.loopexit, label %.preheader
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+15:                                               ; preds = %13, %9
+  %16 = phi i8* [ %12, %9 ], [ %6, %13 ]
+  %17 = phi i32 [ %5, %9 ], [ %14, %13 ]
+  %18 = call i64 @CAT_get(i8* noundef %16) #3
+  %19 = add nsw i64 %18, -1
+  %20 = call i8* @CAT_new(i64 noundef %19) #3
+  %21 = icmp slt i32 %17, 100
+  br i1 %21, label %.loopexit.loopexit, label %.preheader
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %.loopexit
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+.loopexit.loopexit:                               ; preds = %15
+  br label %.loopexit
+
+
+NEXTBLOCK
+####  The compiler modified the input bitcode: the fixed point isn't reached.
+#### Running the CAT compiler
+####   Command line =  opt --enable-new-pm=0 -load ~/CAT/lib/CAT.so output_code_iter_1.bc --basic-aa --globals-aa --cfl-steens-aa --tbaa --scev-aa --cfl-anders-aa -loops -loop-simplify -lcssa -domtree -scalar-evolution -assumption-cache-tracker -CAT -o program_optimized.bc
+loopToBadConstants ****
+loop
+
+.preheader:                                       ; preds = %.preheader.preheader, %14
+  %4 = phi i32 [ %16, %14 ], [ %1, %.preheader.preheader ]
+  %5 = phi i8* [ %19, %14 ], [ %0, %.preheader.preheader ]
+  %6 = call i64 @CAT_get(i8* noundef %5) #3
+  %7 = icmp sgt i64 %6, 10
+  br i1 %7, label %8, label %12
+: 
+____________________
+loop
+
+8:                                                ; preds = %.preheader
+  %9 = call i64 @CAT_get(i8* noundef %5) #3
+  %10 = add nsw i64 %9, -1
+  %11 = call i8* @CAT_new(i64 noundef %10) #3
+  br label %14
+: 
+____________________
+loop
+
+12:                                               ; preds = %.preheader
+  %13 = add nsw i32 %4, -1
+  br label %14
+: 
+____________________
+loop
+
+14:                                               ; preds = %8, %12
+  %15 = phi i8* [ %11, %8 ], [ %5, %12 ]
+  %16 = phi i32 [ %4, %8 ], [ %13, %12 ]
+  %17 = call i64 @CAT_get(i8* noundef %15) #3
+  %18 = add nsw i64 %17, -1
+  %19 = call i8* @CAT_new(i64 noundef %18) #3
+  %20 = icmp slt i32 %16, 100
+  br i1 %20, label %.loopexit.loopexit, label %.preheader
+: 
+____________________
+
+
+Instruction
+  %3 = icmp slt i32 %1, 100
+
+Constant after instruction
+
+
+Instruction
+  br i1 %3, label %.loopexit, label %.preheader.preheader
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+  %3 = icmp slt i32 %1, 100
+  br i1 %3, label %.loopexit, label %.preheader.preheader
+
+
+NEXTBLOCK
+
+
+Instruction
+  ret void
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+.loopexit:                                        ; preds = %.loopexit.loopexit, %2
+  ret void
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %.preheader
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+.preheader.preheader:                             ; preds = %2
+  br label %.preheader
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %4 = phi i32 [ %16, %14 ], [ %1, %.preheader.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %16 = phi i32 [ %4, %8 ], [ %13, %12 ]
+
+Constant after instruction
+
+
+Instruction
+  %5 = phi i8* [ %19, %14 ], [ %0, %.preheader.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %19 = call i8* @CAT_new(i64 noundef %18) #3
+
+Constant after instruction
+
+
+Instruction
+  %6 = call i64 @CAT_get(i8* noundef %5) #3
+
+Constant after instruction
+
+
+Instruction
+  %7 = icmp sgt i64 %6, 10
+
+Constant after instruction
+
+
+Instruction
+  br i1 %7, label %8, label %12
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+.preheader:                                       ; preds = %.preheader.preheader, %14
+  %4 = phi i32 [ %16, %14 ], [ %1, %.preheader.preheader ]
+  %5 = phi i8* [ %19, %14 ], [ %0, %.preheader.preheader ]
+  %6 = call i64 @CAT_get(i8* noundef %5) #3
+  %7 = icmp sgt i64 %6, 10
+  br i1 %7, label %8, label %12
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %9 = call i64 @CAT_get(i8* noundef %5) #3
+
+Constant after instruction
+
+
+Instruction
+  %10 = add nsw i64 %9, -1
+
+Constant after instruction
+
+
+Instruction
+  %11 = call i8* @CAT_new(i64 noundef %10) #3
+
+Constant after instruction
+
+
+Instruction
+  br label %14
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+8:                                                ; preds = %.preheader
+  %9 = call i64 @CAT_get(i8* noundef %5) #3
+  %10 = add nsw i64 %9, -1
+  %11 = call i8* @CAT_new(i64 noundef %10) #3
+  br label %14
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %13 = add nsw i32 %4, -1
+
+Constant after instruction
+
+
+Instruction
+  br label %14
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+12:                                               ; preds = %.preheader
+  %13 = add nsw i32 %4, -1
+  br label %14
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %15 = phi i8* [ %11, %8 ], [ %5, %12 ]
+phiNode
+not falsefind
+
+incomingValue:   %11 = call i8* @CAT_new(i64 noundef %10) #3
+
+Constant after instruction
+
+
+Instruction
+  %16 = phi i32 [ %4, %8 ], [ %13, %12 ]
+phiNode
+not falsefind
+
+incomingValue:   %4 = phi i32 [ %16, %14 ], [ %1, %.preheader.preheader ]
+
+Constant after instruction
+
+
+Instruction
+  %17 = call i64 @CAT_get(i8* noundef %15) #3
+
+Constant after instruction
+
+
+Instruction
+  %18 = add nsw i64 %17, -1
+
+Constant after instruction
+
+
+Instruction
+  %19 = call i8* @CAT_new(i64 noundef %18) #3
+
+Constant after instruction
+
+
+Instruction
+  %20 = icmp slt i32 %16, 100
+
+Constant after instruction
+
+
+Instruction
+  br i1 %20, label %.loopexit.loopexit, label %.preheader
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+14:                                               ; preds = %8, %12
+  %15 = phi i8* [ %11, %8 ], [ %5, %12 ]
+  %16 = phi i32 [ %4, %8 ], [ %13, %12 ]
+  %17 = call i64 @CAT_get(i8* noundef %15) #3
+  %18 = add nsw i64 %17, -1
+  %19 = call i8* @CAT_new(i64 noundef %18) #3
+  %20 = icmp slt i32 %16, 100
+  br i1 %20, label %.loopexit.loopexit, label %.preheader
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %.loopexit
+
+Constant after instruction
+
+
+BLOCK AFTER MODIFICATION
+
+.loopexit.loopexit:                               ; preds = %14
+  br label %.loopexit
+
+
+NEXTBLOCK
+loopToBadConstants ****
+loop
+
+.preheader:                                       ; preds = %.preheader.preheader, %15
+  %5 = phi i32 [ %17, %15 ], [ %0, %.preheader.preheader ]
+  %6 = phi i8* [ %20, %15 ], [ %3, %.preheader.preheader ]
+  %7 = call i64 @CAT_get(i8* noundef %6) #3
+  %8 = icmp sgt i64 %7, 10
+  br i1 %8, label %9, label %13
+: 
+____________________
+loop
+
+9:                                                ; preds = %.preheader
+  %10 = call i64 @CAT_get(i8* noundef %6) #3
+  %11 = add nsw i64 %10, -1
+  %12 = call i8* @CAT_new(i64 noundef %11) #3
+  br label %15
+: 
+____________________
+loop
+
+13:                                               ; preds = %.preheader
+  %14 = add nsw i32 %5, -1
+  br label %15
+: 
+____________________
+loop
+
+15:                                               ; preds = %13, %9
+  %16 = phi i8* [ %12, %9 ], [ %6, %13 ]
+  %17 = phi i32 [ %5, %9 ], [ %14, %13 ]
+  %18 = call i64 @CAT_get(i8* noundef %16) #3
+  %19 = add nsw i64 %18, -1
+  %20 = call i8* @CAT_new(i64 noundef %19) #3
+  %21 = icmp slt i32 %17, 100
+  br i1 %21, label %.loopexit.loopexit, label %.preheader
+: 
+____________________
+
+
+Instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %4 = icmp slt i32 %0, 100
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br i1 %4, label %.loopexit, label %.preheader.preheader
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+  %4 = icmp slt i32 %0, 100
+  br i1 %4, label %.loopexit, label %.preheader.preheader
+
+
+NEXTBLOCK
+
+
+Instruction
+  call void @CAT_set(i8* %3, i64 10)
+
+endofblockkilling:  %3 = call i8* @CAT_new(i64 noundef 5) #3
+Constant after instruction
+  call void @CAT_set(i8* %3, i64 10)
+
+
+Instruction
+  call void @CAT_set(i8* %3, i64 0)
+
+endofblockkilling:  call void @CAT_set(i8* %3, i64 10)
+Constant after instruction
+  call void @CAT_set(i8* %3, i64 0)
+
+
+Instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+endofblockkilling:  call void @CAT_set(i8* %3, i64 0)
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %22 = call i64 @CAT_variables() #3
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %23 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i64 0, i64 0), i64 noundef %22)
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %24 = call i64 @CAT_cost() #3
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  %25 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i64 noundef %24)
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+Instruction
+  ret i32 0
+
+Constant after instruction
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+
+
+BLOCK AFTER MODIFICATION
+
+.loopexit:                                        ; preds = %.loopexit.loopexit, %2
+  call void @CAT_set(i8* %3, i64 10)
+  call void @CAT_set(i8* %3, i64 0)
+  call void @CAT_set(i8* noundef %3, i64 noundef 42) #3
+  %22 = call i64 @CAT_variables() #3
+  %23 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i64 0, i64 0), i64 noundef %22)
+  %24 = call i64 @CAT_cost() #3
+  %25 = call i32 (i8*, ...) @printf(i8* noundef nonnull dereferenceable(1) getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i64 noundef %24)
+  ret i32 0
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %.preheader
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+.preheader.preheader:                             ; preds = %2
+  br label %.preheader
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %5 = phi i32 [ %17, %15 ], [ %0, %.preheader.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %17 = phi i32 [ %5, %9 ], [ %14, %13 ]
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %6 = phi i8* [ %20, %15 ], [ %3, %.preheader.preheader ]
+phiNode
+not falsefind
+
+incomingValue:   %20 = call i8* @CAT_new(i64 noundef %19) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %7 = call i64 @CAT_get(i8* noundef %6) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %8 = icmp sgt i64 %7, 10
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br i1 %8, label %9, label %13
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+.preheader:                                       ; preds = %.preheader.preheader, %15
+  %5 = phi i32 [ %17, %15 ], [ %0, %.preheader.preheader ]
+  %6 = phi i8* [ %20, %15 ], [ %3, %.preheader.preheader ]
+  %7 = call i64 @CAT_get(i8* noundef %6) #3
+  %8 = icmp sgt i64 %7, 10
+  br i1 %8, label %9, label %13
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %10 = call i64 @CAT_get(i8* noundef %6) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %11 = add nsw i64 %10, -1
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %12 = call i8* @CAT_new(i64 noundef %11) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br label %15
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+9:                                                ; preds = %.preheader
+  %10 = call i64 @CAT_get(i8* noundef %6) #3
+  %11 = add nsw i64 %10, -1
+  %12 = call i8* @CAT_new(i64 noundef %11) #3
+  br label %15
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %14 = add nsw i32 %5, -1
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br label %15
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+13:                                               ; preds = %.preheader
+  %14 = add nsw i32 %5, -1
+  br label %15
+
+
+NEXTBLOCK
+
+falseFinds
+
+
+Instruction
+  %16 = phi i8* [ %12, %9 ], [ %6, %13 ]
+phiNode
+not falsefind
+
+incomingValue:   %12 = call i8* @CAT_new(i64 noundef %11) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %17 = phi i32 [ %5, %9 ], [ %14, %13 ]
+phiNode
+not falsefind
+
+incomingValue:   %5 = phi i32 [ %17, %15 ], [ %0, %.preheader.preheader ]
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %18 = call i64 @CAT_get(i8* noundef %16) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %19 = add nsw i64 %18, -1
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %20 = call i8* @CAT_new(i64 noundef %19) #3
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  %21 = icmp slt i32 %17, 100
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+Instruction
+  br i1 %21, label %.loopexit.loopexit, label %.preheader
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+15:                                               ; preds = %13, %9
+  %16 = phi i8* [ %12, %9 ], [ %6, %13 ]
+  %17 = phi i32 [ %5, %9 ], [ %14, %13 ]
+  %18 = call i64 @CAT_get(i8* noundef %16) #3
+  %19 = add nsw i64 %18, -1
+  %20 = call i8* @CAT_new(i64 noundef %19) #3
+  %21 = icmp slt i32 %17, 100
+  br i1 %21, label %.loopexit.loopexit, label %.preheader
+
+
+NEXTBLOCK
+
+
+Instruction
+  br label %.loopexit
+
+Constant after instruction
+  %3 = call i8* @CAT_new(i64 noundef 5) #3
+
+
+BLOCK AFTER MODIFICATION
+
+.loopexit.loopexit:                               ; preds = %15
+  br label %.loopexit
+
+
+NEXTBLOCK
+####  The compiler did not modify the input bitcode: the fixed point has been reached.
+llvm-dis program_optimized.bc
+clang -O2 -lm program_optimized.bc ../misc/CAT.o -o program_optimized
+./program_optimized > program_optimized_output
+../misc/check.sh "output/oracle.txt" "program_optimized_output"
+Checking output/oracle.txt against program_optimized_output
+Test passed!
+make[1]: Leaving directory '/home/hwo2853/LLVM/H4/tests/test71'
