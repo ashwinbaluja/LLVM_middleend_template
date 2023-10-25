@@ -526,10 +526,31 @@ struct CAT : public FunctionPass {
 
       map<CallInst *, map<int, ConstantInt *>> operandChanges = {};
 
+
+
       for (auto &inst : *b) {
         errs() << "\n\nInstruction\n";
         inst.print(errs());
         errs() << "\n";
+
+        set<Instruction *> eraseQueue = {};
+
+        if (isa<CallInst>(inst)) {
+          CallInst* cinst = cast<CallInst>(&inst);
+          string name = cinst->getCalledFunction()->getName().str();
+          if (!(name == "CAT_new" || name == "CAT_set" || name == "CAT_add" ||
+            name == "CAT_sub" || name == "CAT_get" || name == "printf")) {
+              for (int i = 0; i < cinst->arg_size(); i++) {
+                if (Instruction* a = dyn_cast<Instruction>(cinst->getOperand(i))) {
+                  if (!isa<CallInst>(a)) continue;
+                  errs() << "erased an instruction cause it was called in a function";
+                  a -> print(errs());
+                  errs() << "\n";
+                  eraseQueue.insert(a);
+                }
+              }
+            }
+        }
 
         if (isa<PHINode>(inst)) {
           errs() << "phiNode\n";
@@ -604,7 +625,6 @@ struct CAT : public FunctionPass {
           }
         }
 
-        set<Instruction *> eraseQueue = {};
 
         Function *func = b->getParent();
         bool seen = false;
