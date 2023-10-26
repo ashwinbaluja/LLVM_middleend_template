@@ -209,8 +209,8 @@ struct CAT : public FunctionPass {
 
     map<BasicBlock *, map<Instruction *, Value *>> globalconstants = {};
     map<BasicBlock *, map<Instruction *, Value *>> globalkilled = {};
-    map<BasicBlock *, set<BasicBlock* >> loopToBlocks = {};
-    map<BasicBlock *, set<Value* >> loopToBadConstants = {};
+    map<BasicBlock *, set<BasicBlock *>> loopToBlocks = {};
+    map<BasicBlock *, set<Value *>> loopToBadConstants = {};
     set<BasicBlock *> loopBlocks = {};
     queue<BasicBlock *> q = {};
     set<BasicBlock *> visited = {};
@@ -221,7 +221,7 @@ struct CAT : public FunctionPass {
     }
 
     for (auto &b : F) {
-      set <BasicBlock *> visited2 = {};
+      set<BasicBlock *> visited2 = {};
       queue<BasicBlock *> q2 = {};
       for (auto *bn : predecessors(&b))
         q2.push(bn);
@@ -245,32 +245,32 @@ struct CAT : public FunctionPass {
     //   errs() << *b << " ";
     // }
 
-    for (auto& b: loopBlocks){
+    for (auto &b : loopBlocks) {
       queue<BasicBlock *> preds = {};
       set<BasicBlock *> visited3 = {};
       queue<BasicBlock *> succs = {};
       set<BasicBlock *> visited4 = {};
-      for (auto *bn : predecessors(b)){
+      for (auto *bn : predecessors(b)) {
         if (loopBlocks.find(bn) != loopBlocks.end()) {
           preds.push(bn);
         }
       }
-      for (auto *bn : successors(b)){
+      for (auto *bn : successors(b)) {
         if (loopBlocks.find(bn) != loopBlocks.end()) {
           succs.push(bn);
         }
       }
-          
+
       while (preds.size() > 0) {
         BasicBlock *b2 = preds.front();
         preds.pop();
         if (visited3.find(b2) != visited3.end())
           continue;
         bool leaves = false;
-        set<BasicBlock* > toPush = {};
-        
+        set<BasicBlock *> toPush = {};
+
         visited3.insert(b2);
-        
+
         for (auto *bn : predecessors(b2)) {
           if (loopBlocks.find(bn) == loopBlocks.end()) {
             leaves = true;
@@ -290,7 +290,7 @@ struct CAT : public FunctionPass {
         if (visited4.find(b2) != visited4.end())
           continue;
         bool leaves = false;
-        set<BasicBlock* > toPush = {};
+        set<BasicBlock *> toPush = {};
         visited4.insert(b2);
         for (auto *bn : successors(b2)) {
           if (loopBlocks.find(bn) == loopBlocks.end()) {
@@ -314,58 +314,58 @@ struct CAT : public FunctionPass {
       // for (auto &b: visited4){
       //   errs() << *b << " ";
       // }
-      
-      for (auto &b: visited3){
+
+      for (auto &b : visited3) {
         visited4.insert(b);
       }
       visited4.insert(b);
       loopToBlocks.insert({b, visited4});
     }
-    //print loopToBlock
-    // errs() << "loopToBlock ****\n";
-    // for (auto &b: loopToBlocks){
-    //   b.first->print(errs());
-    //   errs() << ": \n";
-    //   for (auto &bn: b.second){
-    //     errs() << *bn << " ";
-    //   }
-    //   errs() << "____________________\n";
-    // }
-    
-    for (auto &pair : loopToBlocks){
+    // print loopToBlock
+    //  errs() << "loopToBlock ****\n";
+    //  for (auto &b: loopToBlocks){
+    //    b.first->print(errs());
+    //    errs() << ": \n";
+    //    for (auto &bn: b.second){
+    //      errs() << *bn << " ";
+    //    }
+    //    errs() << "____________________\n";
+    //  }
+
+    for (auto &pair : loopToBlocks) {
       BasicBlock *b = pair.first;
       set<Value *> temp = {};
       loopToBadConstants.insert({b, temp});
-      for (auto& inst : *b) {
-          if (isa<CallInst>(inst)) {
-            CallInst *cinst = &(cast<CallInst>(inst));
-            Value *vinst = cinst->getOperand(0);
-            for (int i = 1; i < cinst->arg_size(); i++) {
-              if (vinst == cinst->getOperand(i)) {
-                if (isa<ConstantInt>(vinst) && cast<ConstantInt>(vinst)->getSExtValue() == 0) {
-                  continue;
-                }
-                loopToBadConstants[b].insert(vinst);
-                break;
+      for (auto &inst : *b) {
+        if (isa<CallInst>(inst)) {
+          CallInst *cinst = &(cast<CallInst>(inst));
+          Value *vinst = cinst->getOperand(0);
+          for (int i = 1; i < cinst->arg_size(); i++) {
+            if (vinst == cinst->getOperand(i)) {
+              if (isa<ConstantInt>(vinst) &&
+                  cast<ConstantInt>(vinst)->getSExtValue() == 0) {
+                continue;
               }
+              loopToBadConstants[b].insert(vinst);
+              break;
             }
           }
         }
+      }
     }
 
     // print loopToBadConstants
     errs() << "loopToBadConstants ****\n";
-    for (auto &b: loopToBadConstants){
+    for (auto &b : loopToBadConstants) {
       errs() << "loop\n";
       b.first->print(errs());
       errs() << ": \n";
-      for (auto &bn: b.second){
+      for (auto &bn : b.second) {
         bn->print(errs());
         errs() << " ";
       }
       errs() << "____________________\n";
     }
-
 
     BasicBlock *first = q.front();
 
@@ -433,15 +433,13 @@ struct CAT : public FunctionPass {
         }
       }
 
-      
-
       if (loopToBlocks.find(b) != loopToBlocks.end()) {
-        for (auto &bn: loopToBlocks[b]){
-          for (auto &bad: loopToBadConstants[bn]){
+        for (auto &bn : loopToBlocks[b]) {
+          for (auto &bad : loopToBadConstants[bn]) {
             falseFinds.insert(bad);
           }
         }
-        for (auto &inst: *b){
+        for (auto &inst : *b) {
           if (isa<CallInst>(inst)) {
             CallInst *cinst = &(cast<CallInst>(inst));
             Value *vinst = cinst->getOperand(0);
@@ -455,9 +453,9 @@ struct CAT : public FunctionPass {
         }
         // print falseFinds
         errs() << "\nfalseFinds\n";
-        for (auto &v: falseFinds){
-        v->print(errs());
-        errs() << " ";
+        for (auto &v : falseFinds) {
+          v->print(errs());
+          errs() << " ";
         }
       }
 
@@ -526,8 +524,6 @@ struct CAT : public FunctionPass {
 
       map<CallInst *, map<int, ConstantInt *>> operandChanges = {};
 
-
-
       for (auto &inst : *b) {
         errs() << "\n\nInstruction\n";
         inst.print(errs());
@@ -536,20 +532,23 @@ struct CAT : public FunctionPass {
         set<Instruction *> eraseQueue = {};
 
         if (isa<CallInst>(inst)) {
-          CallInst* cinst = cast<CallInst>(&inst);
+          CallInst *cinst = cast<CallInst>(&inst);
           string name = cinst->getCalledFunction()->getName().str();
           if (!(name == "CAT_new" || name == "CAT_set" || name == "CAT_add" ||
-            name == "CAT_sub" || name == "CAT_get" || name == "printf")) {
-              for (int i = 0; i < cinst->arg_size(); i++) {
-                if (Instruction* a = dyn_cast<Instruction>(cinst->getOperand(i))) {
-                  if (!isa<CallInst>(a)) continue;
-                  errs() << "erased an instruction cause it was called in a function";
-                  a -> print(errs());
-                  errs() << "\n";
-                  eraseQueue.insert(a);
-                }
+                name == "CAT_sub" || name == "CAT_get" || name == "printf")) {
+            for (int i = 0; i < cinst->arg_size(); i++) {
+              if (Instruction *a =
+                      dyn_cast<Instruction>(cinst->getOperand(i))) {
+                if (!isa<CallInst>(a))
+                  continue;
+                errs() << "erased an instruction cause it was called in a "
+                          "function";
+                a->print(errs());
+                errs() << "\n";
+                eraseQueue.insert(a);
               }
             }
+          }
         }
 
         if (isa<PHINode>(inst)) {
@@ -571,8 +570,24 @@ struct CAT : public FunctionPass {
               ConstantInt *prev = NULL;
               int flag = true;
               Value *v;
-              for (unsigned i = 0, e = phi->getNumIncomingValues(); i != e; ++i) {
+              for (unsigned i = 0, e = phi->getNumIncomingValues(); i != e;
+                   ++i) {
                 Value *incomingValue = phi->getIncomingValue(i);
+
+                bool sameblock = false;
+                for (auto U : incomingValue->users()) { // U is of type User*
+                  if (auto I = dyn_cast<Instruction>(U)) {
+                    if (I == &inst) continue;
+                    if (I->getParent() == b) {
+                      sameblock = true;
+                      break;
+                    }
+                  }
+                }
+                if (sameblock) {
+                  flag = false;
+                  break;
+                }
                 errs() << "incomingValue: ";
                 incomingValue->print(errs());
                 errs() << "\n";
@@ -582,10 +597,10 @@ struct CAT : public FunctionPass {
                   break;
                 }
                 v = (calli->arg_size() == 1) ? calli->getOperand(0)
-                                                    : calli->getOperand(1);
-                                                  
+                                             : calli->getOperand(1);
+
                 ConstantInt *incomingConstant = NULL;
-                if (isa<ConstantInt>(v)){
+                if (isa<ConstantInt>(v)) {
                   incomingConstant = cast<ConstantInt>(v);
                   errs() << "incomingConstant: ";
                   incomingConstant->print(errs());
@@ -600,7 +615,8 @@ struct CAT : public FunctionPass {
                   continue;
                 }
 
-                if (incomingConstant == NULL || incomingConstant->getSExtValue() != prev->getSExtValue()) {
+                if (incomingConstant == NULL ||
+                    incomingConstant->getSExtValue() != prev->getSExtValue()) {
                   errs() << "not equal\nprev: ";
                   prev->print(errs());
                   flag = false;
@@ -610,21 +626,18 @@ struct CAT : public FunctionPass {
                 incomingConstant->print(errs());
                 errs() << "\n";
                 prev = incomingConstant;
-                }
-                if (flag) {
-                  changes.insert({&inst, phi->getIncomingValue(0)});
-                  operandReplacement.insert({&(cast<Value>(inst)), prev});
-                  errs() << "constantphifoundHERE";
-                  phi->print(errs());
-                  prev->print(errs());
-                  errs() << "\n";
-                }
-
+              }
+              if (flag) {
+                changes.insert({&inst, phi->getIncomingValue(0)});
+                operandReplacement.insert({&(cast<Value>(inst)), prev});
+                errs() << "constantphifoundHERE";
+                phi->print(errs());
+                prev->print(errs());
+                errs() << "\n";
+              }
             }
-            
           }
         }
-
 
         Function *func = b->getParent();
         bool seen = false;
