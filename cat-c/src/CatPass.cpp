@@ -368,8 +368,16 @@ struct CAT : public FunctionPass {
     }
 
     BasicBlock *first = q.front();
+    set<Value *> permakill = {};
 
     while (q.size() > 0) {
+
+      errs() << "currenpermakill\n";
+      for (auto &val : permakill) {
+        val->print(errs());
+        errs() << "\n";
+      }
+      errs() << "\nend";
       BasicBlock *b = q.front();
       q.pop();
       if (visited.find(b) != visited.end())
@@ -492,6 +500,12 @@ struct CAT : public FunctionPass {
 
       set<Instruction *> eraseQ = {};
 
+      for (auto const &val : permakill) {
+        errs() << "\npermakilled: ";
+        val->print(errs());
+        errs() << "\n";
+        falseFinds.insert(val);
+      }
       for (auto const &inst : constants) {
         Value *constantval = inst.second;
         if (constantval == NULL) {
@@ -545,12 +559,12 @@ struct CAT : public FunctionPass {
                           "function";
                 a->print(errs());
                 errs() << "\n";
+                if (cinst->arg_size() > 1) permakill.insert(cast<Value>(a));
                 eraseQueue.insert(a);
               }
             }
           }
         }
-
         if (isa<PHINode>(inst)) {
           errs() << "phiNode\n";
           /* ADDED THIS BIT AND GOT ERROR*/
@@ -573,11 +587,11 @@ struct CAT : public FunctionPass {
               for (unsigned i = 0, e = phi->getNumIncomingValues(); i != e;
                    ++i) {
                 Value *incomingValue = phi->getIncomingValue(i);
-
                 bool sameblock = false;
                 for (auto U : incomingValue->users()) { // U is of type User*
                   if (auto I = dyn_cast<Instruction>(U)) {
-                    if (I == &inst) continue;
+                    if (I == &inst)
+                      continue;
                     if (I->getParent() == b) {
                       sameblock = true;
                       break;
@@ -707,6 +721,10 @@ struct CAT : public FunctionPass {
               Value *constantval = constanttup.second;
               if (constantval == NULL) {
                 constantval = cast<Value>(constant);
+              }
+
+              if (permakill.find(constantval) != permakill.end()){
+                continue;
               }
               // callinst->print(errs());
               if (constantval == val) {
